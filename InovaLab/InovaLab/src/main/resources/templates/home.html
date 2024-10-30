@@ -6,57 +6,73 @@
     <title>Página Inicial - InovaLab</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Layout principal */
-        .main-container {
+        /* Ajustes de altura */
+        html, body {
+            height: 100%;
+            margin: 0;
             display: flex;
-            height: 80vh; /* Ajuste de altura */
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
         }
 
-        /* Divisão das colunas */
-        .left-column, .right-column {
+        /* Layout principal */
+        .main-container {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 100vh; /* Ocupa a tela toda */
+        }
+
+        /* Divisão das colunas */
+        .left-column, .right-column {
+            width: 50%; /* Cada coluna ocupa metade da largura */
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
             padding: 20px;
+            flex-direction: column;
         }
 
         /* Estilo da coluna da esquerda */
         .left-column {
-            flex-direction: column;
-            text-align: center;
+            text-align: left;
         }
 
         .left-column h2 {
-            font-size: 24px;
+            font-size: 54px;
             margin-bottom: 20px;
         }
 
         .btn-group {
             display: flex;
             gap: 15px;
+            width: 100%; /* Para que os botões ocupem toda a largura */
+            justify-content: center; /* Centraliza os botões horizontalmente */
+        }
+
+        /* Estilo dos botões */
+        .btn {
+            flex: 1; /* Faz os botões ocuparem a mesma largura */
+            max-width: 200px; /* Define a largura máxima dos botões */
+            padding: 15px 0; /* Aumenta a altura dos botões */
+            font-size: 18px; /* Aumenta o tamanho da fonte */
         }
 
         /* Estilo da coluna da direita */
         .right-column {
-            background-color: transparent; /* Alterado para transparente */
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: transparent;
+            padding: 0;
         }
 
         /* Estilo da imagem */
         .right-column img {
-            width: 100%;
-            max-width: 500px;
-            max-height: 400px;
+            width: 75%; /* A imagem ocupa 75% da coluna direita */
+            height: auto;
             object-fit: cover;
         }
 
-        /* Header e Footer */
-        .header, .footer {
+        /* Header */
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -64,23 +80,34 @@
             background-color: #f8f9fa;
         }
 
-        .header a, .footer a {
+        .header img {
+            height: 50px; /* Ajuste a altura da imagem */
+        }
+
+        .header a {
             color: #007bff;
             text-decoration: none;
         }
 
+        /* Footer fixado ao final da tela */
         .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             padding: 15px;
-            font-size: 14px;
+            font-size: 18px;
             background-color: #f1f1f1;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div><strong>InovaLab</strong></div>
+    <img src="/assinatura.png" alt="Assinatura InovaLab">
     <div>
         <a href="/login">Fazer Login</a> |
         <a href="/register">Fazer Cadastro</a>
