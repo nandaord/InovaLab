@@ -3,6 +3,7 @@ package com.cesar.InovaLab.InovaLab.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
+@Entity
 public class Curso {
 
     @Id
