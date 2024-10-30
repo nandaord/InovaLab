@@ -3,18 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
+    <title>Página Inicial - InovaLab</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Layout principal */
+        .main-container {
+            display: flex;
+            height: 80vh; /* Ajuste de altura */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Divisão das colunas */
+        .left-column, .right-column {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Estilo da coluna da esquerda */
+        .left-column {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .left-column h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Estilo da coluna da direita */
+        .right-column {
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            max-width: 500px;
+            max-height: 400px;
+            background-color: #ced4da;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #adb5bd;
+            font-size: 24px;
+        }
+
+        /* Header e Footer */
+        .header, .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+
+        .header a, .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
-<div class="container text-center" style="margin-top: 100px;">
-    <h1>InovaLab!</h1>
 
-    <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
-
-    <p>Escolha uma das opções abaixo:</p>
-    <a href="/register" class="btn btn-primary">Registrar</a>
-    <a href="/login" class="btn btn-secondary">Login</a>
+<div class="header">
+    <div><strong>InovaLab</strong></div>
+    <div>
+        <a href="/login">Fazer Login</a> |
+        <a href="/register">Fazer Cadastro</a>
+    </div>
 </div>
+
+<div class="container-fluid main-container">
+    <!-- Coluna da Esquerda (Texto e Botões) -->
+    <div class="left-column">
+        <h2>Faça login ou cadastro para fazer parte desta experiência!</h2>
+        <div class="btn-group">
+            <a href="/login" class="btn btn-secondary">Login</a>
+            <a href="/register" class="btn btn-secondary">Cadastro</a>
+        </div>
+    </div>
+
+    <!-- Coluna da Direita (Imagem) -->
+    <div class="right-column">
+        <div class="img-placeholder">
+            <span>Imagem</span>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    Quer voltar para a comunidade e aproveitar os fóruns? <a href="/forum">clique aqui!</a>
+</div>
+
 </body>
 </html>
