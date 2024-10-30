@@ -5,117 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial - InovaLab</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Ajustes de altura */
-        html, body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Layout principal */
-        .main-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh; /* Ocupa a tela toda */
-        }
-
-        /* Divisão das colunas */
-        .left-column, .right-column {
-            width: 50%; /* Cada coluna ocupa metade da largura */
-            display: flex;
-            align-items: center; /* Centraliza verticalmente */
-            justify-content: center; /* Centraliza horizontalmente */
-            padding: 20px;
-            flex-direction: column;
-        }
-
-        /* Estilo da coluna da esquerda */
-        .left-column {
-            text-align: left;
-        }
-
-        .left-column h2 {
-            font-size: 54px;
-            margin-bottom: 20px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            width: 100%; /* Para que os botões ocupem toda a largura */
-            justify-content: center; /* Centraliza os botões horizontalmente */
-        }
-
-        /* Estilo dos botões */
-        .btn {
-            flex: 1; /* Faz os botões ocuparem a mesma largura */
-            max-width: 200px; /* Define a largura máxima dos botões */
-            padding: 15px 0; /* Aumenta a altura dos botões */
-            font-size: 18px; /* Aumenta o tamanho da fonte */
-        }
-
-        /* Estilo da coluna da direita */
-        .right-column {
-            background-color: transparent;
-            padding: 0;
-        }
-
-        /* Estilo da imagem */
-        .right-column img {
-            width: 75%; /* A imagem ocupa 75% da coluna direita */
-            height: auto;
-            object-fit: cover;
-        }
-
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #f8f9fa;
-        }
-
-        .header img {
-            height: 50px; /* Ajuste a altura da imagem */
-        }
-
-        .header a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        /* Footer fixado ao final da tela */
-        .footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 15px;
-            font-size: 18px;
-            background-color: #f1f1f1;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="/home.css">
 </head>
 <body>
 
 <div class="header">
     <img src="/assinatura.png" alt="Assinatura InovaLab">
     <div>
-        <a href="/login">Fazer Login</a> |
-        <a href="/cadastro">Fazer Cadastro</a>
+        <a href="/login" class="header-btn">Fazer Login</a>
+        <a href="/cadastro" class="header-btn">Fazer Cadastro</a>
     </div>
 </div>
 
 <div class="container-fluid main-container">
-    <!-- Coluna da Esquerda (Texto e Botões) -->
     <div class="left-column">
         <h2>Faça login ou cadastro para fazer parte desta experiência!</h2>
         <div class="btn-group">
@@ -124,14 +26,13 @@
         </div>
     </div>
 
-    <!-- Coluna da Direita (Imagem) -->
     <div class="right-column">
         <img src="/logoMarca.png" alt="Descrição da Imagem">
     </div>
 </div>
 
 <div class="footer">
-    Quer voltar para a comunidade e aproveitar os fóruns? <a href="/forum">clique aqui!</a>
+    Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
 </div>
 
 </body>
