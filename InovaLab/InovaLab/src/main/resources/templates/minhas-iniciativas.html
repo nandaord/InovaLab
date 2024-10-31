@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Minhas Iniciativas</title>
+</head>
+<body>
+<h1>Minhas Iniciativas</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Título</th>
+    <th>Descrição</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="iniciativa : ${iniciativas}">
+    <td th:text="${iniciativa.titulo}"></td>
+    <td th:text="${iniciativa.descricao}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

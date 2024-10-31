@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Criar Nova Iniciativa</title>
+</head>
+<body>
+<h1>Criar Nova Iniciativa</h1>
+<form action="@{/iniciativas/nova}" th:object="${iniciativa}" method="post">
+  <label>Título:</label>
+  <input type="text" th:field="*{titulo}" required />
+
+  <label>Descrição:</label>
+  <textarea th:field="*{descricao}" required></textarea>
+
+  <button type="submit">Criar</button>
+</form>
+</body>
+</html>
