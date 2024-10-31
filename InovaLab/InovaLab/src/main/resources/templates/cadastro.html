@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="cadastro.css">
     <meta charset="UTF-8">
@@ -63,10 +63,15 @@
             <label for="confirmPassword">Confirme a Senha*:</label>
             <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-            <!-- AQUI TÁ OS CAMPOS DE ALUNO MAS VAMOS IMPLEMENTAR ELES ANTES PRA DEPOIS COLOCARMOS NO CADASTRO
+
             <div id="alunoFields" style="display: none;">
-                <label for="curso">Curso*:</label>
-                <input type="text" id="curso" name="curso" required>
+                <label for="curso">Curso:</label>
+                <select name="cursoId" id="curso" required>
+                    <option value="">Selecione um curso</option>
+                    <th:block th:each="curso : ${cursos}">
+                        <option th:value="${curso.id}" th:text="${curso.nome}"></option>
+                    </th:block>
+                </select>
 
                 <label for="linkPortifolio">Link do Portfólio (opcional):</label>
                 <input type="url" id="linkPortifolio" name="linkPortifolio">
@@ -74,7 +79,7 @@
                 <label>
                     <input type="checkbox" id="participaIniciativa" name="participaIniciativa"> Participo de Iniciativas
                 </label>
-            </div>-->
+            </div>
 
             <!--<div id="professorFields" style="display: none;">
 
