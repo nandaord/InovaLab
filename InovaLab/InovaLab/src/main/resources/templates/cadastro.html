@@ -41,6 +41,13 @@
     </div>
 
     <div class="container">
+
+        <!-- Espaço reservado para a mensagem -->
+        <div id="mensagemEspaco" style="height: 50px;"></div>
+
+        <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
+        <div th:if="${erro}" class="alert alert-danger" th:text="${erro}"></div>
+
         <form action="/cadastro" method="post">
             <div class="user-type">
                 <label>
@@ -74,15 +81,7 @@
 
                 <br><label for="linkPortifolio">Link do Portfólio: </label> <br>
                 <input type="url" id="linkPortifolio" name="linkPortifolio"> <br>
-
-                <!--<label>
-                    <input type="checkbox" id="participaIniciativa" name="participaIniciativa"> Participo de Iniciativas
-                </label>-->
             </div>
-
-            <!--<div id="professorFields" style="display: none;">
-
-            </div>-->
 
             <label for="mensagemAberta">Mensagem aberta sobre você:</label>
             <textarea id="mensagemAberta" name="mensagemAberta"></textarea>
@@ -92,8 +91,8 @@
     </div>
 </div>
 
-    <div class="footer">
-        Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum"> Clique aqui!</a>
-    </div>
+<div class="footer">
+    Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum"> Clique aqui!</a>
+</div>
 </body>
 </html>

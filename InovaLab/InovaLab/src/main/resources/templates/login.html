@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,6 +80,15 @@
         border: none;
     }
 
+    /* Estilo para mensagens de erro e sucesso */
+    .alert {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: bold;
+        margin-top: 10px
+    }
+
     /* Header */
     .header {
         display: flex;
@@ -135,7 +144,10 @@
   </div>
 
   <div class="right-column">
+    <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
+    <div th:if="${erro}" class="alert alert-danger" th:text="${erro}"></div>
     <h2>Login</h2>
+
     <form action="/login" method="POST">
       <input type="email" name="email" placeholder="E-mail" required>
       <input type="password" name="password" placeholder="Senha" required>
