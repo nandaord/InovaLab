@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="cadastro.css">
     <meta charset="UTF-8">
     <title>Cadastro</title>
     <script>
         function toggleFields() {
-            const tipoUsuario = document.querySelector('input[name="tipoUsuario"]:checked').value;
+            const tipoUsuario = document.getElementById("tipoUsuario").value;
             const alunoFields = document.getElementById("alunoFields");
             const professorFields = document.getElementById("professorFields");
 
@@ -18,73 +17,51 @@
                 professorFields.style.display = "block"; // Mostrar campos de Professor
             }
         }
-
-        // Chama toggleFields ao carregar a página
-        window.onload = toggleFields;
     </script>
 </head>
 <body>
+<h2>Cadastro</h2>
+<form action="/cadastro" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required><br>
 
-<div class="header">
-    <a href="/">
-        <img src="/assinatura.png" alt="Assinatura InovaLab">
-    </a>
-    <div>
-        <a href="/login">Fazer Login</a> |
-        <a href="/cadastro">Fazer Cadastro</a>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="confirmPassword">Confirme a senha:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+    <label for="tipoUsuario">Tipo de Usuário:</label>
+    <select id="tipoUsuario" name="tipoUsuario" onchange="toggleFields()">
+        <option value="aluno">Aluno</option>
+        <option value="professor">Professor</option>
+    </select><br>
+
+    <!-- Campos específicos para Aluno -->
+    <div id="alunoFields" style="display: none;">
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" name="curso"><br>
+
+        <label for="linkPortifolio">Link do Portfólio (opcional):</label>
+        <input type="url" id="linkPortifolio" name="linkPortifolio"><br>
+
+        <label for="isParticipaIniciativa">Participa de Iniciativas:</label>
+        <input type="checkbox" id="isParticipaIniciativa" name="isParticipaIniciativa"><br>
     </div>
-</div>
 
-<div class="container">
-    <h2>Cadastro</h2>
-    <form action="/cadastro" method="post">
-        <div class="user-type">
-            <label>
-                <input type="radio" name="tipoUsuario" value="aluno" checked onchange="toggleFields()"> Sou Aluno
-            </label>
-            <label>
-                <input type="radio" name="tipoUsuario" value="professor" onchange="toggleFields()"> Sou Professor
-            </label>
-        </div>
+    <!-- Campos específicos para Professor -->
+    <div id="professorFields" style="display: none;">
+        <label for="disciplina">Disciplina:</label>
+        <input type="text" id="disciplina" name="disciplina"><br>
 
-        <label for="nome">Nome*:</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label for="email">E-mail*:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Senha*:</label>
-        <input type="password" id="password" name="password" required>
-
-        <label for="confirmPassword">Confirme a Senha*:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-
-        <!-- AQUI TÁ OS CAMPOS DE ALUNO MAS VAMOS IMPLEMENTAR ELES ANTES PRA DEPOIS COLOCARMOS NO CADASTRO
-        <div id="alunoFields" style="display: none;">
-            <label for="curso">Curso*:</label>
-            <input type="text" id="curso" name="curso" required>
-
-            <label for="linkPortifolio">Link do Portfólio (opcional):</label>
-            <input type="url" id="linkPortifolio" name="linkPortifolio">
-
-            <label>
-                <input type="checkbox" id="participaIniciativa" name="participaIniciativa"> Participo de Iniciativas
-            </label>
-        </div>-->
-
-        <!--<div id="professorFields" style="display: none;">
-
-        </div>-->
-
-        <label for="mensagemAberta">Mensagem aberta sobre você:</label>
-        <textarea id="mensagemAberta" name="mensagemAberta"></textarea>
-
-        <button type="submit">Cadastrar</button>
-    </form>
-
-    <div class="footer">
-        Quer voltar para a comunidade e aproveitar os fóruns? <a href="/forum">clique aqui!</a>
+        <label for="linkCurriculo">Link do Currículo (opcional):</label>
+        <input type="url" id="linkCurriculo" name="linkCurriculo"><br>
     </div>
-</div>
+
+    <button type="submit">Cadastrar</button>
+</form>
 </body>
 </html>

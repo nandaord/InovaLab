@@ -2,8 +2,10 @@ package com.cesar.InovaLab.InovaLab.controllers;
 
 import com.cesar.InovaLab.InovaLab.models.UserAluno;
 import com.cesar.InovaLab.InovaLab.models.UserProfessor;
+import com.cesar.InovaLab.InovaLab.models.User;
 import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
 import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
+import com.cesar.InovaLab.InovaLab.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/")
 public class HomeController {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private UserAlunoRepository userAlunoRepository;
@@ -39,7 +44,6 @@ public class HomeController {
                            @RequestParam("email") String email,
                            @RequestParam("password") String password,
                            @RequestParam("confirmPassword") String confirmPassword,
-                           @RequestParam("mensagemAberta") String mensagemAberta,
                            RedirectAttributes redirectAttributes,
                            Model model) {
 
@@ -55,7 +59,6 @@ public class HomeController {
                     userAluno.setNome(nome);
                     userAluno.setEmail(email);
                     userAluno.setPassword(password);
-                    userAluno.setMensagemSobreVoce(mensagemAberta);
                     userAlunoRepository.save(userAluno);
 
                 } else if (tipoUsuario.equals("professor")) {
@@ -63,7 +66,6 @@ public class HomeController {
                     userProfessor.setNome(nome);
                     userProfessor.setEmail(email);
                     userProfessor.setPassword(password);
-                    userProfessor.setMensagemSobreVoce(mensagemAberta);
                     userProfessorRepository.save(userProfessor);
                 }
             }
@@ -101,7 +103,7 @@ public class HomeController {
                         .filter(userProfessor -> userProfessor.getPassword().equals(password))
                         .map(userProfessor -> {
                             redirectAttributes.addFlashAttribute("mensagem", "Login realizado com sucesso como Professor");
-                            return "home-professor";
+                            return "redirect:/home-professor";
                         })
                         .orElseGet(() -> {
                             model.addAttribute("erro", "Senha ou usuário inválidos");
