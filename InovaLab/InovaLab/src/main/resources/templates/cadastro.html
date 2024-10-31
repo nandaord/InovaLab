@@ -30,61 +30,66 @@
         <img src="/assinatura.png" alt="Assinatura InovaLab">
     </a>
     <div>
-        <a href="/login">Fazer Login</a> |
-        <a href="/cadastro">Fazer Cadastro</a>
+        <a href="/login" class="header-btn">Fazer Login</a>
+        <a href="/cadastro" class="header-btn">Fazer Cadastro</a>
     </div>
 </div>
 
-<div class="container">
-    <h2>Cadastro</h2>
-    <form action="/cadastro" method="post">
-        <div class="user-type">
-            <label>
-                <input type="radio" name="tipoUsuario" value="aluno" checked onchange="toggleFields()"> Sou Aluno
-            </label>
-            <label>
-                <input type="radio" name="tipoUsuario" value="professor" onchange="toggleFields()"> Sou Professor
-            </label>
-        </div>
+<div class="divisao">
+    <div class="left-column">
+        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    </div>
 
-        <label for="nome">Nome*:</label>
-        <input type="text" id="nome" name="nome" required>
+    <div class="container">
+        <form action="/cadastro" method="post">
+            <div class="user-type">
+                <label>
+                    <input type="radio" name="tipoUsuario" value="aluno" checked onchange="toggleFields()"> Sou Aluno
+                </label>
+                <label>
+                    <input type="radio" name="tipoUsuario" value="professor" onchange="toggleFields()"> Sou Professor
+                </label>
+            </div>
 
-        <label for="email">E-mail*:</label>
-        <input type="email" id="email" name="email" required>
+            <label for="nome">Nome*:</label>
+            <input type="text" id="nome" name="nome" required>
 
-        <label for="password">Senha*:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="email">E-mail*:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="confirmPassword">Confirme a Senha*:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <label for="password">Senha*:</label>
+            <input type="password" id="password" name="password" required>
 
-        <!-- AQUI TÁ OS CAMPOS DE ALUNO MAS VAMOS IMPLEMENTAR ELES ANTES PRA DEPOIS COLOCARMOS NO CADASTRO
-        <div id="alunoFields" style="display: none;">
-            <label for="curso">Curso*:</label>
-            <input type="text" id="curso" name="curso" required>
+            <label for="confirmPassword">Confirme a Senha*:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-            <label for="linkPortifolio">Link do Portfólio (opcional):</label>
-            <input type="url" id="linkPortifolio" name="linkPortifolio">
+            <!-- AQUI TÁ OS CAMPOS DE ALUNO MAS VAMOS IMPLEMENTAR ELES ANTES PRA DEPOIS COLOCARMOS NO CADASTRO
+            <div id="alunoFields" style="display: none;">
+                <label for="curso">Curso*:</label>
+                <input type="text" id="curso" name="curso" required>
 
-            <label>
-                <input type="checkbox" id="participaIniciativa" name="participaIniciativa"> Participo de Iniciativas
-            </label>
-        </div>-->
+                <label for="linkPortifolio">Link do Portfólio (opcional):</label>
+                <input type="url" id="linkPortifolio" name="linkPortifolio">
 
-        <!--<div id="professorFields" style="display: none;">
+                <label>
+                    <input type="checkbox" id="participaIniciativa" name="participaIniciativa"> Participo de Iniciativas
+                </label>
+            </div>-->
 
-        </div>-->
+            <!--<div id="professorFields" style="display: none;">
 
-        <label for="mensagemAberta">Mensagem aberta sobre você:</label>
-        <textarea id="mensagemAberta" name="mensagemAberta"></textarea>
+            </div>-->
 
-        <button type="submit">Cadastrar</button>
-    </form>
+            <label for="mensagemAberta">Mensagem aberta sobre você:</label>
+            <textarea id="mensagemAberta" name="mensagemAberta"></textarea>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
 
     <div class="footer">
-        Quer voltar para a comunidade e aproveitar os fóruns? <a href="/forum">clique aqui!</a>
+        Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum"> Clique aqui!</a>
     </div>
-</div>
 </body>
 </html>
