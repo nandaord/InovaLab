@@ -63,10 +63,9 @@
             <label for="confirmPassword">Confirme a Senha*:</label>
             <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-
             <div id="alunoFields" style="display: none;">
                 <label for="curso">Curso:</label> <br>
-                <select name="cursoId" id="curso" required>
+                <select name="cursoId" id="curso">
                     <option value="">Selecione um curso</option>
                     <th:block th:each="curso : ${cursos}">
                         <option th:value="${curso.id}" th:text="${curso.nome}"></option>
@@ -76,9 +75,9 @@
                 <br><label for="linkPortifolio">Link do Portfólio: </label> <br>
                 <input type="url" id="linkPortifolio" name="linkPortifolio"> <br>
 
-                <label>
+                <!--<label>
                     <input type="checkbox" id="participaIniciativa" name="participaIniciativa"> Participo de Iniciativas
-                </label>
+                </label>-->
             </div>
 
             <!--<div id="professorFields" style="display: none;">

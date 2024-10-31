@@ -9,7 +9,6 @@ public class UserProfessor extends User {
     @OneToMany(mappedBy = "professor")
     private List<Iniciativa> iniciativas;
 
-    // Getters e Setters
     public List<Iniciativa> getIniciativas() {
         return iniciativas;
     }

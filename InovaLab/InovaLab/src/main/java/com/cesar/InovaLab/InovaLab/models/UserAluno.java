@@ -17,7 +17,7 @@ public class UserAluno extends User {
     @URL
     private String linkPortifolio; // Opcional
 
-    private boolean isParticipaIniciativa;
+    //private boolean isParticipaIniciativa;
 
     public Curso getCurso() {
         return curso;
@@ -35,11 +35,11 @@ public class UserAluno extends User {
         this.linkPortifolio = linkPortifolio;
     }
 
-    public boolean isParticipaIniciativa() {
+    /*public boolean isParticipaIniciativa() {
         return isParticipaIniciativa;
     }
 
     public void setParticipaIniciativa(boolean participaIniciativa) {
         this.isParticipaIniciativa = participaIniciativa;
-    }
+    }*/
 }

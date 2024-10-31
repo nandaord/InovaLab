@@ -18,6 +18,7 @@ public class Curso {
     public Curso(String nome) {
         this.nome = nome;
     }
+
     public @NotEmpty String getNome() {
         return nome;
     }
