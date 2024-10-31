@@ -20,33 +20,31 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh; /* Ocupa a tela toda */
+        height: 100vh;
     }
 
     /* Divisão das colunas */
     .left-column, .right-column {
-        width: 50%; /* Cada coluna ocupa metade da largura */
+        width: 50%;
         display: flex;
-        align-items: center; /* Centraliza verticalmente */
-        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center;
+        justify-content: center;
         padding: 20px;
         flex-direction: column;
         box-sizing: border-box;
     }
 
-    /* Estilo da coluna da esquerda (Imagem) */
     .left-column {
         background-color: transparent;
         padding: 0;
     }
 
     .left-column img {
-        width: 75%; /* A imagem ocupa toda a largura da coluna */
+        width: 75%;
         height: auto;
         object-fit: contain;
     }
 
-    /* Estilo da coluna da direita (Formulário de Login) */
     .right-column {
         max-width: 400px;
         background-color: transparent;
@@ -85,22 +83,26 @@
     /* Header */
     .header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         padding: 10px;
         background-color: #f8f9fa;
     }
 
     .header img {
-        height: 50px; /* Ajuste a altura da imagem */
+        height: 50px;
+    }
+
+    .header .auth-links {
+        margin-left: auto;
     }
 
     .header a {
         color: #007bff;
         text-decoration: none;
+        margin: 0 5px;
     }
 
-    /* Footer fixado ao final da tela */
+    /* Footer */
     .footer {
         display: flex;
         justify-content: center;
@@ -118,25 +120,25 @@
 <body>
 
 <div class="header">
-  <img src="/assinatura.png" alt="Assinatura InovaLab">
-  <div>
+  <a href="/">
+    <img src="/assinatura.png" alt="Assinatura InovaLab">
+  </a>
+  <div class="auth-links">
     <a href="/login">Fazer Login</a> |
     <a href="/cadastro">Fazer Cadastro</a>
   </div>
 </div>
 
 <div class="container-fluid main-container">
-  <!-- Coluna da Esquerda (Imagem) -->
   <div class="left-column">
     <img src="/logoMarca.png" alt="Logomarca InovaLab">
   </div>
 
-  <!-- Coluna da Direita (Formulário de Login) -->
   <div class="right-column">
     <h2>Login</h2>
     <form action="/login" method="POST">
       <input type="email" name="email" placeholder="E-mail" required>
-      <input type="password" name="senha" placeholder="Senha" required>
+      <input type="password" name="password" placeholder="Senha" required>
       <button type="submit">Entrar</button>
     </form>
   </div>
