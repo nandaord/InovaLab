@@ -2,8 +2,10 @@ package com.cesar.InovaLab.InovaLab.controllers;
 
 import com.cesar.InovaLab.InovaLab.models.UserAluno;
 import com.cesar.InovaLab.InovaLab.models.UserProfessor;
+import com.cesar.InovaLab.InovaLab.models.Curso;
 import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
 import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
+import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,9 @@ public class HomeController {
     @Autowired
     private UserProfessorRepository userProfessorRepository;
 
+    @Autowired
+    private CursoRepository cursoRepository;
+
     @GetMapping("/")
     public String home() {
         return "home";
@@ -29,6 +34,7 @@ public class HomeController {
     //Mostra a página de cadastro
     @GetMapping("/cadastro")
     public String MostrarPaginaCadastro(Model model) {
+        model.addAttribute("cursos", cursoRepository.findAll());
         return "cadastro";
     }
 
@@ -40,6 +46,7 @@ public class HomeController {
                            @RequestParam("password") String password,
                            @RequestParam("confirmPassword") String confirmPassword,
                            @RequestParam("mensagemAberta") String mensagemAberta,
+                           @RequestParam(value = "cursoId", required = false) Long cursoId,
                            RedirectAttributes redirectAttributes,
                            Model model) {
 
@@ -50,12 +57,15 @@ public class HomeController {
                 return "cadastro";
             }
             else{
-                if (tipoUsuario.equals("aluno")) {
+                if ("aluno".equals(tipoUsuario) && cursoId != null) {
+                    Curso curso = cursoRepository.findById(cursoId)
+                            .orElseThrow(() -> new IllegalArgumentException("Curso inválido"));
                     UserAluno userAluno = new UserAluno();
                     userAluno.setNome(nome);
                     userAluno.setEmail(email);
                     userAluno.setPassword(password);
                     userAluno.setMensagemSobreVoce(mensagemAberta);
+                    userAluno.setCurso(curso);
                     userAlunoRepository.save(userAluno);
 
                 } else if (tipoUsuario.equals("professor")) {

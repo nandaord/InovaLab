@@ -13,6 +13,11 @@ public class Curso {
     @NotEmpty
     private String nome;
 
+    public Curso() {}
+
+    public Curso(String nome) {
+        this.nome = nome;
+    }
     public @NotEmpty String getNome() {
         return nome;
     }
