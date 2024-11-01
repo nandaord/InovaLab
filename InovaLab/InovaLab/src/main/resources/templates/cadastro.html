@@ -8,19 +8,19 @@
         function toggleFields() {
             const tipoUsuario = document.querySelector('input[name="tipoUsuario"]:checked').value;
             const alunoFields = document.getElementById("alunoFields");
-            const professorFields = document.getElementById("professorFields");
+            const cursoSelect = document.getElementById("curso");
 
             if (tipoUsuario === "aluno") {
                 alunoFields.style.display = "block"; // Mostrar campos de Aluno
-                professorFields.style.display = "none"; // Ocultar campos de Professor
+                cursoSelect.required = true; // Define como obrigatório
             } else {
                 alunoFields.style.display = "none"; // Ocultar campos de Aluno
-                professorFields.style.display = "block"; // Mostrar campos de Professor
+                cursoSelect.required = false; // Não é obrigatório
             }
         }
 
-        // Chama toggleFields ao carregar a página
-        window.onload = toggleFields;
+            // Chama toggleFields ao carregar a página
+            window.onload = toggleFields;
     </script>
 </head>
 <body>
