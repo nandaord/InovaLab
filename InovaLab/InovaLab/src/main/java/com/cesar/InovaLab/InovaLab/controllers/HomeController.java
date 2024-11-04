@@ -17,6 +17,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/")
 public class HomeController {
 
+    @GetMapping("/home-aluno")
+    public String homeAluno() {
+        return "home-aluno";
+    }
+
+    @GetMapping("/home-professor")
+    public String homeProfessor() {
+        return "home-professor";
+    }
+
     @Autowired
     private UserAlunoRepository userAlunoRepository;
 
@@ -46,7 +56,7 @@ public class HomeController {
                            @RequestParam("password") String password,
                            @RequestParam("confirmPassword") String confirmPassword,
                            @RequestParam("mensagemAberta") String mensagemAberta,
-                           @RequestParam("linkPortfolio") String linkPorfolio,
+                           @RequestParam("linkPortfolio") String linkPortfolio,
                            @RequestParam(value = "cursoId", required = false) Long cursoId,
                            RedirectAttributes redirectAttributes,
                            Model model) {
@@ -67,7 +77,7 @@ public class HomeController {
                     userAluno.setPassword(password);
                     userAluno.setMensagemSobreVoce(mensagemAberta);
                     userAluno.setCurso(curso);
-                    userAluno.setLinkPortifolio(linkPorfolio);
+                    userAluno.setLinkPortifolio(linkPortfolio);
                     userAlunoRepository.save(userAluno);
 
                 } else if (tipoUsuario.equals("professor")) {
@@ -106,14 +116,14 @@ public class HomeController {
                 .filter(userAluno -> userAluno.getPassword().equals(password))
                 .map(userAluno -> {
                     redirectAttributes.addFlashAttribute("mensagem", "Login realizado com sucesso como Aluno");
-                    return "home-aluno";
+                    return "redirect:/home-aluno";
                 })
                 // vê se é professor
                 .orElseGet(() -> userProfessorRepository.findByEmail(email)
                         .filter(userProfessor -> userProfessor.getPassword().equals(password))
                         .map(userProfessor -> {
                             redirectAttributes.addFlashAttribute("mensagem", "Login realizado com sucesso como Professor");
-                            return "home-professor";
+                            return "redirect:/home-professor";
                         })
                         .orElseGet(() -> {
                             model.addAttribute("erro", "Senha ou usuário inválidos");
