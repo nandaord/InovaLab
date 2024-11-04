@@ -13,19 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
-
-    @GetMapping("/home-aluno")
-    public String homeAluno() {
-        return "home-aluno";
-    }
-
-    @GetMapping("/home-professor")
-    public String homeProfessor() {
-        return "home-professor";
-    }
 
     @Autowired
     private UserAlunoRepository userAlunoRepository;
@@ -39,6 +31,26 @@ public class HomeController {
     @GetMapping("/")
     public String home() {
         return "home";
+    }
+
+    @GetMapping("/home-aluno")
+    public String homeAluno(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        if(session.getAttribute("userType") == null || !session.getAttribute("userType").equals("aluno")){
+            redirectAttributes.addFlashAttribute("erro", "Não está logado como aluno");
+            return "redirect:/login";
+        }
+        model.addAttribute("nomeUsuario", session.getAttribute("nomeUsuario"));
+        return "home-aluno";
+    }
+
+    @GetMapping("/home-professor")
+    public String homeProfessor(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        if (session.getAttribute("userType") == null || !session.getAttribute("userType").equals("professor")) {
+            redirectAttributes.addFlashAttribute("erro", "Não está logado como professor");
+            return "redirect:/login";
+        }
+        model.addAttribute("nomeUsuario", session.getAttribute("nomeUsuario"));
+        return "home-professor";
     }
 
     //Mostra a página de cadastro
@@ -110,19 +122,24 @@ public class HomeController {
     public String loginUsuario(@RequestParam("email") String email,
                                @RequestParam("password") String password,
                                RedirectAttributes redirectAttributes,
-                               Model model) {
+                               Model model,
+                               HttpSession session) {
         // Vê se é aluno
         return userAlunoRepository.findByEmail(email)
                 .filter(userAluno -> userAluno.getPassword().equals(password))
                 .map(userAluno -> {
-                    redirectAttributes.addFlashAttribute("mensagem", "Login realizado com sucesso como Aluno");
+                    model.addAttribute("nomeUsuario", userAluno.getNome());
+                    session.setAttribute("userType", "aluno");
+                    session.setAttribute("nomeUsuario", userAluno.getNome());
                     return "redirect:/home-aluno";
                 })
                 // vê se é professor
                 .orElseGet(() -> userProfessorRepository.findByEmail(email)
                         .filter(userProfessor -> userProfessor.getPassword().equals(password))
                         .map(userProfessor -> {
-                            redirectAttributes.addFlashAttribute("mensagem", "Login realizado com sucesso como Professor");
+                            model.addAttribute("nomeUsuario", userProfessor.getNome());
+                            session.setAttribute("userType", "professor");
+                            session.setAttribute("nomeUsuario", userProfessor.getNome());
                             return "redirect:/home-professor";
                         })
                         .orElseGet(() -> {
@@ -130,5 +147,12 @@ public class HomeController {
                             return "login";
                         })
                 );
+    }
+    //Logout
+    @GetMapping("/logout")
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes){
+        session.invalidate();
+        redirectAttributes.addFlashAttribute("mensagem", "Logout realizado com sucesso");
+        return "redirect:/";
     }
 }

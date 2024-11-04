@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial - InovaLab</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/home-aluno.css">
+    <link rel="stylesheet" href="/home-professor.css">
 </head>
+
+<body>
 
 <div class="header">
     <img src="/assinatura.png" alt="Assinatura InovaLab">
@@ -16,17 +18,19 @@
         <a href="" class="header-btn">Perfil</a> <!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
         <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
     </div>
-
 </div>
 
-<body>
 <header>
-    <h2>Bem-vindo, Professor!</h2>
+    <h2 th:text="'Bem-vindo, ' + ${nomeUsuario} + '!'"></h2>
+
+    <form th:action="@{/logout}" method="get">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
 </header>
-</body>
 
 <div class="footer">
     Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
 </div>
+</body>
 
 </html>

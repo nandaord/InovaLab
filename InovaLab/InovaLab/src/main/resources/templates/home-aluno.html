@@ -20,12 +20,18 @@
     </div>
 </div>
 
-<body>
-<h2>Bem-vindo, Aluno!</h2>
-</body>
+<main class="container">
+    <h2 th:text="'Bem-vindo(a), ' + ${nomeUsuario} + '!'"></h2>
+
+    <form th:action="@{/logout}" method="get">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+</main>
 
 <div class="footer">
     Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
 </div>
+</body>
+
 
 </html>
