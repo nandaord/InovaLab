@@ -35,6 +35,9 @@
                    <a href="/home-aluno/editar" class="edit-button">
                        <img src="/editar.png" alt="Editar Perfil">
                    </a>
+                   <!--<form th:action="@{/home-aluno/editar}" method="get">
+                            <button type="submit">Editar Perfil</button>
+                        </form>-->
                </div>
                <p th:text="${descricao}"></p>
                <div class="btn-group">
@@ -65,13 +68,6 @@
   <!--<h2 th:text="${iniciativa}"></h2>-->
   <!--<h2 th:text="${nomeUsuario}"></h2>-->
 
-  <!--<form th:action="@{/home-aluno/editar}" method="get">
-      <button type="submit">Editar Perfil</button>
-  </form>-->
-
-  <form th:action="@{/home-aluno/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
-      <button type="submit">Excluir Perfil</button>
-  </form>
 
   <div class="footer">
       Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
