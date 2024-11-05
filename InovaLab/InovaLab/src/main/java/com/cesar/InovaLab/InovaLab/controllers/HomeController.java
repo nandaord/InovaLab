@@ -146,6 +146,9 @@ public class HomeController {
                             model.addAttribute("nomeUsuario", userProfessor.getNome());
                             session.setAttribute("userType", "professor");
                             session.setAttribute("nomeUsuario", userProfessor.getNome());
+                            session.setAttribute("mensagemSobreVoce", userProfessor.getMensagemSobreVoce());
+                            session.setAttribute("professorId", userProfessor.getId());
+                            session.setAttribute("iniciativa", userProfessor.getIniciativas());
                             return "redirect:/home-professor";
                         })
                         .orElseGet(() -> {

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seu Perfil</title>
+  <link rel="stylesheet" href="/perfilProfessor.css">
+</head>
+<body>
+
+  <div class="header">
+    <img src="/assinatura.png" alt="Assinatura InovaLab">
+    <div>
+      <a href="" class="header-btn">Minhas iniciativas</a> <!-- AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
+      <a href="/home-professor/perfilProfessor" class="header-btn">Perfil</a> <!-- REVISAR ESSE BOTAO-->
+      <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <img src="/fotoPerfil.png" alt="Foto do Perfil" class="profile-img">
+        <h3 th:text="${userType}"></h3>
+      </div>
+      <div class="col-md-9">
+        <div class="profile-header">
+          <h2 th:text="${nomeUsuario}"></h2>
+          <a href="/home-professor/editar" class="edit-button">
+            <img src="/editar.png" alt="Editar Perfil">
+          </a>
+        </div>
+        <p th:text="${mensagemSobreVoce}"></p>
+      </div>
+    </div>
+
+    <form th:action="@{/home-professor/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
+      <button type="submit">Excluir Perfil</button>
+    </form>
+
+    <form th:action="@{/home-professor/editar}" method="get">
+      <button type="submit">Editar Perfil</button>
+    </form>
+    <h4 class="mt-4">Iniciativa(s) de que participa:</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="initiative">
+          <img src="/imagemIniciativa.png" alt="Imagem da Iniciativa">
+          <h5>Iniciativa X</h5>
+          <p>Nam ut justo placerat, eleifend sem at, finibus velit.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="initiative">
+          <img src="/imagemIniciativa.png" alt="Imagem da Iniciativa">
+          <h5>Iniciativa Y</h5>
+          <p>Nam ut justo placerat, eleifend sem at, finibus velit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--<h2 th:text="${iniciativa}"></h2>-->
+  <!--<h2 th:text="${nomeUsuario}"></h2>-->
+
+
+  <div class="footer">
+    Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
+  </div>
+
+</body>
+</html>
