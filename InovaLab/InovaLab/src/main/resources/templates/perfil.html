@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
+</head>
+<body>
+  <h2 th:text="'Bem-vindo(a), ' + ${nomeUsuario} + '!'"></h2>
+  <h2 th:text="${userType}"></h2>
+  <h2 th:text="${curso}"></h2>
+  <h2 th:text="${descricao}"></h2>
+  <h2 th:text="${linkPortifolio}"></h2>
+  <!--<h2 th:text="${iniciativa}"></h2>-->
+  <!--<h2 th:text="${nomeUsuario}"></h2>-->
+
+  <form th:action="@{/home-aluno/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
+      <button type="submit">Excluir Perfil</button>
+  </form>
+
+</body>
+</html>

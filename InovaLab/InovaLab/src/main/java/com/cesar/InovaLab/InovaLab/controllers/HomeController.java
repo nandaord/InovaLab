@@ -130,7 +130,13 @@ public class HomeController {
                 .map(userAluno -> {
                     model.addAttribute("nomeUsuario", userAluno.getNome());
                     session.setAttribute("userType", "aluno");
-                    session.setAttribute("nomeUsuario", userAluno.getNome());
+                    session.setAttribute("nomeUsuario", userAluno.getNome()); //Bem vindo, aluno
+                    session.setAttribute("descricao", userAluno.getMensagemSobreVoce());
+                    session.setAttribute("curso", userAluno.getCurso());
+                    session.setAttribute("alunoId", userAluno.getId());
+                    //session.setAttribute("iniciativa", userAluno.iniciativa());
+                    //session.setAttribute("curriculo", userAluno.getCurriculo());
+                    session.setAttribute("linkPortifolio", userAluno.getLinkPortifolio());
                     return "redirect:/home-aluno";
                 })
                 // vê se é professor
