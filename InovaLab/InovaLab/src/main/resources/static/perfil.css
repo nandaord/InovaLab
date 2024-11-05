@@ -51,6 +51,28 @@ html, body {
     transition: background-color 0.2s ease;
 }
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.edit-button img {
+    width: 24px; /* Ajuste o tamanho conforme necessário */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.edit-button img:hover {
+    transform: scale(1.1); /* Aumenta o botão ao passar o mouse */
+}
+
+
 /* Estilos para a seção de iniciativas */
 .initiative {
     text-align: center;

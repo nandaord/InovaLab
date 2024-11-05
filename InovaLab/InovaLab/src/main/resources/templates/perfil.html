@@ -30,7 +30,12 @@
                <p th:text="${curso}" ></p>
            </div>
            <div class="col-md-9">
-               <h2 th:text="${nomeUsuario}"></h2>
+               <div class="profile-header">
+                   <h2 th:text="${nomeUsuario}"></h2>
+                   <a href="/home-aluno/editar" class="edit-button">
+                       <img src="/editar.png" alt="Editar Perfil">
+                   </a>
+               </div>
                <p th:text="${descricao}"></p>
                <div class="btn-group">
                    <button class="btn">Visualização de Currículo</button>
@@ -60,9 +65,9 @@
   <!--<h2 th:text="${iniciativa}"></h2>-->
   <!--<h2 th:text="${nomeUsuario}"></h2>-->
 
-  <form th:action="@{/home-aluno/editar}" method="get">
+  <!--<form th:action="@{/home-aluno/editar}" method="get">
       <button type="submit">Editar Perfil</button>
-  </form>
+  </form>-->
 
   <form th:action="@{/home-aluno/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
       <button type="submit">Excluir Perfil</button>
