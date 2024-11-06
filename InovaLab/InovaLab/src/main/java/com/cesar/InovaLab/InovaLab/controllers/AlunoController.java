@@ -90,7 +90,7 @@ public class AlunoController {
     @PostMapping("/editar")
     public String editarPerfil(@RequestParam("id") Long id,
                                @RequestParam("nome") String nome,
-                               @RequestParam("email") String email,
+                               //@RequestParam("email") String email,
                                @RequestParam("descricao") String descricao,
                                @RequestParam("linkPortfolio") String linkPortfolio,
                                @RequestParam("cursoId") Long cursoId,
@@ -99,7 +99,7 @@ public class AlunoController {
                 .orElseThrow(() -> new IllegalArgumentException("Usuário inválido"));
 
         userAluno.setNome(nome);
-        userAluno.setEmail(email);
+        //userAluno.setEmail(email);
         userAluno.setMensagemSobreVoce(descricao);
         userAluno.setLinkPortifolio(linkPortfolio);
 
@@ -112,7 +112,7 @@ public class AlunoController {
 
         userAlunoRepository.save(userAluno);
         redirectAttributes.addFlashAttribute("mensagem", "Perfil atualizado com sucesso!");
-        return "redirect:/home-aluno"; // Redireciona para a página do perfil após a atualização
+        return "redirect:/home-aluno/perfil"; // Redireciona para a página do perfil após a atualização
     }
 
 }
