@@ -1,4 +1,3 @@
-/* Estilos para o cabeçalho */
 .header {
     display: flex;
     justify-content: space-between;
@@ -9,6 +8,7 @@
 
 .header img {
     height: 50px;
+    margin-left: 30px;
 }
 
 .header-btn {
@@ -21,26 +21,11 @@
     transition: background-color 0.2s ease;
 }
 
-/* Estilos para o layout principal */
 .main-content {
     display: flex;
-    height: calc(100vh - 100px); /* Deixa espaço para o cabeçalho e o rodapé */
+    height: calc(100vh - 100px);
 }
 
-.left-panel {
-    width: 30%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.right-panel {
-    width: 70%;
-    padding: 20px;
-}
-
-/* Estilos para a foto do perfil e iniciativas */
 .profile-header {
     display: flex;
     flex-direction: column;
@@ -48,47 +33,59 @@
     margin-bottom: 20px;
 }
 
-.profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 2px solid #333;
+.divisao{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
 }
 
-.initiatives {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.initiative {
+.left-column {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    background-color: #e9ecef;
-    margin-bottom: 5px;
+    background-color: transparent;
+    padding: 0;
+
+}
+
+.left-column img {
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: auto;
+    object-fit: cover;
+}
+
+.container {
+    max-width: 600px;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-left: 3px;
+}
+
+button {
+    width: 200px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #bdc3c7 !important;
+    color: #333;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-/* Botões */
-.btn-group {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start;
-}
-
-.btn:hover, .header-btn:hover {
-    background-color: #aeb6bf;
+.button:hover, .header-btn:hover {
+    background-color: #aeb6bf !important;
     color: #333;
     cursor: pointer;
+    text-decoration: none;
+    border: 1px solid #ccc;
 }
 
-.btn:active, .header-btn:active {
-    background-color: #95a5a6;
-    color: #333;
-}
-
-/* Estilos para o rodapé */
 .footer {
     display: flex;
     justify-content: center;
@@ -100,12 +97,6 @@
     width: 100%;
     position: fixed;
     bottom: 0;
-}
-
-/* Estilo adicional para o formulário */
-.title {
-    font-size: 24px;
-    margin-bottom: 20px;
 }
 
 form label {

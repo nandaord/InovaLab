@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/editar-perfil.css">
+    <link rel="stylesheet" href="/editar-perfil-professor.css">
 </head>
 
 <body>
@@ -21,28 +21,37 @@
     </div>
 </div>
 
-<h2>Editar Perfil</h2>
-<form th:action="@{/home-professor/editar}" method="post">
-    <input type="hidden" name="id" th:value="${professorId}" />
+<div class="divisao">
 
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" th:value="${nomeUsuario}" required /><br/>
+    <div class="left-column">
+        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    </div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" th:value="${email}" required /><br/>
+    <div class="container">
+        <form th:action="@{/home-professor/editar}" method="post">
+            <input type="hidden" name="id" th:value="${professorId}" />
 
-    <label for="mensagemSobreVoce">Descrição:</label>
-    <textarea id="mensagemSobreVoce" name="mensagemSobreVoce" required th:text="${mensagemSobreVoce}"></textarea><br/>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" th:value="${nomeUsuario}" required /><br/>
 
-    <button type="submit">Atualizar Perfil</button>
-</form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:value="${email}" required /><br/>
 
-<form th:action="@{/home-professor/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
-    <button type="submit">Excluir Perfil</button>
-</form>
+            <label for="mensagemSobreVoce">Descrição:</label>
+            <textarea id="mensagemSobreVoce" name="mensagemSobreVoce" required th:text="${mensagemSobreVoce}"></textarea><br/>
 
-<a th:href="@{/home-professor/perfilProfessor}">Voltar para o Perfil</a>
+            <button type="submit">Atualizar Perfil</button>
+        </form>
 
+        <form th:action="@{/home-professor/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
+            <button type="submit">Excluir Perfil</button>
+        </form>
+
+        <div class="botao-perfil">
+            <a th:href="@{/home-professor/perfilProfessor}" class="button">Voltar para o Perfil</a>
+        </div>
+    </div>
+</div>
 <div class="footer">
     Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
 </div>
