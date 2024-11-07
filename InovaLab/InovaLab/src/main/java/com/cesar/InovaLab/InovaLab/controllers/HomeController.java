@@ -73,6 +73,8 @@ public class HomeController {
                            RedirectAttributes redirectAttributes,
                            Model model) {
 
+        model.addAttribute("cursos", cursoRepository.findAll());
+
         if (password.equals(confirmPassword)) { //certo
             if (userAlunoRepository.findByEmail(email).isPresent() ||
                     userProfessorRepository.findByEmail(email).isPresent()) {
