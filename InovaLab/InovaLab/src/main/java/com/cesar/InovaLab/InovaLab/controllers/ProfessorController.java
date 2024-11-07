@@ -80,19 +80,19 @@ public class ProfessorController {
     @PostMapping("/editar")
     public String editarPerfil(@RequestParam("id") Long id,
                                @RequestParam("nome") String nome,
-                               @RequestParam("email") String email,
+                               //@RequestParam("email") String email,
                                @RequestParam("mensagemSobreVoce") String mensagemSobreVoce,
                                RedirectAttributes redirectAttributes) {
         UserProfessor userProfessor = userProfessorRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário inválido"));
 
         userProfessor.setNome(nome);
-        userProfessor.setEmail(email);
+        //userProfessor.setEmail(email);
         userProfessor.setMensagemSobreVoce(mensagemSobreVoce);
 
         userProfessorRepository.save(userProfessor);
         redirectAttributes.addFlashAttribute("mensagem", "Perfil atualizado com sucesso!");
-        return "redirect:/home-professor"; // Redireciona para a página do perfil após a atualização
+        return "redirect:/home-professor/perfil-professor"; // Redireciona para a página do perfil após a atualização
     }
 }
 

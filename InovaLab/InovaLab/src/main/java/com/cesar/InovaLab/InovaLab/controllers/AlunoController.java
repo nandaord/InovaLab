@@ -23,7 +23,7 @@ public class AlunoController {
     @Autowired
     private CursoRepository cursoRepository;
 
-    @GetMapping("/perfil")
+    @GetMapping("/perfil-aluno")
     public String perfil(RedirectAttributes redirectAttributes, Model model, HttpSession session) {
 
         //recebe o id do aluno lá do login em HomeController
@@ -45,7 +45,7 @@ public class AlunoController {
         model.addAttribute("descricao", userAluno.getMensagemSobreVoce());
         model.addAttribute("linkPortifolio", userAluno.getLinkPortifolio());
 
-        return "perfil";
+        return "perfil-aluno";
     }
 
     @PostMapping("/excluir")
@@ -59,12 +59,12 @@ public class AlunoController {
             return "redirect:/"; //redireciona para a home
         } else {
             redirectAttributes.addFlashAttribute("erro", "Erro ao excluir o perfil.");
-            return "redirect:/home-aluno/perfil"; //redireciona pra perfil em caso de erro
+            return "redirect:/home-aluno/perfil-aluno"; //redireciona pra perfil em caso de erro
         }
     }
 
     //mostrar a pagina
-    @GetMapping("/editar")
+    @GetMapping("/editar-perfil-aluno")
     public String mostrarPaginaEdicao(HttpSession session, Model model) {
         Long alunoId = (Long) session.getAttribute("alunoId");
         if (alunoId == null) {
@@ -87,7 +87,7 @@ public class AlunoController {
     }
 
     //editar perfil
-    @PostMapping("/editar")
+    @PostMapping("/editar-perfil-aluno")
     public String editarPerfil(@RequestParam("id") Long id,
                                @RequestParam("nome") String nome,
                                //@RequestParam("email") String email,
@@ -112,7 +112,7 @@ public class AlunoController {
 
         userAlunoRepository.save(userAluno);
         redirectAttributes.addFlashAttribute("mensagem", "Perfil atualizado com sucesso!");
-        return "redirect:/home-aluno/perfil"; // Redireciona para a página do perfil após a atualização
+        return "redirect:/home-aluno/perfil-aluno"; // Redireciona para a página do perfil após a atualização
     }
 
 }

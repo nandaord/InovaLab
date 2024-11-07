@@ -36,11 +36,10 @@
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" th:value="${nomeUsuario}" required /><br/>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" th:value="${email}" required /><br/>
+            <p>Email: <span th:text="${email}"></span></p>
 
             <label for="mensagemSobreVoce">Descrição:</label>
-            <textarea id="mensagemSobreVoce" name="mensagemSobreVoce" required th:text="${mensagemSobreVoce}"></textarea><br/>
+            <textarea id="mensagemSobreVoce" name="mensagemSobreVoce" th:text="${mensagemSobreVoce}"></textarea><br/>
 
             <button type="submit">Atualizar Perfil</button>
         </form>
@@ -50,7 +49,7 @@
         </form>
 
         <div class="botao-perfil">
-            <a th:href="@{/home-professor/perfilProfessor}" class="button">Voltar para o Perfil</a>
+            <a th:href="@{/home-professor/perfil-professor}" class="button">Voltar para o Perfil</a>
         </div>
     </div>
 </div>
