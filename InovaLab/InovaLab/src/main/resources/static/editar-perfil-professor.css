@@ -21,22 +21,9 @@
     transition: background-color 0.2s ease;
 }
 
-.main-content {
-    display: flex;
-    height: calc(100vh - 100px);
-}
-
-.profile-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.divisao{
+.divisao {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
 }
 
 .left-column {
@@ -45,7 +32,6 @@
     align-items: center;
     background-color: transparent;
     padding: 0;
-
 }
 
 .left-column img {
@@ -64,6 +50,23 @@
     border-radius: 8px;
     margin-top: 50px;
     margin-left: 3px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-link {
+    color: #007bff;
+    text-decoration: none;
 }
 
 button {
@@ -97,21 +100,4 @@ button {
     width: 100%;
     position: fixed;
     bottom: 0;
-}
-
-form label {
-    font-weight: bold;
-}
-
-form input, form textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.btn-link {
-    color: #007bff;
-    text-decoration: none;
 }
