@@ -83,7 +83,7 @@ public class AlunoController {
         model.addAttribute("cursoId", userAluno.getCurso().getId());
         model.addAttribute("cursos", cursoRepository.findAll());
 
-        return "editar-perfil";
+        return "editar-perfil-aluno";
     }
 
     //editar perfil
