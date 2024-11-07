@@ -21,7 +21,7 @@ public class ProfessorController {
     @Autowired
     private UserProfessorRepository userProfessorRepository;
 
-    @GetMapping("/perfilProfessor")
+    @GetMapping("/perfil-professor")
     public String perfilProfessor(RedirectAttributes redirectAttributes, Model model, HttpSession session){
         Long professorId = (Long) session.getAttribute("professorId");
 
@@ -38,7 +38,7 @@ public class ProfessorController {
         model.addAttribute("mensagemSobreVoce", userProfessor.getMensagemSobreVoce());
         model.addAttribute("iniciativa", userProfessor.getIniciativas());
 
-        return "perfilProfessor";
+        return "perfil-professor";
     }
 
     @PostMapping("/excluir")
@@ -52,7 +52,7 @@ public class ProfessorController {
             return "redirect:/"; //redireciona para a home
         }else {
             redirectAttributes.addFlashAttribute("erro", "Erro ao excluir o perfil.");
-            return "redirect:/home-professor/perfil"; //redireciona pra perfil em caso de erro
+            return "redirect:/home-professor/perfil-professor"; //redireciona pra perfil em caso de erro
         }
     }
 
