@@ -11,7 +11,12 @@
 
 
 <div class="container-fluid main-container">
+
     <div class="left-column">
+        <img src="/logoMarca.png" alt="Descrição da Imagem">
+    </div>
+
+    <div class="right-column">
         <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
         <div th:if="${erro}" class="alert alert-danger" th:text="${erro}"></div>
         <h2>Faça login ou cadastro para fazer parte desta experiência!</h2>
@@ -21,9 +26,7 @@
         </div>
     </div>
 
-    <div class="right-column">
-        <img src="/logoMarca.png" alt="Descrição da Imagem">
-    </div>
+
 </div>
 
 
