@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Inicial - InovaLab</title>
+  <title>Minhas Iniciativas - InovaLab</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/minhas-iniciativas.css">
 </head>
 
 <body>
 
+<!-- Cabeçalho -->
 <div class="header">
-  <a href="/minhas-iniciativas">
+  <a href="/home-professor/minhas-iniciativas">
     <img src="/assinatura.png" alt="Assinatura InovaLab">
   </a>
   <div>
@@ -22,38 +23,54 @@
   </div>
 </div>
 
-<header>
-  <h2>Iniciativas responsáveis</h2>
+<header class="my-4 text-center">
+  <h2>Iniciativas Responsáveis</h2>
 </header>
 
-<body>
-<!-- Exibe a mensagem de sucesso -->
-<div th:if="${mensagem}" class="alert alert-success" role="alert">
-  <p th:text="${mensagem}"></p>
-</div>
+<div class="container">
+  <!-- Mensagem de sucesso -->
+  <div th:if="${mensagem}" class="alert alert-success" role="alert">
+    <p th:text="${mensagem}"></p>
+  </div>
 
-<!-- Botão para cadastrar nova iniciativa -->
-<div class="button-container">
-  <a href="/home-professor/nova-iniciativa" class="header-btn">Cadastrar iniciativa</a>
-</div>
+  <!-- Botão para cadastrar nova iniciativa -->
+  <div class="mb-4 text-center">
+    <a href="/home-professor/nova-iniciativa" class="btn btn-primary">Cadastrar Nova Iniciativa</a>
+  </div>
 
-<!-- Tabela com a lista de iniciativas -->
-<table>
-  <tbody>
-  <tr th:each="iniciativa : ${iniciativas}">
-    <td th:text="${iniciativa.titulo}"></td>
-    <td th:text="${iniciativa.descricao}"></td>
-  </tr>
-  </tbody>
-</table>
-</body>
+  <!-- Lista de iniciativas -->
+  <div class="row">
+    <div class="col-md-4" th:each="iniciativa : ${iniciativas}">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
+          <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
+          <p><strong>Professor Responsável:</strong> <span th:text="${iniciativa.professor.nome}">Nome do Professor</span></p>
+          <a href="#" class="btn btn-secondary">Detalhes</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card para adicionar nova iniciativa -->
+    <div class="col-md-4">
+      <div class="card mb-4 text-center">
+        <div class="card-body">
+          <a href="/home-professor/nova-iniciativa" class="btn btn-outline-primary">
+            <h2>+</h2>
+            <p>Adicionar Nova Iniciativa</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="footer">
-  <span>Dúvidas ou comentários extras? Levante um tópico na comunidade!</span>
   <form th:action="@{/logout}" method="get">
-    <button type="submit" class="footer-btn">SAIR</button>
+    <button type="submit" class="footer-btn"></button>
   </form>
 </div>
+
 </body>
 
 </html>

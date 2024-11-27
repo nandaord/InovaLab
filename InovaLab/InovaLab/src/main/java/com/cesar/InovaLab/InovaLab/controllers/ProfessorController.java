@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.cesar.InovaLab.InovaLab.models.UserProfessor;
 import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
-
+import java.util.List;
 import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
 import com.cesar.InovaLab.InovaLab.models.Iniciativa;
 import jakarta.servlet.http.HttpSession;
@@ -107,45 +107,63 @@ public class ProfessorController {
     }
 
     @GetMapping("/minhas-iniciativas")
-    public String mostrarMinhasIniciativas(){
+    public String mostrarMinhasIniciativas(Model model, HttpSession session) {
+        Long professorId = (Long) session.getAttribute("professorId");
+
+        if (professorId == null) {
+            return "redirect:/login";
+        }
+
+        UserProfessor professor = userProfessorRepository.findById(professorId)
+                .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
+
+        model.addAttribute("iniciativas", professor.getIniciativas());
         return "minhas-iniciativas";
     }
 
+
     @GetMapping("/nova-iniciativa")
     public String mostrarNovaIniciativa(Model model) {
+        List<Curso> cursos = cursoRepository.findAll();
+        System.out.println("Cursos carregados: " + cursos.size());
         model.addAttribute("iniciativa", new Iniciativa());
-        model.addAttribute("cursos", cursoRepository.findAll());
+        model.addAttribute("cursos", cursos);
         return "nova-iniciativa";
     }
 
+
     @PostMapping("/nova-iniciativa")
     public String salvarNovaIniciativa(
-            @ModelAttribute Iniciativa iniciativa, // Removida a vírgula extra
+            @ModelAttribute Iniciativa iniciativa,
+            @RequestParam(value = "cursosPermitidos", required = false) List<Long> cursoIds,
             HttpSession session,
             RedirectAttributes redirectAttributes) {
 
-        // Recuperar o professor logado pelo ID armazenado na sessão
         Long professorId = (Long) session.getAttribute("professorId");
-
         if (professorId == null) {
             redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
             return "redirect:/login";
         }
 
-        // Buscar o professor no banco de dados
         UserProfessor professor = userProfessorRepository.findById(professorId)
                 .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado."));
 
-        // Associar o professor à iniciativa
         iniciativa.setProfessor(professor);
 
-        // Salvar a nova iniciativa no banco de dados
+        // Log dos cursos selecionados
+        System.out.println("Cursos IDs recebidos: " + cursoIds);
+
+        if (cursoIds != null && !cursoIds.isEmpty()) {
+            List<Curso> cursosSelecionados = cursoRepository.findAllById(cursoIds);
+            System.out.println("Cursos selecionados: " + cursosSelecionados);
+            iniciativa.setCursosPermitidos(cursosSelecionados);
+        } else {
+            System.out.println("Nenhum curso foi selecionado.");
+            iniciativa.setCursosPermitidos(null);
+        }
+
         iniciativaRepository.save(iniciativa);
-
-        // Mensagem de sucesso
         redirectAttributes.addFlashAttribute("mensagem", "Iniciativa criada com sucesso!");
-
-        // Redirecionar para a página de iniciativas
         return "redirect:/home-professor/minhas-iniciativas";
     }
 }

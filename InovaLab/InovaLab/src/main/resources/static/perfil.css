@@ -49,42 +49,6 @@ body {
     object-fit: cover;
 }
 
-/* Footer */
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333333;
-    color: white;
-    padding: 10px 20px;
-    position: relative;
-}
-
-.footer a {
-    color: #ff7f50;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.footer a:hover {
-    color: #ff6347;
-}
-
-.footer-btn {
-    background-color: #ff7f50;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.footer-btn:hover {
-    background-color: #ff6347;
-}
 
 /* Container principal */
 .container {
@@ -171,4 +135,44 @@ h4 {
 .text-center p {
     font-size: 16px;
     color: #555555;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    font-size: 18px;
+    background-image: url('footer.png'); /* Caminho para a imagem */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+    z-index: 1; /* Coloca a imagem como fundo */
+}
+
+.footer-btn {
+    padding: 30px 131px;
+    text-decoration: none;
+    margin-right: 95px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: transparent;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2; /* Garante que o botão fique acima da imagem */
+}
+
+.footer-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #333;
+    border-color: #333;
 }

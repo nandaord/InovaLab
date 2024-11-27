@@ -29,14 +29,14 @@
   <!-- Dropdown para Seleção de Cursos -->
   <!-- Lista de Checkboxes para Selecionar Cursos -->
   <!-- Lista de Checkboxes para Selecionar Cursos -->
+
   <div>
     <label><strong>Quem pode se inscrever?</strong></label>
     <div th:each="curso : ${cursos}">
-      <input type="checkbox" name="cursosPermitidos" th:value="${curso.id}" id="curso-[[${curso.id}]]" />
-      <label th:for="curso-[[${curso.id}]]" th:text="${curso.nome}"></label>
+      <input type="checkbox" name="cursosPermitidos" th:value="${curso.id}" th:id="'curso_' + ${curso.id}" />
+      <label th:for="'curso_' + ${curso.id}" th:text="${curso.nome}"></label>
     </div>
   </div>
-
 
   <!-- Campo para Data Limite de Inscrições -->
   <div>
