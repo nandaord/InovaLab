@@ -34,6 +34,7 @@
   color: #333; /* Cor das letras ao passar o mouse */
 }
 
+
 html, body {
     height: 100%;
     margin: 0;
@@ -81,13 +82,40 @@ html, body {
 
 .footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Coloca o texto à esquerda e o botão à direita */
     align-items: center;
-    text-align: center;
     padding: 15px;
     font-size: 18px;
-    background-color: #f1f1f1;
+    background: linear-gradient(135deg, #2c2c2c, #111); /* Gradiente de fundo */
     width: 100%;
     position: fixed;
     bottom: 0;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
 }
+
+.footer span {
+    flex: 1; /* O texto ocupa o máximo de espaço possível */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+.footer-btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid orange;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.footer-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+

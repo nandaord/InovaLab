@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
+
 <head>
-  <title>Minhas Iniciativas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial - InovaLab</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/minhas-iniciativas.css">
 </head>
+
 <body>
-<h1>Minhas Iniciativas</h1>
+
+<div class="header">
+  <a href="/minhas-iniciativas">
+    <img src="/assinatura.png" alt="Assinatura InovaLab">
+  </a>
+  <div>
+    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a>
+    <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
+    <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+  </div>
+</div>
+
+<header>
+  <h2>Iniciativas responsáveis</h2>
+</header>
+
+<body>
+<!-- Exibe a mensagem de sucesso -->
+<div th:if="${mensagem}" class="alert alert-success" role="alert">
+  <p th:text="${mensagem}"></p>
+</div>
+
+<!-- Botão para cadastrar nova iniciativa -->
+<div class="button-container">
+  <a href="/home-professor/nova-iniciativa" class="header-btn">Cadastrar iniciativa</a>
+</div>
+
+<!-- Tabela com a lista de iniciativas -->
 <table>
-  <thead>
-  <tr>
-    <th>Título</th>
-    <th>Descrição</th>
-  </tr>
-  </thead>
   <tbody>
   <tr th:each="iniciativa : ${iniciativas}">
     <td th:text="${iniciativa.titulo}"></td>
@@ -20,4 +47,13 @@
   </tbody>
 </table>
 </body>
+
+<div class="footer">
+  <span>Dúvidas ou comentários extras? Levante um tópico na comunidade!</span>
+  <form th:action="@{/logout}" method="get">
+    <button type="submit" class="footer-btn">SAIR</button>
+  </form>
+</div>
+</body>
+
 </html>

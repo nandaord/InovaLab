@@ -1,117 +1,174 @@
-/* Estilos para o cabeçalho */
+/* Corpo geral */
+body {
+    font-family: 'Lexend', sans-serif;
+    color: #333333;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f1f1f1;
+    background-color: #333333;
+    color: white;
 }
 
 .header img {
-    height: 50px;
-    margin-left: 30px;
+    height: 40px;
+}
+
+.header div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .header-btn {
-    padding: 8px 16px;
+    color: white;
     text-decoration: none;
-    margin: 0 5px;
-    border-radius: 5px;
-    background-color: #bdc3c7;
-    color: #333;
-    transition: background-color 0.2s ease;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #ff7f50;
+    transition: background-color 0.3s;
 }
 
-/* Estilos principais */
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
+.header-btn:hover {
+    background-color: #ff6347;
 }
 
+.header img:last-child {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333333;
+    color: white;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.footer a {
+    color: #ff7f50;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #ff6347;
+}
+
+.footer-btn {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.footer-btn:hover {
+    background-color: #ff6347;
+}
+
+/* Container principal */
+.container {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Perfil */
 .profile-img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 2px solid #333;
-}
-
-.btn-group {
-    display: flex;
-    gap: 15px;
-    justify-content: start;
-}
-
-.btn {
-    padding: 8px 16px;
-    text-decoration: none;
-    margin: 0 5px;
-    border-radius: 5px;
-    background-color: #bdc3c7;
-    color: #333;
-    transition: background-color 0.2s ease;
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 
 .profile-header h2 {
-    margin: 0;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.edit-button img {
-    width: 24px; /* Ajuste o tamanho conforme necessário */
-    cursor: pointer;
-    transition: transform 0.2s ease;
+.profile-header .edit-button img {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
 }
 
-.edit-button img:hover {
-    transform: scale(1.1); /* Aumenta o botão ao passar o mouse */
+.btn-group .btn {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
 }
 
+.btn-group .btn:hover {
+    background-color: #ff6347;
+}
 
-/* Estilos para a seção de iniciativas */
+/* Seção de iniciativas */
+h4 {
+    font-size: 22px;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #333333;
+}
+
 .initiative {
-    text-align: center;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
 .initiative img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-/* Estilos para o rodapé */
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 15px;
+.initiative h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+.initiative p {
+    font-size: 14px;
+    color: #555555;
+}
+
+/* Centralização do texto no perfil */
+.text-center h3 {
+    color: #ff7f50;
+    font-weight: bold;
+}
+
+.text-center p {
     font-size: 16px;
-    background-color: #f1f1f1;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
-/* Efeitos de hover */
-.btn:hover, .header-btn:hover {
-    background-color: #aeb6bf;
-    color: #333;
-    cursor: pointer;
-}
-
-.btn:active, .header-btn:active {
-    background-color: #95a5a6;
-    color: #333;
+    color: #555555;
 }

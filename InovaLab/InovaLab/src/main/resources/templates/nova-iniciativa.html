@@ -5,14 +5,53 @@
 </head>
 <body>
 <h1>Criar Nova Iniciativa</h1>
-<form action="@{/iniciativas/nova}" th:object="${iniciativa}" method="post">
-  <label>Título:</label>
-  <input type="text" th:field="*{titulo}" required />
 
-  <label>Descrição:</label>
-  <textarea th:field="*{descricao}" required></textarea>
+<form th:action="@{/home-professor/nova-iniciativa}" th:object="${iniciativa}" method="post">
+  <!-- Campo para Nome da Iniciativa -->
+  <div>
+    <label for="titulo">Nome da Iniciativa:</label>
+    <input type="text" id="titulo" th:field="*{titulo}" placeholder="Digite o título da iniciativa" required />
+    <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="error"></div>
+  </div>
 
-  <button type="submit">Criar</button>
+  <!-- Campo para Descrição -->
+  <div>
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" th:field="*{descricao}" placeholder="Digite a descrição" required></textarea>
+    <div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="error"></div>
+  </div>
+
+  <div>
+    <label for="aceitaInscricoes">Aceita Inscrições?</label>
+    <input type="checkbox" id="aceitaInscricoes" th:field="*{aceitaInscricoes}" />
+  </div>
+
+  <!-- Dropdown para Seleção de Cursos -->
+  <!-- Lista de Checkboxes para Selecionar Cursos -->
+  <!-- Lista de Checkboxes para Selecionar Cursos -->
+  <div>
+    <label><strong>Quem pode se inscrever?</strong></label>
+    <div th:each="curso : ${cursos}">
+      <input type="checkbox" name="cursosPermitidos" th:value="${curso.id}" id="curso-[[${curso.id}]]" />
+      <label th:for="curso-[[${curso.id}]]" th:text="${curso.nome}"></label>
+    </div>
+  </div>
+
+
+  <!-- Campo para Data Limite de Inscrições -->
+  <div>
+    <label for="dataLimiteInscricoes">Até quando aceita inscrições?</label>
+    <input type="date" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required />
+  </div>
+
+  <!-- Botão de envio -->
+  <div class="footer">
+    Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
+    <form th:action="@{/logout}" method="get">
+      <button type="submit" class="footer-btn">Logout</button>
+    </form>
+  </div>
 </form>
+
 </body>
 </html>
