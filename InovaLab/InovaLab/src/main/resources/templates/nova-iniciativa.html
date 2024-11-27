@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Criar Nova Iniciativa</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/nova-iniciativa.css">
 </head>
 <body>
 <h1>Criar Nova Iniciativa</h1>
@@ -44,14 +46,11 @@
     <input type="date" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required />
   </div>
 
-  <!-- Botão de envio -->
   <div class="footer">
-    Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
     <form th:action="@{/logout}" method="get">
-      <button type="submit" class="footer-btn">Logout</button>
+      <button type="submit" class="footer-btn"></button>
     </form>
   </div>
 </form>
-
 </body>
 </html>
