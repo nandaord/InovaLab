@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial - InovaLab</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login de Alunos - InovaLab</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/home.css">
 </head>
 <body>
 
-
 <div class="container-fluid main-container">
+  <div class="left-column">
+    <img src="/logoMarca.png" alt="Logomarca InovaLab">
+  </div>
 
-    <div class="left-column">
-        <img src="/logoMarca.png" alt="Descrição da Imagem">
+  <div class="right-column">
+    <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
+    <div th:if="${erro}" class="alert alert-danger" th:text="${erro}"></div>
+
+
+    <form action="/login" method="POST">
+      <h2>Faça o login!</h2>
+      <label for="email">E-mail Institucional</label>
+      <input id="email" type="email" name="email" placeholder="@cesar.school" required>
+
+      <label for="password">Senha</label>
+      <input id="password" type="password" name="password" placeholder="Senha do e-mail institucional" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="register-container">
+      <span class="register-text">Não tem conta?</span>
+      <a href="/cadastro" class="register-link">Cadastre-se</a>
     </div>
-
-    <div class="right-column">
-        <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
-        <div th:if="${erro}" class="alert alert-danger" th:text="${erro}"></div>
-        <h2>Faça login ou cadastro para fazer parte desta experiência!</h2>
-        <div class="btn-group">
-            <a href="/login" class="btn btn-secondary">Login</a>
-            <a href="/cadastro" class="btn btn-secondary">Cadastro</a>
-        </div>
-    </div>
-
-
+  </div>
 </div>
-
 
 </body>
 </html>
