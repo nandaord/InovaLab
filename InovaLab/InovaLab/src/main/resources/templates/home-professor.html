@@ -31,9 +31,47 @@
     </p>
 </main>
 
-<div class="iniciativas">
+<div class="nome-iniciativas">
     <h3>Explore as iniciativas da <span class="cesar-school">CESAR School</span>!</h3>
 </div>
+
+
+<div class="container">
+
+    <!-- Mensagem de sucesso -->
+    <div th:if="${mensagem}" class="alert alert-success" role="alert">
+        <p th:text="${mensagem}"></p>
+    </div>
+
+    <!-- Lista de iniciativas -->
+    <div class="row">
+        <div class="col-md-4" th:each="iniciativa : ${iniciativas}">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
+                    <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
+                    <p><strong>Professor Responsável:</strong> <span th:text="${iniciativa.professor.nome}">Nome do Professor</span></p>
+                    <a th:href="@{/home-professor/iniciativa/{id}(id=${iniciativa.id})}" class="btn btn-secondary">Detalhes</a>
+                    <a th:href="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" class="btn btn-secondary">Editar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para adicionar nova iniciativa -->
+        <div class="col-md-4">
+            <div class="card mb-4 text-center">
+                <div class="card-body">
+                    <a href="/home-professor/nova-iniciativa" class="btn btn-outline-primary">
+                        <h2>+</h2>
+                        <p>Adicionar Nova Iniciativa</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <div class="footer">
     <form th:action="@{/logout}" method="get">

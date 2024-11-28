@@ -8,6 +8,8 @@ import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
+
 import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
 import com.cesar.InovaLab.InovaLab.models.Iniciativa;
 import jakarta.servlet.http.HttpSession;
@@ -28,6 +30,27 @@ public class ProfessorController {
 
     @Autowired
     private IniciativaRepository iniciativaRepository;
+
+    @GetMapping("/home-professor")
+    public String mostrarHomeProfessor(HttpSession session, Model model) {
+        Long professorId = (Long) session.getAttribute("professorId");
+
+        if (professorId == null) {
+            return "redirect:/"; // Redireciona para login se não estiver logado
+        }
+
+        UserProfessor professor = userProfessorRepository.findById(professorId)
+                .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
+
+        model.addAttribute("nomeUsuario", professor.getNome());
+
+        List<Iniciativa> todasIniciativas = iniciativaRepository.findAll();
+        model.addAttribute("iniciativas", todasIniciativas);
+
+        return "home-professor"; // Nome do arquivo HTML da página inicial
+    }
+
+
 
     @GetMapping("/perfil-professor")
     public String perfilProfessor(RedirectAttributes redirectAttributes, Model model, HttpSession session){
