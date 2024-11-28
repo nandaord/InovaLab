@@ -56,7 +56,6 @@ html, body {
     color: white;
     background-repeat: no-repeat; /* Impede repetição da imagem */
     width: 100%; /* Garante que a imagem ocupe toda a largura */
-
 }
 
 .main-container h2, .main-container p {
@@ -76,14 +75,12 @@ main p {
     max-width: 600px;
 }
 
-
 .bem-vindo {
     font-size: 36px;
     font-weight: bold;
     color: white; /* Cor branca */
     padding-left: 50px; /* Mantém o espaçamento */
 }
-
 
 .inovalab {
     font-size: 36px;
@@ -111,24 +108,32 @@ main p {
     font-weight: bold; /* Opcional, para destacar mais */
 }
 
-.iniciativas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+/* Card de iniciativas */
+.initiative-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    cursor: pointer; /* Tornar o card clicável */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.iniciativa-card {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.initiative-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.iniciativa-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+/* Estilo do conteúdo dentro do card */
+.initiative-card .card-body {
+    padding: 20px;
+}
+
+.initiativa-card .card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.iniciativa-card .card-text {
+    font-size: 16px;
+    color: #333;
 }
 
 .add-new {
