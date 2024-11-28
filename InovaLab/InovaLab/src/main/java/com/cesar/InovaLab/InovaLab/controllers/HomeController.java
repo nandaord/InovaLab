@@ -3,13 +3,16 @@ package com.cesar.InovaLab.InovaLab.controllers;
 import com.cesar.InovaLab.InovaLab.models.UserAluno;
 import com.cesar.InovaLab.InovaLab.models.UserProfessor;
 import com.cesar.InovaLab.InovaLab.models.Curso;
+import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
 import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
 import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
-
+import com.cesar.InovaLab.InovaLab.models.Iniciativa;  // Substitua pelo caminho correto da classe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import java.util.List;
+import java.util.ArrayList;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,6 +31,9 @@ public class HomeController {
     @Autowired
     private CursoRepository cursoRepository;
 
+    @Autowired
+    private IniciativaRepository iniciativaRepository;
+
     @GetMapping("/")
     public String home() {
         return "home";
@@ -45,13 +51,24 @@ public class HomeController {
 
     @GetMapping("/home-professor")
     public String homeProfessor(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        // Verifica se o usuário está logado como professor
         if (session.getAttribute("userType") == null || !session.getAttribute("userType").equals("professor")) {
             redirectAttributes.addFlashAttribute("erro", "Não está logado como professor");
             return "redirect:/";
         }
+
+        // Passa o nome do usuário para a view
         model.addAttribute("nomeUsuario", session.getAttribute("nomeUsuario"));
-        return "home-professor";
+
+        // Busca todas as iniciativas no banco de dados
+        List<Iniciativa> iniciativas = iniciativaRepository.findAll();
+
+        // Adiciona as iniciativas ao modelo para que possam ser usadas na view
+        model.addAttribute("iniciativas", iniciativas);
+
+        return "home-professor"; // Retorna para a página home-professor
     }
+
 
     //Mostra a página de cadastro
     @GetMapping("/cadastro")
