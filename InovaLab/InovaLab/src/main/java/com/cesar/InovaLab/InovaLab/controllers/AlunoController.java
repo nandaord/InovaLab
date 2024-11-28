@@ -6,8 +6,7 @@ import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
 import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
 import com.cesar.InovaLab.InovaLab.models.Curso;
-
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -121,9 +120,15 @@ public class AlunoController {
         return "redirect:/home-aluno/perfil-aluno"; // Redireciona para a página do perfil após a atualização
     }
 
-    @GetMapping ("/inscricoes-abertas")
-    public String mostrarInscricoesAbertas(){
-        return"inscricoes-abertas";
+    @GetMapping("/inscricoes-abertas")
+    public String mostrarIniciativasAbertas(Model model) {
+        // Buscar as iniciativas com inscrições abertas
+        List<Iniciativa> iniciativasAbertas = iniciativaRepository.findByAceitaInscricoesTrue();
+
+        // Adicionar as iniciativas ao modelo
+        model.addAttribute("iniciativas", iniciativasAbertas);
+
+        return "inscricoes-abertas";  // Nome do template Thymeleaf
     }
 
     @GetMapping("/iniciativa/{id}")
@@ -133,6 +138,4 @@ public class AlunoController {
         model.addAttribute("iniciativa", iniciativa);
         return "detalhes"; // Nome do arquivo HTML
     }
-
-
 }

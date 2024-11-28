@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscricoes Abertas</title>
+    <title>Inscrições Abertas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/inscricoes-abertas.css">
 </head>
@@ -15,12 +15,14 @@
         <img src="/assinatura.png" alt="Assinatura InovaLab">
     </a>
     <div>
-        <a href="" class="header-btn">Inscrições abertas</a> <!-- AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
-        <a href="" class="header-btn">Minhas inscrições</a> <!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
+        <a href="" class="header-btn">Inscrições abertas</a>
+        <a href="" class="header-btn">Minhas inscrições</a>
         <a href="/home-aluno/perfil-aluno" class="header-btn">Perfil</a>
         <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
     </div>
 </div>
+
+
 
 <main class="main-container">
     <h2 class="inic">Iniciativas com</h2>
@@ -29,9 +31,17 @@
         Estão abertas as inscrições para esses projetos a mostra da CESAR School! Essa é a sua chance de
         participar de iniciativas inovadoras, ganhar experiência prática e colaborar com outras mentes criativas.
     </p>
+
 </main>
 
-
+<!-- Aqui vamos listar as iniciativas -->
+<div class="inic-list">
+    <div th:each="iniciativa : ${iniciativas}" class="iniciativa-card">
+        <h3 th:text="${iniciativa.titulo}"></h3>
+        <p th:text="${iniciativa.descricao}"></p>
+        <p><strong>Data limite: </strong><span th:text="${iniciativa.dataLimiteInscricoes}"></span></p>
+    </div>
+</div>
 
 <div class="footer">
     <form th:action="@{/logout}" method="get">
