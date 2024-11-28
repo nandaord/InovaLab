@@ -7,5 +7,5 @@ import com.cesar.InovaLab.InovaLab.models.Iniciativa;// Importe a classe Iniciat
 import java.util.List;
 
 public interface IniciativaRepository extends JpaRepository<Iniciativa, Long> {
-    public List<UserAluno> findByIniciativaId(Long iniciativaId);
+
 }

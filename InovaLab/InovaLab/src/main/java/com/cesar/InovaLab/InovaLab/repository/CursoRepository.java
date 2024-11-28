@@ -6,5 +6,4 @@ import com.cesar.InovaLab.InovaLab.models.UserAluno;
 import java.util.List;
 
 public interface CursoRepository extends JpaRepository<Curso, Long> {
-    public List<UserAluno> findByIniciativaId(Long iniciativaId);
 }
