@@ -89,8 +89,8 @@ html, body {
 
 /* Cards de iniciativas */
 .initiative-card {
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    background-color: #F6EEEE;
+    border-radius: 12px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -139,6 +139,7 @@ html, body {
 
 .stretched-link {
     z-index: 1;
+    background-color: #F6EEEE;
 }
 
 /* Estilo do botão de adicionar nova iniciativa */
