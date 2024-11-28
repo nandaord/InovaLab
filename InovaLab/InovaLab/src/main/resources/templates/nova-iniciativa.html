@@ -1,56 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Criar Nova Iniciativa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial - InovaLab</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/nova-iniciativa.css">
 </head>
 <body>
-<h1>Criar Nova Iniciativa</h1>
+
+<div class="header">
+  <a href="/home-professor">
+    <img src="/assinatura.png" alt="Assinatura InovaLab">
+  </a>
+  <div>
+    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a> <!--Ainda nao esta pegando pois precisa fzr a logica-->
+    <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
+    <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+  </div>
+</div>
 
 <form th:action="@{/home-professor/nova-iniciativa}" th:object="${iniciativa}" method="post">
   <!-- Campo para Nome da Iniciativa -->
-  <div>
-    <label for="titulo">Nome da Iniciativa:</label>
-    <input type="text" id="titulo" th:field="*{titulo}" placeholder="Digite o título da iniciativa" required />
-    <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="error"></div>
-  </div>
+  <div class="divisao">
+    <div class="left-column">
+      <h1>Criação de iniciativa</h1>
+      <div>
+        <label for="titulo"><strong>Nome da Iniciativa:</strong></label> <br>
+        <input type="text" id="titulo" th:field="*{titulo}" placeholder="Digite o título da iniciativa" required />
+        <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="error"></div>
+      </div>
 
-  <!-- Campo para Descrição -->
-  <div>
-    <label for="descricao">Descrição:</label>
-    <textarea id="descricao" th:field="*{descricao}" placeholder="Digite a descrição" required></textarea>
-    <div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="error"></div>
-  </div>
+      <!-- Campo para Descrição -->
+      <div>
+        <label for="descricao"><strong>Descrição:</strong></label> <br>
+        <textarea id="descricao" th:field="*{descricao}" placeholder="Digite a descrição" required></textarea>
+        <div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="error"></div>
+      </div>
 
-  <div>
-    <label for="aceitaInscricoes">Aceita Inscrições?</label>
-    <input type="checkbox" id="aceitaInscricoes" th:field="*{aceitaInscricoes}" />
-  </div>
+      <div>
+        <label for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label> <br>
+        <input type="checkbox" id="aceitaInscricoes" th:field="*{aceitaInscricoes}" />
+      </div>
 
-  <!-- Dropdown para Seleção de Cursos -->
-  <!-- Lista de Checkboxes para Selecionar Cursos -->
-  <!-- Lista de Checkboxes para Selecionar Cursos -->
+      <!-- Dropdown para Seleção de Cursos -->
+      <!-- Lista de Checkboxes para Selecionar Cursos -->
+      <!-- Lista de Checkboxes para Selecionar Cursos -->
 
-  <div>
-    <label><strong>Quem pode se inscrever?</strong></label>
-    <div th:each="curso : ${cursos}">
-      <input type="checkbox" name="cursosPermitidos" th:value="${curso.id}" th:id="'curso_' + ${curso.id}" />
-      <label th:for="'curso_' + ${curso.id}" th:text="${curso.nome}"></label>
+      <div>
+        <label><strong>Quem pode se inscrever?</strong></label> <br>
+        <div th:each="curso : ${cursos}">
+          <input type="checkbox" name="cursosPermitidos" th:value="${curso.id}" th:id="'curso_' + ${curso.id}" />
+          <label th:for="'curso_' + ${curso.id}" th:text="${curso.nome}"></label>
+        </div>
+      </div>
+
+      <!-- Campo para Data Limite de Inscrições -->
+      <div>
+        <label for="dataLimiteInscricoes"><strong>Até quando aceita inscrições?</strong></label> <br>
+        <input type="date" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required />
+      </div>
     </div>
   </div>
-
-  <!-- Campo para Data Limite de Inscrições -->
-  <div>
-    <label for="dataLimiteInscricoes">Até quando aceita inscrições?</label>
-    <input type="date" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required />
-  </div>
-
-  <div class="footer">
-    <form th:action="@{/logout}" method="get">
-      <button type="submit" class="footer-btn"></button>
-    </form>
-  </div>
 </form>
+
+<div class="footer">
+  <form th:action="@{/logout}" method="get">
+    <button type="submit" class="footer-btn"></button>
+  </form>
+</div>
+
 </body>
 </html>

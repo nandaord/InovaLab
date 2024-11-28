@@ -7,41 +7,40 @@ body {
     color: #333;
 }
 
-/* Header */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
-    padding: 20px 40px;
-    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    background-color: #F6EEEE;
 }
 
-.header .logo {
-    height: 40px;
-}
-
-.header nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.header img {
+    height: 50px;
+    margin-left: 30px;
 }
 
 .header-btn {
-    color: #333;
+    flex: 1;
+    padding: 10px 20px;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 2px solid #333;
+    margin: 0 5px;
+    border-radius: 25px;
     background-color: transparent;
-    transition: all 0.3s;
+    border: 2px solid gray; /* Borda cinza */
+    color: #333;
+    /*color: gray;*/
+    cursor: pointer; /* Indica que o botão é clicável */
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
+    transition: all 0.3s ease; /* Transição suave para os efeitos */
+    font-size: 12px; /* Tamanho da fonte */
 }
 
 .header-btn:hover {
-    background-color: #333;
-    color: #fff;
+  background-color: #f0f0f0; /* Cor de fundo leve quando passar o mouse */
+  color: #333; /* Cor das letras ao passar o mouse */
 }
 
 .profile-photo {
@@ -144,6 +143,7 @@ body {
     background-color: #ff7f50;
     color: white;
 }
+
 
 
 .footer {

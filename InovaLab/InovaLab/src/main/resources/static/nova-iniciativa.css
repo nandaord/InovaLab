@@ -1,0 +1,174 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #F6EEEE;
+}
+
+.header img {
+    height: 50px;
+    margin-left: 30px;
+}
+
+.header-btn {
+    flex: 1;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 0 5px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid gray; /* Borda cinza */
+    color: #333;
+    /color: gray;/
+    cursor: pointer; /* Indica que o botão é clicável */
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
+    transition: all 0.3s ease; /* Transição suave para os efeitos */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+.header-btn:hover {
+  background-color: #f0f0f0; /* Cor de fundo leve quando passar o mouse */
+  color: #333; /* Cor das letras ao passar o mouse */
+}
+
+html, body {
+    height: auto;
+    min-height: 100%
+    margin: 0;
+    display: block;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    max-width: 200px;
+    padding: 15px 0;
+    font-size: 18px;
+    background-color: #bdc3c7 ;
+    border: 1px solid #ccc;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover, .header-btn:hover {
+    background-color: #aeb6bf;
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+.btn:active, .header-btn:active {
+    background-color: #95a5a6;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+.divisao{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.left-column {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 150px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+    border: 1px solid #F6EEEE;
+    border-radius: 5px;
+    background-color: #F6EEEE;
+}
+
+input[type="date"] {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    border: 1px solid #F6EEEE;
+    border-radius: 5px;
+    background-color: #F6EEEE;
+}
+
+textarea {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid #F6EEEE;
+    background-color: #F6EEEE;
+}
+
+.main-content {
+    display: block;
+    padding-bottom: 20px; /* Para evitar que o conteúdo grude no rodapé */
+}
+
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    font-size: 18px;
+    background-image: url('footer.png'); /* Caminho para a imagem */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    width: 100%;
+    bottom: 0;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+    z-index: 1; /* Coloca a imagem como fundo */
+    position: relative; /* Deixe o rodapé seguir o fluxo normal da página */
+    bottom: auto;
+
+}
+
+.footer-btn {
+    padding: 30px 131px;
+    text-decoration: none;
+    margin-right: 95px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: transparent;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2; /* Garante que o botão fique acima da imagem */
+}
+
+.footer-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #333;
+    border-color: #333;
+}
