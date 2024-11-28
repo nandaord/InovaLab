@@ -152,19 +152,18 @@ body {
     border-radius: 13px;
     padding: 10px 16px;
     font-size: 14px;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
     font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
     transition: all 0.3s;
-    height: 100%;
-    align-self: center;
     width: 150px;
+    text-align: center;
+    align-self: center; /* Garante que o botão fique centralizado */
 }
 
 .edit-profile-btn:hover {
-    background-color: #ff7f50;
-    color: white;
+     background-color: #ff7f50;
+     color: #fff;
 }
 
 .footer {
@@ -203,7 +202,10 @@ body {
 
 .div-botoes{
     display: flex;
-    gap: 150px;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
 }
 
 h2{
