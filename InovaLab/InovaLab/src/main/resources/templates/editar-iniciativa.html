@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editar Iniciativa</title>
+  <title>Editar Iniciativa - InovaLab</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/editar-iniciativa.css">
 </head>
 <body>
 
+<!-- Cabeçalho -->
 <div class="header">
   <a href="/home-professor">
     <img src="/assinatura.png" alt="Assinatura InovaLab">
@@ -20,46 +21,84 @@
   </div>
 </div>
 
-<form th:action="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" method="post" class="iniciativa-form">
+<!-- Formulário de Edição -->
+<form th:action="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" th:object="${iniciativa}" method="post">
   <div class="divisao">
     <div class="left-column">
-      <h1>Editar Iniciativa</h1>
+      <h1>Edição de Iniciativa</h1>
 
-      <div>
-        <label for="titulo"><strong>Título da Iniciativa:</strong></label> <br>
-        <input type="text" id="titulo" name="titulo" th:value="${iniciativa.titulo}" class="form-control" placeholder="Digite o título da iniciativa" required />
+      <!-- Nome da Iniciativa -->
+      <div class="form-group">
+        <label for="titulo"><strong>Nome da Iniciativa:</strong></label>
+        <input type="text" class="form-control" id="titulo" th:field="*{titulo}" placeholder="Digite o título da iniciativa" required>
+        <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="text-danger"></div>
       </div>
 
-      <div>
-        <label for="descricao"><strong>Descrição:</strong></label> <br>
-        <textarea id="descricao" name="descricao" class="form-control" placeholder="Digite a descrição" required th:text="${iniciativa.descricao}"></textarea>
-          <span th:text="${iniciativa.descricao}"></span>
-        </textarea>
+      <!-- Descrição -->
+      <div class="form-group">
+        <label for="descricao"><strong>Descrição:</strong></label>
+        <textarea class="form-control descricao-textarea" id="descricao" th:field="*{descricao}" placeholder="Digite a descrição" required></textarea>
+        <div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="text-danger"></div>
       </div>
 
-      <div>
-        <label for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label> <br>
-        <input type="checkbox" id="aceitaInscricoes" name="aceitaInscricoes" th:checked="${iniciativa.aceitaInscricoes}" />
+      <!-- Aceita Inscrições -->
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="aceitaInscricoes" th:field="*{aceitaInscricoes}">
+        <label class="form-check-label" for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label>
       </div>
 
-      <div>
-        <label for="dataLimiteInscricoes"><strong>Data Limite para Inscrições:</strong></label> <br>
-        <input type="date" id="dataLimiteInscricoes" name="dataLimiteInscricoes" th:value="${iniciativa.dataLimiteInscricoes}" required />
+      <!-- Data Limite para Inscrições -->
+      <div class="form-group">
+        <label for="dataLimiteInscricoes"><strong>Data Limite para Inscrições:</strong></label>
+        <input type="date" class="form-control" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required>
       </div>
 
+      <!-- Seleção de Alunos -->
+      <div class="form-group">
+        <label for="alunosEmails"><strong>Adicionar Alunos:</strong></label>
+        <select id="alunosEmails" class="form-control" name="alunosEmails" th:field="*{emailsAlunos}" multiple>
+          <option th:each="aluno : ${alunos}" th:value="${aluno.email}" th:text="${aluno.email}"></option>
+        </select>
+        <div th:if="${#fields.hasErrors('emailsAlunos')}" th:errors="*{emailsAlunos}" class="text-danger"></div>
+      </div>
+
+    </div>
+
+    <!-- Coluna da Galeria -->
+    <div class="right-column">
+      <div class="gallery">
+        <div class="gallery-slider">
+          <img src="/imagem-galeria.png" alt="Galeria 1" class="gallery-img">
+        </div>
+      </div>
+
+      <!-- Botões -->
       <div class="submit-button">
-        <button type="submit" class="btn-atualizar">Atualizar</button>
         <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn-voltar">Voltar</a>
+        <button type="submit" class="btn-atualizar">Atualizar</button>
       </div>
     </div>
   </div>
 </form>
 
+<!-- Rodapé -->
 <div class="footer">
   <form th:action="@{/logout}" method="get">
     <button type="submit" class="footer-btn"></button>
   </form>
 </div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#alunosEmails').select2({
+      placeholder: "Digite para buscar alunos...",
+      allowClear: true
+    });
+  });
+</script>
 
 </body>
 </html>

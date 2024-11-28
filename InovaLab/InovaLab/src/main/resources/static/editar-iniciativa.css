@@ -48,7 +48,6 @@ html, body {
 }
 
 
-
 .divisao {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -64,11 +63,66 @@ html, body {
     padding: 0;
 }
 
-input[type="text"] {
+.right-column {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 0;
+    position: relative;
+}
+
+.btn-atualizar {
+  background-color: #ff7f50;
+  color: #fff;
+  border: 2px solid #ff7f50;
+  border-radius: 13px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 150px;
+  text-align: center;
+  align-self: center; /* Garante que o botão fique centralizado */
+}
+
+.btn-atualizar:hover {
+  background-color: transparent;
+  color: #ff7f50;
+}
+
+.btn-voltar {
+  background-color: #transparent;
+  color: #ff7f50;
+  border: 2px solid #ff7f50;
+  border-radius: 13px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 150px;
+  text-align: center;
+  align-self: center; /* Garante que o botão fique centralizado */
+}
+
+.btn-voltar:hover {
+  background-color: #ff7f50;
+  color: #fff;
+}
+
+input[type="text"],
+select {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 500px;
+    width: 600px;
     border: 1px solid #F6EEEE;
     border-radius: 5px;
     background-color: #F6EEEE;
@@ -78,21 +132,43 @@ input[type="date"] {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 250px;
+    width: 600px;
     border: 1px solid #F6EEEE;
     border-radius: 5px;
     background-color: #F6EEEE;
 }
 
-textarea {
+.descricao-textarea {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 500px;
+    width: 600px;
     height: 200px;
     border-radius: 5px;
     border: 1px solid #F6EEEE;
     background-color: #F6EEEE;
+}
+
+.gallery {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-slider {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.gallery-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: opacity 0.3s;
 }
 
 .main-content {
@@ -100,40 +176,16 @@ textarea {
     padding-bottom: 20px; /* Para evitar que o conteúdo grude no rodapé */
 }
 
-/* Estilo para o botão Atualizar */
-.btn-atualizar {
-     background-color: #EB6324; /* Laranja */
-     color: white; /* Texto branco */
-     border: none; /* Sem borda */
-     padding: 10px 40px; /* Ajuste para garantir o formato oval */
-     font-size: 16px;
-     border-radius: 25px; /* Tornar o botão oval */
-     transition: background-color 0.3s ease;
- }
-
-.btn-atualizar:hover {
-     background-color: #FF8C00; /* Laranja mais escuro no hover */
-     color: white;
- }
-
-
- /* Estilo para o botão Voltar (Cancelar) */
-.btn-voltar {
-     background-color: transparent; /* Fundo transparente */
-     color: #EB6324; /* Texto laranja */
-     border: 2px solid #EB6324; /* Borda laranja */
-     padding: 10px 40px; /* Ajuste para garantir o formato oval */
-     font-size: 16px;
-     border-radius: 25px; /* Tornar o botão oval */
-     transition: background-color 0.3s ease;
- }
-
-.btn-voltar:hover {
-     background-color: rgba(255, 165, 0, 0.1); /* Fundo laranja claro no hover */
-     color: #FF8C00; /* Texto laranja mais escuro */
-     border-color: #FF8C00; /* Borda laranja mais escura */
- }
-
+.submit-button {
+    display: flex;
+    margin-right: 30px;
+    justify-content: flex-end; /* Alinha os itens à direita */
+    align-items: center; /* Alinha os itens verticalmente */
+    position: absolute; /* Torna a posição relativa ao pai */
+    bottom: 20px; /* Ajuste a distância do fundo da página */
+    right: 20px; /* Ajuste a distância da borda direita */
+    gap: 10px; /* Espaçamento entre os botões */
+}
 
 /* Footer */
 .footer {
