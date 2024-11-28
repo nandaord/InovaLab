@@ -44,6 +44,11 @@
           <p><strong>Professor Responsável:</strong><span th:text="${iniciativa.professor != null ? iniciativa.professor.nome : 'Professor não atribuído'}">
               Nome do Professor
           </span></p>
+          <div class="image-button">
+            <a th:href="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}">
+              <img src="/editar.png" alt="Editar Iniciativa">
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -55,6 +55,11 @@ html, body {
     justify-content: center;
 }
 
+.main-content {
+    padding: 20px 40px;
+    flex-grow: 1;
+}
+
 .btn {
     flex: 1;
     max-width: 200px;
@@ -97,8 +102,30 @@ html, body {
 
 /* Estilo do conteúdo dentro do card */
 .initiative-card .card-body {
-    padding: 20px;
-    text-align: center;
+    padding: 20px 20px 60px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-button {
+    position: absolute;
+    margin-top: 10px; /* Espaçamento acima da imagem */
+    right: 10px;
+    text-align: right; /* Centraliza a imagem no card */
+    z-index: 2;
+    overflow: hidden;
+}
+
+.image-button img {
+    width: 40px; /* Tamanho da largura da imagem */
+    height: auto; /* Mantém a proporção */
+    cursor: pointer; /* Mostra que a imagem é clicável */
+    transition: transform 0.3s ease; /* Efeito de animação */
+}
+
+.image-button img:hover {
+    transform: scale(1.1); /* Aumenta um pouco no hover */
 }
 
 .initiativa-card .card-title {
@@ -109,6 +136,10 @@ html, body {
 .iniciativa-card .card-text {
     font-size: 16px;
     color: #333;
+}
+
+.stretched-link {
+    z-index: 1; /* Garante que o link de detalhes fique abaixo da imagem */
 }
 
 .add-new {
