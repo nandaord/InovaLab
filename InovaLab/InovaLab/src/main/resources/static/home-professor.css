@@ -136,22 +136,38 @@ main p {
     color: #333;
 }
 
-.add-new {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #e6e6e6;
-    color: #333;
-    font-size: 24px;
-    font-weight: bold;
+.add-new-card{
+    background-color: #e6e6e6; /* Cor de fundo para diferenciar do restante */
+    border: 2px dashed #aaa; /* Borda em estilo dashed */
     cursor: pointer;
-    border: 2px dashed #aaa;
-    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.add-new:hover {
-    background: #d9d9d9;
+.add-new-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-new-card a {
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.add-new-card a:focus,
+.add-new-card a:active {
+    outline: none; /* Remove o contorno azul padrão */
+    box-shadow: none; /* Remove sombras que alguns navegadores aplicam */
+}
+
+.add-icon {
+    font-size: 50px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.add-text {
+    font-size: 18px;
+    color: #333;
 }
 
 .footer {
