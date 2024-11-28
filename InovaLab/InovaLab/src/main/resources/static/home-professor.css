@@ -110,7 +110,7 @@ main p {
 
 /* Card de iniciativas */
 .initiative-card {
-    background-color: #f9f9f9;
+    background-color: #F6EEEE;
     border-radius: 8px;
     cursor: pointer; /* Tornar o card clicável */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -137,7 +137,7 @@ main p {
 }
 
 .add-new-card{
-    background-color: #e6e6e6; /* Cor de fundo para diferenciar do restante */
+    background-color: #F6EEEE;
     border: 2px dashed #aaa; /* Borda em estilo dashed */
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
