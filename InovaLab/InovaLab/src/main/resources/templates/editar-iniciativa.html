@@ -55,31 +55,6 @@
   </div>
 </form>
 
-<div class="alunos-associados">
-  <h2>Alunos Associados</h2>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Nome</th>
-      <th>E-mail</th>
-      <th>Ações</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="aluno : ${iniciativa.alunosAssociados}">
-      <td th:text="${aluno.nome}"></td>
-      <td th:text="${aluno.email}"></td>
-      <td>
-        <form th:action="@{/home-professor/remover-aluno/{iniciativaId}/{alunoId}(iniciativaId=${iniciativa.id}, alunoId=${aluno.id})}" method="post">
-          <button type="submit" class="btn btn-danger">Remover</button>
-        </form>
-      </td>
-    </tr>
-    </tbody>
-
-  </table>
-</div>
-
 <div class="footer">
   <form th:action="@{/logout}" method="get">
     <button type="submit" class="footer-btn"></button>

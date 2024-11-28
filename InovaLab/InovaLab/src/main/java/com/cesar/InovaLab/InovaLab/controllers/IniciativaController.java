@@ -25,6 +25,7 @@ public class IniciativaController {
     @Autowired
     private UserAlunoRepository userAlunoRepository;
 
+    // Método para carregar os dados da iniciativa na página de edição
     @GetMapping("/editar-iniciativa/{id}")
     public String editarIniciativa(@PathVariable("id") Long id, Model model) {
         // Aqui você busca a iniciativa com o ID fornecido
@@ -32,6 +33,7 @@ public class IniciativaController {
                 .orElseThrow(() -> new IllegalArgumentException("Iniciativa inválida"));
 
         // Passa a iniciativa encontrada para a view de edição
+        model.addAttribute("iniciativa", iniciativa);
         return "editar-iniciativa";
     }
 

@@ -46,6 +46,12 @@ public class HomeController {
             return "redirect:/";
         }
         model.addAttribute("nomeUsuario", session.getAttribute("nomeUsuario"));
+
+        List<Iniciativa> iniciativas = iniciativaRepository.findAll();
+
+        // Adiciona as iniciativas ao modelo para que possam ser usadas na view
+        model.addAttribute("iniciativas", iniciativas);
+
         return "home-aluno";
     }
 
