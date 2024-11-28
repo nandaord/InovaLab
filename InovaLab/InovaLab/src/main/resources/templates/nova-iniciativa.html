@@ -43,22 +43,14 @@
         <input type="checkbox" id="aceitaInscricoes" th:field="*{aceitaInscricoes}" />
       </div>
 
-      <!-- Dropdown para Seleção de Cursos -->
-      <!-- Lista de Checkboxes para Selecionar Cursos -->
-      <!-- Lista de Checkboxes para Selecionar Cursos -->
-
-      <div>
-        <label><strong>Quem pode se inscrever?</strong></label> <br>
-        <div th:each="curso : ${cursos}">
-          <input type="checkbox" name="cursosPermitidos" th:value="${curso.id}" th:id="'curso_' + ${curso.id}" />
-          <label th:for="'curso_' + ${curso.id}" th:text="${curso.nome}"></label>
-        </div>
-      </div>
-
-      <!-- Campo para Data Limite de Inscrições -->
       <div>
         <label for="dataLimiteInscricoes"><strong>Até quando aceita inscrições?</strong></label> <br>
         <input type="date" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required />
+      </div>
+
+      <!-- Botão de Submeter -->
+      <div class="submit-button">
+        <button type="submit" class="btn btn-primary">Salvar Iniciativa</button>
       </div>
     </div>
   </div>

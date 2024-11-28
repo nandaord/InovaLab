@@ -22,14 +22,6 @@ public class Iniciativa {
 
     private boolean aceitaInscricoes;
 
-    @ManyToMany
-    @JoinTable(
-            name = "iniciativa_curso",
-            joinColumns = @JoinColumn(name = "iniciativa_id"),
-            inverseJoinColumns = @JoinColumn(name = "curso_id")
-    )
-    private List<Curso> cursosPermitidos;
-
     @Future(message = "A data deve ser no futuro.")
     private LocalDate dataLimiteInscricoes;
 

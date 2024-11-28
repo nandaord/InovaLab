@@ -38,7 +38,7 @@ public class ProfessorController {
 
         if (professorId == null) {
             redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
-            return "redirect:/login";
+            return "redirect:/";
         }
 
         UserProfessor userProfessor = userProfessorRepository.findById(professorId)
@@ -72,7 +72,7 @@ public class ProfessorController {
         Long professorId = (Long) session.getAttribute("professorId");
 
         if (professorId == null) {
-            return "redirect:/login"; // Redireciona para login se não estiver logado
+            return "redirect:/"; // Redireciona para login se não estiver logado
         }
 
         // Recupera o aluno do banco de dados
@@ -111,7 +111,7 @@ public class ProfessorController {
         Long professorId = (Long) session.getAttribute("professorId");
 
         if (professorId == null) {
-            return "redirect:/login";
+            return "redirect:/";
         }
 
         UserProfessor professor = userProfessorRepository.findById(professorId)
@@ -141,7 +141,7 @@ public class ProfessorController {
         Long professorId = (Long) session.getAttribute("professorId");
         if (professorId == null) {
             redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
-            return "redirect:/login";
+            return "redirect:/";
         }
 
         UserProfessor professor = userProfessorRepository.findById(professorId)
