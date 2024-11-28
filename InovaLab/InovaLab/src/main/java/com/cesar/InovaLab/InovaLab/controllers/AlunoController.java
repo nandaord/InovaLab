@@ -1,9 +1,12 @@
 package com.cesar.InovaLab.InovaLab.controllers;
 
+import com.cesar.InovaLab.InovaLab.models.Iniciativa;
 import com.cesar.InovaLab.InovaLab.models.UserAluno;
 import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
+import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
 import com.cesar.InovaLab.InovaLab.models.Curso;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/home-aluno")
 public class AlunoController {
+
+    @Autowired
+    private IniciativaRepository iniciativaRepository;
 
     @Autowired
     private UserAlunoRepository userAlunoRepository;
@@ -119,5 +125,14 @@ public class AlunoController {
     public String mostrarInscricoesAbertas(){
         return"inscricoes-abertas";
     }
+
+    @GetMapping("/iniciativa/{id}")
+    public String getDetalhesIniciativa(@PathVariable Long id, Model model) {
+        Iniciativa iniciativa = iniciativaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Iniciativa não encontrada"));
+        model.addAttribute("iniciativa", iniciativa);
+        return "detalhes"; // Nome do arquivo HTML
+    }
+
 
 }
