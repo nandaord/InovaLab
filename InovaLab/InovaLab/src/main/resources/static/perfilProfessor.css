@@ -1,152 +1,210 @@
-/* Estilos para o cabeçalho */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #F6EEEE;
+/* Geral */
+body {
+  font-family: 'Lexend', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfd;
+  color: #333;
 }
 
-.header img {
-    height: 50px;
-    margin-left: 30px;
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header .logo {
+  height: 40px;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .header-btn {
-    flex: 1;
-    padding: 10px 20px;
-    text-decoration: none;
-    margin: 0 5px;
-    border-radius: 25px;
-    background-color: transparent;
-    border: 2px solid gray; /* Borda cinza */
-    color: #333;
-    /*color: gray;*/
-    cursor: pointer; /* Indica que o botão é clicável */
-    transition: background-color 0.2s ease;
-    text-align: center;
-    text-transform: uppercase; /* Para deixar as letras maiúsculas */
-    transition: all 0.3s ease; /* Transição suave para os efeitos */
-    font-size: 16px; /* Tamanho da fonte */
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid #333;
+  background-color: transparent;
+  transition: all 0.3s;
 }
 
 .header-btn:hover {
-  background-color: #f0f0f0; /* Cor de fundo leve quando passar o mouse */
-  color: #333; /* Cor das letras ao passar o mouse */
+  background-color: #333;
+  color: #fff;
 }
 
-/* Estilos principais */
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
+.profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-left {
+  display: flex;
+  flex-direction: column; /* Coloca imagem e userType em coluna */
+  align-items: center; /* Centraliza os itens na coluna */
+  gap: 10px;
+   /* Espaçamento entre imagem e userType */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+     gap: 40px;
 }
 
 .profile-img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 2px solid #333;
-}
-
-.btn-group {
-    display: flex;
-    gap: 15px;
-    justify-content: start;
-}
-
-.btn {
-    padding: 8px 16px;
-    text-decoration: none;
-    margin: 0 5px;
-    border-radius: 5px;
-    background-color: #bdc3c7;
-    color: #333;
-    transition: background-color 0.2s ease;
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.profile-header h2 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.edit-button img {
-    width: 24px; /* Ajuste o tamanho conforme necessário */
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.edit-button img:hover {
-    transform: scale(1.1); /* Aumenta o botão ao passar o mouse */
-}
-
-
-/* Estilos para a seção de iniciativas */
-.initiative {
-    text-align: center;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-.initiative img {
-    width: 100%;
-    height: 150px;
     object-fit: cover;
-    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 250px;
+    align-items: flex-start;
 }
 
-
-/* Efeitos de hover */
-.btn:hover, .header-btn:hover {
-    background-color: #aeb6bf;
-    color: #333;
-    cursor: pointer;
-}
-
-.btn:active, .header-btn:active {
-    background-color: #95a5a6;
-    color: #333;
-}
-
-
-.footer {
+.profile-info {
+    max-width: 700px;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 15px;
-    font-size: 18px;
-    background-image: url('footer.png'); /* Caminho para a imagem */
-    background-size: cover; /* A imagem cobre todo o fundo */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita repetição da imagem */
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    color: #d34600; /* Cor do texto */
-    box-sizing: border-box; /* Garantir que o padding não afete o layout */
-    z-index: 1; /* Coloca a imagem como fundo */
+    flex-direction: column;
+    gap: 15px;
 }
 
-.footer-btn {
-    padding: 30px 131px;
-    text-decoration: none;
-    margin-right: 80px;
-    border-radius: 25px;
-    background-color: transparent;
-    border: transparent;
-    color: #d34600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-    z-index: 2; /* Garante que o botão fique acima da imagem */
+.user-type {
+  font-size: 16px;
+  font-weight: 400;
+  color: #ff7f50;
+  text-align: center; /* Centraliza o texto */
+  margin-top: 5px;
+   margin-right: 240px;/* Adiciona um pequeno espaço acima */
+}
+
+
+.name {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  color: #555;
+}
+
+.edit-profile-btn {
+  background-color: transparent;
+  color: #ff7f50;
+  border: 2px solid #ff7f50;
+  border-radius: 13px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 150px;
+  text-align: center;
+  align-self: center; /* Garante que o botão fique centralizado */
+}
+
+.edit-profile-btn:hover {
+  background-color: #ff7f50;
+  color: #fff;
+}
+
+/* Iniciativas */
+.initiatives {
+  margin-top: 40px;
+}
+
+.initiatives h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.initiatives-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.initiative-card {
+  background-color: #f6eeee;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(50% - 10px); /* Metade da largura do container com gap */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.initiative-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.initiative-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.initiative-info p {
+  font-size: 14px;
+  color: #555;
+}
+
+.initiative-card.add-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6eeee;
+  border-radius: 12px;
+  height: 200px;
+  width: calc(50% - 10px);
+}
+
+.add-icon {
+  font-size: 48px;
+  color: #aaa;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.footer a {
+  color: #ff7f50;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #ff6347;
 }

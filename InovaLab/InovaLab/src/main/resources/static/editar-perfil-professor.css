@@ -1,138 +1,189 @@
+/* Corpo Geral */
+body {
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #F6EEEE;
+    background-color: #fff;
+    padding: 20px 40px;
+    border-bottom: 1px solid #ddd;
 }
 
-.header img {
-    height: 50px;
-    margin-left: 30px;
+.header .logo {
+    height: 40px;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .header-btn {
-    flex: 1;
-    padding: 10px 20px;
-    text-decoration: none;
-    margin: 0 5px;
-    border-radius: 25px;
-    background-color: transparent;
-    border: 2px solid gray; /* Borda cinza */
     color: #333;
-    /*color: gray;*/
-    cursor: pointer; /* Indica que o botão é clicável */
-    transition: background-color 0.2s ease;
-    text-align: center;
-    text-transform: uppercase; /* Para deixar as letras maiúsculas */
-    transition: all 0.3s ease; /* Transição suave para os efeitos */
-    font-size: 16px; /* Tamanho da fonte */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 2px solid #333;
+    transition: all 0.3s;
 }
 
 .header-btn:hover {
-  background-color: #f0f0f0; /* Cor de fundo leve quando passar o mouse */
-  color: #333; /* Cor das letras ao passar o mouse */
+    background-color: #333;
+    color: #fff;
 }
 
-.divisao {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.left-column {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    padding: 0;
-}
-
-.left-column img {
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-    height: auto;
+.profile-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     object-fit: cover;
 }
 
-.container {
-    max-width: 600px;
-    justify-content: left;
-    align-items: left;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 50px;
-    margin-left: 3px;
+/* Main Content */
+.main-content {
+    display: flex;
+    padding: 40px;
+    gap: 40px;
 }
 
-form label {
+/* Left Panel */
+.left-panel {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Panel */
+.right-panel {
+    width: 70%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
     font-weight: bold;
 }
 
-form input, form textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 5px;
+.input,
+.select,
+.textarea {
+    width: 70%;
+    padding: 7px;
+    font-size: 14px;
     border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f6eeee;
 }
 
-.btn-link {
-    color: #007bff;
-    text-decoration: none;
+.textarea {
+    resize: none;
+    height: 70px;
 }
 
-button {
-    width: 200px;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #bdc3c7 !important;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+.btn-group {
+  display: flex;
+  gap: 80px;
 }
 
-.button:hover, .header-btn:hover {
-    background-color: #aeb6bf !important;
-    color: #333;
-    cursor: pointer;
-    text-decoration: none;
-    border: 1px solid #ccc;
+.btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 13px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 170px;
+  font-family: 'Lexend', sans-serif;
+}
+
+.btn-primary {
+  background-color: #ff7f50;
+  padding: 10px 20px;
+  color: white;
+  border: 1px solid #ff7f50;
+}
+
+.btn-primary:hover {
+  background-color: #ff6347;
+}
+
+.btn-secondary {
+  background-color: #f5f5f5;
+  color: #ff7f50;
+  border: 1px solid #ff7f50;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e5e5;
 }
 
 
+.btn-danger {
+  background-color: #f5f5f5;
+  padding: 10px 20px;
+  color: #ff7f50;
+  border: 1px solid #ff7f50;
+}
+
+.btn-danger:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Footer */
 .footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 15px;
-    font-size: 18px;
-    background-image: url('footer.png'); /* Caminho para a imagem */
-    background-size: cover; /* A imagem cobre todo o fundo */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita repetição da imagem */
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    color: #d34600; /* Cor do texto */
-    box-sizing: border-box; /* Garantir que o padding não afete o layout */
-    z-index: 1; /* Coloca a imagem como fundo */
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
 }
 
 .footer-btn {
-    padding: 30px 131px;
-    text-decoration: none;
-    margin-right: 80px;
-    border-radius: 25px;
-    background-color: transparent;
-    border: transparent;
-    color: #d34600;
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-    z-index: 2; /* Garante que o botão fique acima da imagem */
+    transition: background-color 0.3s;
+}
+
+.footer-btn:hover {
+    background-color: #ff6347;
 }

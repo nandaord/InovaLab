@@ -1,64 +1,72 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/editar-perfil-professor.css">
 </head>
-
 <body>
-
-<div class="header">
+<header class="header">
     <a href="/home-professor">
-        <img src="/assinatura.png" alt="Assinatura InovaLab">
+        <img src="/assinatura.png" alt="Assinatura InovaLab" class="logo">
     </a>
-    <div>
-        <a href="" class="header-btn">Inscrições abertas</a> <!-- AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
-        <a href="" class="header-btn">Minhas inscrições</a> <!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
-        <a href="/home-professor/perfil" class="header-btn">Perfil</a>
-        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    <nav>
+        <a href="#" class="header-btn">Inscrições abertas</a>
+        <a href="#" class="header-btn">Perfil</a>
+        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab" class="profile-photo">
+    </nav>
+</header>
+
+<main class="main-content">
+    <div class="left-panel">
+        <div class="profile-header">
+            <img src="/fotoPerfil.png" alt="Foto do professor" class="profile-img" id="profileImg">
+            <form th:action="@{/home-professor/upload-foto}" method="post" enctype="multipart/form-data" id="uploadForm">
+                <label for="fileUpload" class="btn btn-secondary">Mudar foto</label>
+                <input type="file" id="fileUpload" name="file" style="display: none;" onchange="previewImage(event)">
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px; display: none;" id="saveButton">Salvar</button>
+            </form>
+        </div>
+
     </div>
-</div>
-
-<div class="divisao">
-
-    <div class="left-column">
-        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
     </div>
 
-    <div class="container">
+    <div class="right-panel">
         <form th:action="@{/home-professor/editar}" method="post">
             <input type="hidden" name="id" th:value="${professorId}" />
 
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" th:value="${nomeUsuario}" required /><br/>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" class="input" th:value="${nomeUsuario}" required />
+            </div>
 
-            <p>Email: <span th:text="${email}"></span></p>
+            <div class="form-group">
+                <p><strong>E-mail:</strong> <span th:text="${email}"></span></p>
+            </div>
 
-            <label for="mensagemSobreVoce">Descrição:</label>
-            <textarea id="mensagemSobreVoce" name="mensagemSobreVoce" th:text="${mensagemSobreVoce}"></textarea><br/>
+            <div class="form-group">
+                <label for="mensagemSobreVoce">Escreva um pouco sobre você:</label>
+                <textarea id="mensagemSobreVoce" name="mensagemSobreVoce" class="textarea" th:text="${mensagemSobreVoce}"></textarea>
+            </div>
 
-            <button type="submit">Atualizar Perfil</button>
+            <div class="btn-group">
+                <a href="/home-professor/perfil-professor" class="btn btn-secondary">Voltar ao perfil</a>
+                <form th:action="@{/home-professor/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');" style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-danger">Excluir Conta</button>
+                </form>
+                <button type="submit" class="btn btn-primary">Atualizar Perfil</button>
+            </div>
         </form>
 
-        <form th:action="@{/home-professor/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
-            <button type="submit">Excluir Perfil</button>
-        </form>
-
-        <div class="botao-perfil">
-            <a th:href="@{/home-professor/perfil-professor}" class="button">Voltar para o Perfil</a>
-        </div>
     </div>
-</div>
+</main>
 
 <div class="footer">
     <form th:action="@{/logout}" method="get">
-        <button type="submit" class="footer-btn"></button>
+        <button type="submit" class="footer-btn">Sair</button>
     </form>
 </div>
-
 </body>
 </html>
