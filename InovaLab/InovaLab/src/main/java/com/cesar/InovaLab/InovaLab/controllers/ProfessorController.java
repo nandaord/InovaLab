@@ -135,7 +135,6 @@ public class ProfessorController {
     @PostMapping("/nova-iniciativa")
     public String salvarNovaIniciativa(
             @ModelAttribute Iniciativa iniciativa,
-            @RequestParam(value = "cursosPermitidos", required = false) List<Long> cursoIds,
             HttpSession session,
             RedirectAttributes redirectAttributes) {
 
@@ -149,18 +148,6 @@ public class ProfessorController {
                 .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado."));
 
         iniciativa.setProfessor(professor);
-
-        // Log dos cursos selecionados
-        System.out.println("Cursos IDs recebidos: " + cursoIds);
-
-        if (cursoIds != null && !cursoIds.isEmpty()) {
-            List<Curso> cursosSelecionados = cursoRepository.findAllById(cursoIds);
-            System.out.println("Cursos selecionados: " + cursosSelecionados);
-            iniciativa.setCursosPermitidos(cursosSelecionados);
-        } else {
-            System.out.println("Nenhum curso foi selecionado.");
-            iniciativa.setCursosPermitidos(null);
-        }
 
         iniciativaRepository.save(iniciativa);
         redirectAttributes.addFlashAttribute("mensagem", "Iniciativa criada com sucesso!");

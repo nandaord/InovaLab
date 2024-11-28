@@ -45,14 +45,6 @@ public class Iniciativa {
         this.aceitaInscricoes = aceitaInscricoes;
     }
 
-    public List<Curso> getCursosPermitidos() {
-        return cursosPermitidos;
-    }
-
-    public void setCursosPermitidos(List<Curso> cursosPermitidos) {
-        this.cursosPermitidos = cursosPermitidos;
-    }
-
     public @Future(message = "A data deve ser no futuro.") LocalDate getDataLimiteInscricoes() {
         return dataLimiteInscricoes;
     }
