@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Iniciativa</title>
-  <link rel="stylesheet" href="/css/styles.css"> <!-- Adicione seu arquivo de estilos aqui -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/editar-iniciativa.css">
 </head>
+
 <body>
-<div class="container">
-  <h2>Editar Iniciativa</h2>
 
-  <form th:action="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" method="post">
-    <!-- Este input hidden irá enviar o id da iniciativa -->
-    <input type="hidden" name="id" th:value="${iniciativa.id}" />
-
-    <div class="form-group">
-      <label for="titulo">Título da Iniciativa:</label>
-      <input type="text" id="titulo" name="titulo" th:value="${iniciativa.titulo}" class="form-control" required />
-    </div>
-
-    <div class="form-group">
-      <label for="descricao">Descrição:</label>
-      <input type="text" id="descricao" name="descricao" th:value="${iniciativa.descricao}" class="form-control" required />
-    </div>
-
-
-    <div class="form-group">
-      <label for="aceitaInscricoes">Aceita Inscrições:</label>
-      <input type="checkbox" id="aceitaInscricoes" name="aceitaInscricoes" th:checked="${iniciativa.aceitaInscricoes}" class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="dataLimiteInscricoes">Data Limite para Inscrições:</label>
-      <input type="date" id="dataLimiteInscricoes" name="dataLimiteInscricoes" th:value="${iniciativa.dataLimiteInscricoes}" class="form-control" required />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-    <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn btn-secondary">Cancelar</a>
-  </form>
-
+<div class="header">
+  <a href="/home-professor">
+    <img src="/assinatura.png" alt="Assinatura InovaLab">
+  </a>
+  <div>
+    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a> <!--Ainda nao esta pegando pois precisa fzr a logica-->
+    <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
+    <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+  </div>
 </div>
 
-<!-- Aqui você pode adicionar seus scripts, caso precise -->
-<script src="/js/script.js"></script>
+<body>
+<div class="main-content">
+  <div class="container">
+    <h2>Editar Iniciativa</h2>
+
+    <form th:action="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" method="post">
+      <!-- Este input hidden irá enviar o id da iniciativa -->
+      <input type="hidden" name="id" th:value="${iniciativa.id}" />
+
+      <div class="form-group">
+        <label for="titulo">Título da Iniciativa:</label>
+        <input type="text" id="titulo" name="titulo" th:value="${iniciativa.titulo}" class="form-control" required />
+      </div>
+
+      <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" th:value="${iniciativa.descricao}" class="form-control" required />
+      </div>
+
+
+      <div class="form-group">
+        <label for="aceitaInscricoes">Aceita Inscrições:</label>
+        <input type="checkbox" id="aceitaInscricoes" name="aceitaInscricoes" th:checked="${iniciativa.aceitaInscricoes}" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="dataLimiteInscricoes">Data Limite para Inscrições:</label>
+        <input type="date" id="dataLimiteInscricoes" name="dataLimiteInscricoes" th:value="${iniciativa.dataLimiteInscricoes}" class="form-control" required />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+  </div>
+</div>
+
+<div class="footer">
+  <form th:action="@{/logout}" method="get">
+    <button type="submit" class="footer-btn"></button>
+  </form>
+</div>
+
 </body>
 </html>
