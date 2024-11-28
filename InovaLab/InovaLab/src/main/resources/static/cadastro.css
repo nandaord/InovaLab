@@ -8,7 +8,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f1f1f1;
+    background-color: #F6EEEE;
 }
 
 .header-btn {
@@ -38,6 +38,24 @@
     margin-left: 30px;
 }
 
+.cabecalho {
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+h1 {
+    color: #EB6324;
+}
+
+h3 {
+    color: #7F7F7F;
+}
+
+h5 {
+    color: #7F7F7F;
+    align-self: center;
+}
+
 body {
     height: 100%;
     font-family: Arial, sans-serif;
@@ -47,11 +65,6 @@ body {
 
 }
 
-.divisao{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-}
 header h1 {
     font-size: 24px;
     margin: 0;
@@ -82,13 +95,26 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="url"],
-select,
+select {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 800px;
+    height: 46px;
+    border: 1px solid #F6EEEE;
+    border-radius: 5px;
+    background-color: #F6EEEE;
+}
+
 textarea {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 800px;
+    height: 90px;
+    border: 1px solid #F6EEEE;
+    border-radius: 5px;
+    background-color: #F6EEEE;
 }
 
 .alert-success {
@@ -123,12 +149,15 @@ input[type="radio"] {
 button {
     margin-top: 20px;
     padding: 10px;
-    background-color: #bdc3c7;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: transparent;
+    color: #EB6324;
+    border: 1px solid #EB6324;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    width: 120px;
+    height: 50px;
+    align-self: flex-end;
 }
 
 .button:hover, .header-btn:hover {
@@ -139,34 +168,29 @@ button {
     border: 1px solid #ccc;
 }
 
-.container {
-    max-width: 600px;
-    justify-content: left;
-    align-items: left;
-    padding: 20px;
-    border-radius: 8px;
-}
+.divisao {
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: 30% 70%;
 
-/*.left-column, .right-column {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    flex-direction: column;
-    box-sizing: border-box;
-}*/
+}
 
 .left-column {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
     background-color: transparent;
     padding: 0;
+    margin-left: 50px;
 
 }
 
 .left-column img {
+    align-self: flex-start;
+    margin-top: 80px;
+    margin-left: 125px;
     align-items: center;
     justify-content: center;
     width: 40%;
@@ -174,16 +198,53 @@ button {
     object-fit: cover;
 }
 
+.container {
+    max-width: 600px;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+    border-radius: 8px;
+    margin-right: 100px;
+}
+
 .footer {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    text-align: center;
     padding: 15px;
     font-size: 18px;
-    background-color: #f1f1f1;
+    background-image: url('footer.png'); /* Caminho para a imagem */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
     width: 100%;
-    position: relative;
-    margin-top: 30px;
     bottom: 0;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+    z-index: 1; /* Coloca a imagem como fundo */
+    position: relative; /* Deixe o rodapé seguir o fluxo normal da página */
+    bottom: auto;
+
+}
+
+.footer-btn {
+    padding: 30px 131px;
+    text-decoration: none;
+    margin-right: 95px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: transparent;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2; /* Garante que o botão fique acima da imagem */
+}
+
+.footer-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #333;
+    border-color: #333;
 }
