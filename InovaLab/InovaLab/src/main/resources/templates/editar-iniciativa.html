@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Iniciativa</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/editar-iniciativa.css">
+  <link rel="stylesheet" href="/nova-iniciativa.css">
 </head>
-
 <body>
 
 <div class="header">
@@ -15,48 +14,46 @@
     <img src="/assinatura.png" alt="Assinatura InovaLab">
   </a>
   <div>
-    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a> <!--Ainda nao esta pegando pois precisa fzr a logica-->
+    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a>
     <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
     <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
   </div>
 </div>
 
-<body>
-<div class="main-content">
-  <div class="container">
-    <h2>Editar Iniciativa</h2>
+<form th:action="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" method="post" class="iniciativa-form">
+  <div class="divisao">
+    <div class="left-column">
+      <h1>Editar Iniciativa</h1>
 
-    <form th:action="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" method="post">
-      <!-- Este input hidden irá enviar o id da iniciativa -->
-      <input type="hidden" name="id" th:value="${iniciativa.id}" />
-
-      <div class="form-group">
-        <label for="titulo">Título da Iniciativa:</label>
-        <input type="text" id="titulo" name="titulo" th:value="${iniciativa.titulo}" class="form-control" required />
+      <div>
+        <label for="titulo"><strong>Título da Iniciativa:</strong></label> <br>
+        <input type="text" id="titulo" name="titulo" th:value="${iniciativa.titulo}" class="form-control" placeholder="Digite o título da iniciativa" required />
       </div>
 
-      <div class="form-group">
-        <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" th:value="${iniciativa.descricao}" class="form-control" required />
+      <div>
+        <label for="descricao"><strong>Descrição:</strong></label> <br>
+        <textarea id="descricao" name="descricao" class="form-control" placeholder="Digite a descrição" required>
+          <span th:text="${iniciativa.descricao}"></span>
+        </textarea>
       </div>
 
-
-      <div class="form-group">
-        <label for="aceitaInscricoes">Aceita Inscrições:</label>
-        <input type="checkbox" id="aceitaInscricoes" name="aceitaInscricoes" th:checked="${iniciativa.aceitaInscricoes}" class="form-control" />
+      <div>
+        <label for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label> <br>
+        <input type="checkbox" id="aceitaInscricoes" name="aceitaInscricoes" th:checked="${iniciativa.aceitaInscricoes}" />
       </div>
 
-      <div class="form-group">
-        <label for="dataLimiteInscricoes">Data Limite para Inscrições:</label>
-        <input type="date" id="dataLimiteInscricoes" name="dataLimiteInscricoes" th:value="${iniciativa.dataLimiteInscricoes}" class="form-control" required />
+      <div>
+        <label for="dataLimiteInscricoes"><strong>Data Limite para Inscrições:</strong></label> <br>
+        <input type="date" id="dataLimiteInscricoes" name="dataLimiteInscricoes" th:value="${iniciativa.dataLimiteInscricoes}" required />
       </div>
 
-      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-      <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn btn-secondary">Cancelar</a>
-    </form>
-
+      <div class="submit-button">
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </div>
   </div>
-</div>
+</form>
 
 <div class="footer">
   <form th:action="@{/logout}" method="get">
