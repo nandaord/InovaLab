@@ -32,7 +32,7 @@ public class AlunoController {
         //se o aluno não tiver logado
         if (alunoId == null) {
             redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
-            return "redirect:/login";
+            return "redirect:/";
         }
 
         //verifica se o id do aluno da cadastrado no banco de dados
@@ -68,7 +68,7 @@ public class AlunoController {
     public String mostrarPaginaEdicao(HttpSession session, Model model) {
         Long alunoId = (Long) session.getAttribute("alunoId");
         if (alunoId == null) {
-            return "redirect:/login"; // Redireciona para login se não estiver logado
+            return "redirect:/"; // Redireciona para login se não estiver logado
         }
 
         // Recupera o aluno do banco de dados

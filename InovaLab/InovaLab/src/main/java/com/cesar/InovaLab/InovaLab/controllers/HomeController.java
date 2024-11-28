@@ -37,7 +37,7 @@ public class HomeController {
     public String homeAluno(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
         if(session.getAttribute("userType") == null || !session.getAttribute("userType").equals("aluno")){
             redirectAttributes.addFlashAttribute("erro", "Não está logado como aluno");
-            return "redirect:/login";
+            return "redirect:/";
         }
         model.addAttribute("nomeUsuario", session.getAttribute("nomeUsuario"));
         return "home-aluno";
@@ -47,7 +47,7 @@ public class HomeController {
     public String homeProfessor(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
         if (session.getAttribute("userType") == null || !session.getAttribute("userType").equals("professor")) {
             redirectAttributes.addFlashAttribute("erro", "Não está logado como professor");
-            return "redirect:/login";
+            return "redirect:/";
         }
         model.addAttribute("nomeUsuario", session.getAttribute("nomeUsuario"));
         return "home-professor";
