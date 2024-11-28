@@ -7,6 +7,7 @@ import com.cesar.InovaLab.InovaLab.models.UserProfessor;
 import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
 import java.util.List;
+import java.util.ArrayList;
 import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
 import com.cesar.InovaLab.InovaLab.models.Iniciativa;
 import jakarta.servlet.http.HttpSession;
@@ -135,6 +136,7 @@ public class ProfessorController {
     @PostMapping("/nova-iniciativa")
     public String salvarNovaIniciativa(
             @ModelAttribute Iniciativa iniciativa,
+            @RequestParam("emailsAlunos") String emailsAlunos,
             HttpSession session,
             RedirectAttributes redirectAttributes) {
 
@@ -147,10 +149,26 @@ public class ProfessorController {
         UserProfessor professor = userProfessorRepository.findById(professorId)
                 .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado."));
 
+        // Associar professor
         iniciativa.setProfessor(professor);
+
+        // Validar e-mails dos alunos
+        if (!emailsAlunos.isBlank()) {
+            List<String> emails = List.of(emailsAlunos.split(","));
+            List<String> emailsValidos = new ArrayList<>();
+
+            for (String email : emails) {
+                if (userProfessorRepository.existsByEmail(email.trim())) {
+                    emailsValidos.add(email.trim());
+                }
+            }
+
+            iniciativa.setEmailsAlunos(emailsValidos);
+        }
 
         iniciativaRepository.save(iniciativa);
         redirectAttributes.addFlashAttribute("mensagem", "Iniciativa criada com sucesso!");
         return "redirect:/home-professor/minhas-iniciativas";
     }
+
 }

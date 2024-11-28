@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
-
+import java.util.ArrayList;
 
 @Entity
 public class Iniciativa {
@@ -28,6 +28,17 @@ public class Iniciativa {
     @ManyToOne
     @JoinColumn(name = "professor_id", nullable = false)
     private UserProfessor professor;
+
+    @ElementCollection
+    private List<String> emailsAlunos = new ArrayList<>();
+
+    public List<String> getEmailsAlunos() {
+        return emailsAlunos;
+    }
+
+    public void setEmailsAlunos(List<String> emailsAlunos) {
+        this.emailsAlunos = emailsAlunos;
+    }
 
     public boolean isAceitaInscricoes() {
         return aceitaInscricoes;

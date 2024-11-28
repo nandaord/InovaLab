@@ -48,6 +48,19 @@
         <input type="date" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required />
       </div>
 
+      <div>
+        <label for="alunosEmails"><strong>Adicionar Alunos (E-mails):</strong></label> <br>
+        <input type="text" id="alunoEmail" placeholder="Digite o e-mail do aluno" />
+        <button type="button" id="adicionarAluno" class="btn btn-secondary">Adicionar</button>
+      </div>
+      <div>
+        <ul id="listaAlunos">
+          <!-- Lista dinâmica de e-mails adicionados -->
+        </ul>
+      </div>
+      <input type="hidden" id="emailsAlunos" name="emailsAlunos" th:field="*{emailsAlunos}" />
+
+
       <!-- Botão de Submeter -->
       <div class="submit-button">
         <button type="submit" class="btn btn-primary">Salvar Iniciativa</button>
@@ -63,4 +76,27 @@
 </div>
 
 </body>
+
+<script>
+  document.getElementById('adicionarAluno').addEventListener('click', () => {
+    const emailInput = document.getElementById('alunoEmail');
+    const listaAlunos = document.getElementById('listaAlunos');
+    const hiddenInput = document.getElementById('emailsAlunos');
+
+    if (emailInput.value.trim()) {
+      // Adicionar o e-mail à lista visual
+      const li = document.createElement('li');
+      li.textContent = emailInput.value;
+      listaAlunos.appendChild(li);
+
+      // Atualizar o campo oculto com os e-mails concatenados
+      const emails = hiddenInput.value ? hiddenInput.value.split(',') : [];
+      emails.push(emailInput.value.trim());
+      hiddenInput.value = emails.join(',');
+
+      // Limpar o campo de entrada
+      emailInput.value = '';
+    }
+  });
+</script>
 </html>
