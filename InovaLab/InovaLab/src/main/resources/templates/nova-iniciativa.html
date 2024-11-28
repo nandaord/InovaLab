@@ -21,56 +21,61 @@
   </div>
 </div>
 
-<div class="container">
-  <form th:action="@{/home-professor/nova-iniciativa}" th:object="${iniciativa}" method="post">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <h1 class="mt-4 mb-4">Criação de Iniciativa</h1>
 
-        <!-- Nome da Iniciativa -->
-        <div class="form-group">
-          <label for="titulo"><strong>Nome da Iniciativa:</strong></label>
-          <input type="text" class="form-control" id="titulo" th:field="*{titulo}" placeholder="Digite o título da iniciativa" required>
-          <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="text-danger"></div>
-        </div>
+<form th:action="@{/home-professor/nova-iniciativa}" th:object="${iniciativa}" method="post">
+  <div class="divisao">
+    <div class="left-column">
+      <h1>Criação de Iniciativa</h1>
 
-        <!-- Descrição -->
-        <div class="form-group">
-          <label for="descricao"><strong>Descrição:</strong></label>
-          <textarea class="form-control" id="descricao" th:field="*{descricao}" placeholder="Digite a descrição" required></textarea>
-          <div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="text-danger"></div>
-        </div>
+      <!-- Nome da Iniciativa -->
+      <div class="form-group">
+        <label for="titulo"><strong>Nome da Iniciativa:</strong></label>
+        <input type="text" class="form-control" id="titulo" th:field="*{titulo}" placeholder="Digite o título da iniciativa" required>
+        <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="text-danger"></div>
+      </div>
 
-        <!-- Aceita Inscrições -->
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="aceitaInscricoes" th:field="*{aceitaInscricoes}">
-          <label class="form-check-label" for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label>
-        </div>
+      <!-- Descrição -->
+      <div class="form-group">
+        <label for="descricao"><strong>Descrição:</strong></label>
+        <textarea class="form-control descricao-textarea" id="descricao" th:field="*{descricao}" placeholder="Digite a descrição" required></textarea>
+        <div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="text-danger"></div>
+      </div>
 
-        <!-- Data Limite para Inscrições -->
-        <div class="form-group">
-          <label for="dataLimiteInscricoes"><strong>Data Limite para Inscrições:</strong></label>
-          <input type="date" class="form-control" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required>
-        </div>
+      <!-- Aceita Inscrições -->
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="aceitaInscricoes" th:field="*{aceitaInscricoes}">
+        <label class="form-check-label" for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label>
+      </div>
 
-        <!-- Seleção de Alunos -->
-        <div class="form-group">
-          <label for="alunosEmails"><strong>Adicionar Alunos:</strong></label>
-          <select id="alunosEmails" class="form-control" name="alunosEmails" th:field="*{emailsAlunos}" multiple>
-            <option th:each="aluno : ${alunos}" th:value="${aluno.email}" th:text="${aluno.email}"></option>
-          </select>
-          <div th:if="${#fields.hasErrors('emailsAlunos')}" th:errors="*{emailsAlunos}" class="text-danger"></div>
-        </div>
+      <!-- Data Limite para Inscrições -->
+      <div class="form-group">
+        <label for="dataLimiteInscricoes"><strong>Data Limite para Inscrições:</strong></label>
+        <input type="date" class="form-control" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required>
+      </div>
 
-        <!-- Botões de Ação -->
-        <div class="form-group text-center">
-          <button type="submit" class="btn btn-primary">Criar</button>
-          <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn btn-secondary">Voltar</a>
-        </div>
+      <!-- Seleção de Alunos -->
+      <div class="form-group">
+        <label for="alunosEmails"><strong>Adicionar Alunos:</strong></label>
+        <select id="alunosEmails" class="form-control" name="alunosEmails" th:field="*{emailsAlunos}" multiple>
+          <option th:each="aluno : ${alunos}" th:value="${aluno.email}" th:text="${aluno.email}"></option>
+        </select>
+        <div th:if="${#fields.hasErrors('emailsAlunos')}" th:errors="*{emailsAlunos}" class="text-danger"></div>
       </div>
     </div>
-  </form>
-</div>
+
+    <div class="right-column">
+      <div class="gallery">
+        <div class="gallery-slider">
+          <img src="/imagem-galeria.png" alt="Galeria 1" class="gallery-img">
+        </div>
+      </div>
+      <div class="submit-button">
+        <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn-voltar">Voltar</a>
+        <button type="submit" class="btn-atualizar">Criar</button>
+      </div>
+    </div>
+  </div>
+</form>
 
 <div class="footer">
   <form th:action="@{/logout}" method="get">
