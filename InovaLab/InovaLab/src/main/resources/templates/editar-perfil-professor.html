@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/editar-perfil-professor.css">
 </head>
 <body>
-<header class="header">
+
+<div class="header">
     <a href="/home-professor">
-        <img src="/assinatura.png" alt="Assinatura InovaLab" class="logo">
+        <img src="/assinatura.png" alt="Assinatura InovaLab">
     </a>
-    <nav>
-        <a href="#" class="header-btn">Inscrições abertas</a>
-        <a href="#" class="header-btn">Perfil</a>
-        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab" class="profile-photo">
-    </nav>
-</header>
+    <div>
+        <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a> <!--Ainda nao esta pegando pois precisa fzr a logica-->
+        <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
+        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    </div>
+</div>
 
 <main class="main-content">
     <div class="left-panel">
@@ -65,7 +66,7 @@
 
 <div class="footer">
     <form th:action="@{/logout}" method="get">
-        <button type="submit" class="footer-btn">Sair</button>
+        <button type="submit" class="footer-btn"></button>
     </form>
 </div>
 </body>

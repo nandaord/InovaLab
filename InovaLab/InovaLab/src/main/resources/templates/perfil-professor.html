@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil do Professor</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/perfilProfessor.css">
 </head>
+
 <body>
-<header class="header">
-  <img src="/logo.png" alt="Logo" class="logo">
-  <nav>
-    <a href="#" class="header-btn">Minhas iniciativas</a>
-    <a href="#" class="header-btn">Perfil</a>
-    <img src="/fotoPerfil.png" alt="Foto de perfil" class="profile-photo">
-  </nav>
-</header>
+
+<div class="header">
+  <a href="/home-professor">
+    <img src="/assinatura.png" alt="Assinatura InovaLab">
+  </a>
+  <div>
+    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a> <!--Ainda nao esta pegando pois precisa fzr a logica-->
+    <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
+    <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+  </div>
+</div>
 
 <div class="container">
   <section class="profile">
@@ -50,7 +54,10 @@
 </div>
 
 <div class="footer">
-  Quer voltar para a comunidade e aproveitar os fóruns?&nbsp;<a href="/forum">Clique aqui!</a>
+  <form th:action="@{/logout}" method="get">
+    <button type="submit" class="footer-btn"></button>
+  </form>
 </div>
+
 </body>
 </html>

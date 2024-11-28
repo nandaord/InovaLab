@@ -15,39 +15,42 @@ body {
 
 /* Header */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-  padding: 20px 40px;
-  border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #F6EEEE;
 }
 
-.header .logo {
-  height: 40px;
-}
-
-.header nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.header img {
+    height: 50px;
+    margin-left: 30px;
 }
 
 .header-btn {
-  color: #333;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 2px solid #333;
-  background-color: transparent;
-  transition: all 0.3s;
+    flex: 1;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 0 5px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid gray; /* Borda cinza */
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px; /* Tamanho da fonte */
+    text-align: center;
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
 }
 
 .header-btn:hover {
-  background-color: #333;
-  color: #fff;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.header-btn:active {
+    background-color: #95a5a6;
+    color: #333;
 }
 
 .profile-photo {
@@ -191,20 +194,38 @@ body {
   font-weight: bold;
 }
 
+
 /* Footer */
 .footer {
-  margin-top: 40px;
-  text-align: center;
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
+    display: flex;
+    margin-top: 40px;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    font-size: 18px;
+    background-image: url('footer.png'); /* Caminho para a imagem */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    width: 100%;
+    bottom: 0;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+    z-index: 1; /* Coloca a imagem como fundo */
 }
 
-.footer a {
-  color: #ff7f50;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  color: #ff6347;
+.footer-btn {
+    padding: 30px 131px;
+    text-decoration: none;
+    margin-right: 80px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: transparent;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2; /* Garante que o botão fique acima da imagem */
 }
