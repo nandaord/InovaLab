@@ -51,8 +51,9 @@
       <div>
         <label for="alunosEmails"><strong>Adicionar Alunos (E-mails):</strong></label> <br>
         <input type="text" id="alunoEmail" placeholder="Digite o e-mail do aluno" />
-        <button type="button" id="adicionarAluno" class="btn btn-secondary">Adicionar</button>
+        <button type="button" id="adicionarAluno" class="btn adicionar">Adicionar</button>
       </div>
+
       <div>
         <ul id="listaAlunos">
           <!-- Lista dinâmica de e-mails adicionados -->
@@ -61,10 +62,11 @@
       <input type="hidden" id="emailsAlunos" name="emailsAlunos" th:field="*{emailsAlunos}" />
 
 
-      <!-- Botão de Submeter -->
       <div class="submit-button">
-        <button type="submit" class="btn btn-primary">Salvar Iniciativa</button>
+        <button type="submit" class="btn-atualizar">Criar</button>
+        <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn-voltar">Voltar</a>
       </div>
+
     </div>
   </div>
 </form>
