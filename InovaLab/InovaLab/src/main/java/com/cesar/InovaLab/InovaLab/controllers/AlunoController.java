@@ -115,4 +115,9 @@ public class AlunoController {
         return "redirect:/home-aluno/perfil-aluno"; // Redireciona para a página do perfil após a atualização
     }
 
+    @GetMapping ("/inscricoes-abertas")
+    public String mostrarInscricoesAbertas(){
+        return"inscricoes-abertas";
+    }
+
 }
