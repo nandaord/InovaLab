@@ -157,6 +157,7 @@ body {
 
 .btn-primary:hover {
   background-color: #ff6347;
+  border: 1px solid #ff7f50;
 }
 
 .btn-secondary {
@@ -166,7 +167,9 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: #e5e5e5;
+  color: #f5f5f5;
+  background-color: #ff7f50;
+  border: 1px solid #ff7f50;
 }
 
 .btn-danger {
@@ -213,7 +216,7 @@ body {
 
 .footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     padding: 15px;
     font-size: 18px;

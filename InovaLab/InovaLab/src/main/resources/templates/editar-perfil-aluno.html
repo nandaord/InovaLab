@@ -46,21 +46,17 @@
         <p><strong>E-mail:</strong> <span th:text="${email}"></span></p>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="curso">Curso</label>
-          <select name="cursoId" id="curso" class="select">
-            <option value="">Selecione um curso</option>
-            <th:block th:each="curso : ${cursos}">
-              <option th:value="${curso.id}" th:text="${curso.nome}"></option>
-            </th:block>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="curriculo">Currículo</label>
-          <input type="file" id="curriculo" name="curriculo" class="input-file" />
-        </div>
+
+      <div class="form-group">
+        <label for="curso">Curso</label>
+        <select name="cursoId" id="curso" class="select">
+          <option value="">Selecione um curso</option>
+          <th:block th:each="curso : ${cursos}">
+            <option th:value="${curso.id}" th:text="${curso.nome}"></option>
+          </th:block>
+        </select>
       </div>
+
 
       <div class="form-group">
         <label for="portfolio">Portfólio</label>
