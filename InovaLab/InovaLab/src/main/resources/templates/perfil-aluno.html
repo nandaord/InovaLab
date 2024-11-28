@@ -1,78 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/perfil.css">
 </head>
-
 <body>
+<header class="header">
+    <img src="/logo.png" alt="Logo" class="logo">
+    <nav>
+        <a href="#" class="header-btn">Inscrições abertas</a>
+        <a href="#" class="header-btn">Perfil</a>
+        <img src="/fotoPerfil.png" alt="Foto de perfil" class="profile-photo">
+    </nav>
+</header>
 
-   <div class="header">
-     <img src="/assinatura.png" alt="Assinatura InovaLab">
-     <div>
-        <a href="" class="header-btn">Inscrições abertas</a> <!-- AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
-        <a href="" class="header-btn">Minhas inscrições</a> <!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
-        <a href="/home-aluno/perfil-aluno" class="header-btn">Perfil</a>
-        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
-     </div>
-   </div>
+<div class="container">
+    <section class="profile">
+        <img src="/fotoPerfil.png" alt="Foto do perfil" class="profile-img">
+        <div class="profile-info">
+            <h1 class="name" th:text="${nomeUsuario}"></h1>
+            <p class="description" th:text="${descricao}"></p>
+            <div class="div-botoes">
+                <a href="/home-aluno/editar-perfil-aluno" class="edit-profile-btn">Editar Perfil</a>
+                <div class="actions">
+                    <a th:href="${linkPortifolio}" class="btn">Portfólio</a>
+                    <a th:href="${linkCurriculo}" class="btn">Currículo</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-   <div class="container mt-4">
-       <div class="row">
-           <div class="col-md-3 text-center">
-               <img src="/fotoPerfil.png" alt="Foto do Perfil" class="profile-img">
-               <h3 th:text="${userType}"></h3>
-               <p th:text="${curso}" ></p>
-           </div>
-           <div class="col-md-9">
-               <div class="profile-header">
-                   <h2 th:text="${nomeUsuario}"></h2>
-                   <a href="/home-aluno/editar-perfil-aluno" class="edit-button">
-                       <img src="/editar.png" alt="Editar Perfil">
-                   </a>
-                   <!--<form th:action="@{/home-aluno/editar}" method="get">
-                            <button type="submit">Editar Perfil</button>
-                        </form>-->
-               </div>
-               <p th:text="${descricao}"></p>
-               <div class="btn-group">
-                   <button class="btn">Visualização de Currículo</button>
-                   <button class="btn" >Link para portifólio</button> <!--th:text="${linkPortifolio}"-->
-               </div>
-           </div>
-       </div>
-       <h4 class="mt-4">Iniciativa(s) de que participa:</h4>
-       <div class="row">
-           <div class="col-md-6">
-               <div class="initiative">
-                   <img src="/imagemIniciativa.png" alt="Imagem da Iniciativa">
-                   <h5>Iniciativa X</h5>
-                   <p>Nam ut justo placerat, eleifend sem at, finibus velit.</p>
-               </div>
-           </div>
-           <div class="col-md-6">
-               <div class="initiative">
-                   <img src="/imagemIniciativa.png" alt="Imagem da Iniciativa">
-                   <h5>Iniciativa Y</h5>
-                   <p>Nam ut justo placerat, eleifend sem at, finibus velit.</p>
-               </div>
-           </div>
-       </div>
-   </div>
+    <section class="initiatives">
+        <h2>Iniciativas que participa</h2>
+        <div class="initiative-card" th:each="iniciativa : ${iniciativas}">
+            <img th:src="${iniciativa.imagem}" alt="Iniciativa" class="initiative-img">
+            <div class="initiative-info">
+                <h3 th:text="${iniciativa.titulo}"></h3>
+                <p th:text="'Professor Responsável: ' + ${iniciativa.professorResponsavel}"></p>
+                <p th:text="${iniciativa.descricao}"></p>
+            </div>
+        </div>
+    </section>
+</div>
 
-  <!--<h2 th:text="${iniciativa}"></h2>-->
-  <!--<h2 th:text="${nomeUsuario}"></h2>-->
-
-
-   <div class="footer">
-       <form th:action="@{/logout}" method="get">
-           <button type="submit" class="footer-btn"></button>
-       </form>
-   </div>
+<div class="footer">
+    <form th:action="@{/logout}" method="get">
+        <button type="submit" class="footer-btn"></button>
+    </form>
+</div>
 
 </body>
 </html>

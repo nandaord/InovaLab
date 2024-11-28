@@ -1,99 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Perfil</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/editar-perfil-aluno.css">
 </head>
-
 <body>
+<header class="header">
+  <img src="/logo.png" alt="Logo" class="logo">
+  <nav>
+    <a href="#" class="header-btn">Inscrições abertas</a>
+    <a href="#" class="header-btn">Perfil</a>
+    <img src="/fotoPerfil.png" alt="Foto de perfil" class="profile-photo">
+  </nav>
+</header>
 
-  <div class="header">
-    <a href="/home-aluno">
-      <img src="/assinatura.png" alt="Assinatura InovaLab">
-    </a>
-    <div>
-      <a href="" class="header-btn">Inscrições abertas</a> <!-- AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
-      <a href="" class="header-btn">Minhas inscrições</a> <!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
-      <a href="/home-aluno/perfil-aluno" class="header-btn">Perfil</a>
-      <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+<main class="main-content">
+  <div class="left-panel">
+    <div class="profile-header">
+      <img src="/fotoPerfil.png" alt="Foto do aluno" class="profile-img">
+      <button type="button" class="btn btn-secondary">Mudar foto</button>
     </div>
+    <p class="initiatives-title">Iniciativas que participa:</p>
   </div>
-
-  <div class="main-content">
-    <div class="left-panel">
-      <div class="profile-header">
-        <img src="/fotoPerfil.png" alt="Foto do Aluno" class="profile-img">
-        <button type="button" class="btn btn-secondary">Mudar Foto</button>
-      </div>
-
-      <div class="initiatives">
-        <p>Iniciativas de que participo:</p>
-        <div class="initiative">
-          <span>Iniciativa H</span>
-          <button type="button" class="btn btn-sm btn-danger">X</button>
-        </div>
-        <div class="initiative">
-          <span>Iniciativa I</span>
-          <button type="button" class="btn btn-sm btn-danger">X</button>
-        </div>
-      </div>
-    </div>
 
   <div class="right-panel">
-    <h2 class="title">Mudança de perfil Alunos</h2>
-    <form th:action="@{/home-aluno/editar-perfil-aluno}" method="post">
-      <input type="hidden" name="id" th:value="${alunoId}" />
+    <form>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" class="input" placeholder="Seu nome completo" />
+      </div>
 
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" th:value="${nomeUsuario}" required /><br/>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" class="input" placeholder="email@exemplo.com" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="curso">Curso</label>
+          <select name="cursoId" id="curso" class="select">
+            <option value="">Selecione um curso</option>
+            <th:block th:each="curso : ${cursos}">
+              <option th:value="${curso.id}" th:text="${curso.nome}"></option>
+            </th:block>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="curriculo">Currículo</label>
+          <input type="file" id="curriculo" name="curriculo" class="input-file" />
+        </div>
+      </div>
 
-      <p>Email: <span th:text="${email}"></span></p>
+      <div class="form-group">
+        <label for="portfolio">Portfólio</label>
+        <input type="url" id="portfolio" name="portfolio" class="input" placeholder="https://www.seuportfolio.com" />
+      </div>
 
-      <a href="" class="btn-link">Alterar senha</a><br/>
-
-      <label for="curriculo">Upload de novo Currículo:</label>
-      <input type="file" id="curriculo" name="curriculo"><br/>
-
-      <label for="linkPortfolio">Link do Portfólio:</label>
-      <input type="url" id="linkPortfolio" name="linkPortfolio" th:value="${linkPortifolio}" /><br/>
-
-      <label for="descricao">Alterar Descrição:</label>
-      <textarea id="descricao" name="descricao" th:text="${descricao}"></textarea><br/>
-
-
-
-    <label for="curso">Curso:</label>
-    <select id="curso" name="cursoId">
-      <option th:each="curso : ${cursos}"
-              th:value="${curso.id}"
-              th:text="${curso.nome}"
-              th:selected="${curso.id == cursoId}"></option>
-    </select><br/>
+      <div class="form-group">
+        <label for="descricao">Escreva um pouco sobre você!</label>
+        <textarea id="descricao" name="descricao" class="textarea" placeholder="Fale um pouco sobre você"></textarea>
+      </div>
 
       <div class="btn-group">
-        <button type="submit" class="btn btn-primary">Atualizar Perfil</button>
-        <button type="submit" formaction="/home-aluno/excluir" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">Excluir Perfil</button>
-        <a href="/home-aluno/perfil-aluno" class="btn btn-secondary">Voltar para o Perfil</a>
+        <a href="/home-aluno/perfil-aluno" class="btn btn-secondary">Voltar ao perfil</a>
+        <button type="button" class="btn btn-danger">Excluir conta</button>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
       </div>
     </form>
-  </div>
-  </div>
 
-  <!--<form th:action="@{/home-aluno/excluir}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.');">
-    <button type="submit">Excluir Perfil</button>
+  </div>
+</main>
+
+<div class="footer">
+  <form th:action="@{/logout}" method="get">
+    <button type="submit" class="footer-btn"></button>
   </form>
-
-  <a th:href="@{/home-aluno/perfil}">Voltar para o Perfil</a>-->
-
-  <div class="footer">
-    <form th:action="@{/logout}" method="get">
-      <button type="submit" class="footer-btn"></button>
-    </form>
-  </div>
-
+</div>
 </body>
 </html>

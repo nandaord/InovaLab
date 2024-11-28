@@ -1,131 +1,211 @@
-/* Estilos para o cabeçalho */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #F6EEEE;
+/* Corpo Geral */
+body {
+  font-family: 'Lexend', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfd;
+  color: #333;
 }
 
-.header img {
-    height: 50px;
-    margin-left: 30px;
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header .logo {
+  height: 40px;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .header-btn {
-    flex: 1;
-    padding: 10px 20px;
-    text-decoration: none;
-    margin: 0 5px;
-    border-radius: 25px;
-    background-color: transparent;
-    border: 2px solid gray; /* Borda cinza */
-    color: #333;
-    /*color: gray;*/
-    cursor: pointer; /* Indica que o botão é clicável */
-    transition: background-color 0.2s ease;
-    text-align: center;
-    text-transform: uppercase; /* Para deixar as letras maiúsculas */
-    transition: all 0.3s ease; /* Transição suave para os efeitos */
-    font-size: 16px; /* Tamanho da fonte */
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: transparent;
+  border: 2px solid #333;
+  transition: all 0.3s;
 }
 
 .header-btn:hover {
-  background-color: #f0f0f0; /* Cor de fundo leve quando passar o mouse */
-  color: #333; /* Cor das letras ao passar o mouse */
+  background-color: #333;
+  color: #fff;
 }
 
-/* Estilos para o layout principal */
+.profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Main Content */
 .main-content {
-    display: flex;
-    height: calc(100vh - 100px); /* Deixa espaço para o cabeçalho e o rodapé */
+  display: flex;
+  padding: 40px;
+  gap: 40px;
 }
 
+/* Left Panel */
 .left-panel {
-    width: 30%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.right-panel {
-    width: 70%;
-    padding: 20px;
-}
-
-/* Estilos para a foto do perfil e iniciativas */
 .profile-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 2px solid #333;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.initiatives {
-    width: 100%;
-    margin-top: 20px;
+.initiatives-title {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.initiative {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    background-color: #e9ecef;
-    margin-bottom: 5px;
-    border-radius: 5px;
+/* Right Panel */
+.right-panel {
+  width: 70%;
 }
 
-/* Botões */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input,
+.select,
+.textarea {
+  width: 70%;
+  padding: 7px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f6eeee;
+}
+
+.input-file {
+  padding: 5px;
+}
+
+.textarea {
+  resize: none;
+  height: 70px; /* Reduz a altura do campo de texto longo */
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
 .btn-group {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start;
+  display: flex;
+  gap: 80px;
 }
 
-.btn:hover, .header-btn:hover {
-    background-color: #aeb6bf;
-    color: #333;
-    cursor: pointer;
+.btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 13px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 170px;
+  font-family: 'Lexend', sans-serif;
 }
 
-.btn:active, .header-btn:active {
-    background-color: #95a5a6;
-    color: #333;
+.btn-primary {
+  background-color: #ff7f50;
+  padding: 10px 20px;
+  color: white;
+  border: 1px solid #ff7f50;
 }
 
-
-/* Estilo adicional para o formulário */
-.title {
-    font-size: 24px;
-    margin-bottom: 20px;
+.btn-primary:hover {
+  background-color: #ff6347;
 }
 
-form label {
-    font-weight: bold;
+.btn-secondary {
+  background-color: #f5f5f5;
+  color: #ff7f50;
+  border: 1px solid #ff7f50;
 }
 
-form input, form textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.btn-secondary:hover {
+  background-color: #e5e5e5;
 }
 
-.btn-link {
-    color: #007bff;
-    text-decoration: none;
+.btn-danger {
+  background-color: #f5f5f5;
+  padding: 10px 20px;
+  color: #ff7f50;
+  border: 1px solid #ff7f50;
+}
+.select {
+  width: 70%;
+  padding: 7px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f6eeee;
+  color: #333;
 }
 
+/* Estiliza o campo de upload (file) */
+.input-file {
+  width: 70%;
+  padding: 7px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f6eeee;
+  color: #333;
+}
+
+.input-file::-webkit-file-upload-button {
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-file::-webkit-file-upload-button:hover {
+  background-color: #ff6347;
+}
 
 .footer {
     display: flex;
