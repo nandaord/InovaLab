@@ -50,8 +50,6 @@ public class ProfessorController {
         return "home-professor"; // Nome do arquivo HTML da página inicial
     }
 
-
-
     @GetMapping("/perfil-professor")
     public String perfilProfessor(RedirectAttributes redirectAttributes, Model model, HttpSession session){
         Long professorId = (Long) session.getAttribute("professorId");
@@ -198,5 +196,8 @@ public class ProfessorController {
         return "detalhes"; // Nome do arquivo HTML
     }
 
-
+    @GetMapping("/pedidos-inscricao")
+    public String MostrarPedidosInscricao () {
+        return "pedidos-inscricao";
+    }
 }
