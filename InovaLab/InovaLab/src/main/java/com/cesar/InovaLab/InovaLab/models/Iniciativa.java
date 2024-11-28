@@ -25,6 +25,14 @@ public class Iniciativa {
     @Future(message = "A data deve ser no futuro.")
     private LocalDate dataLimiteInscricoes;
 
+    public List<UserAluno> getAlunosAssociados() {
+        return alunosAssociados;
+    }
+
+    public void setAlunosAssociados(List<UserAluno> alunosAssociados) {
+        this.alunosAssociados = alunosAssociados;
+    }
+
     @ManyToOne
     @JoinColumn(name = "professor_id", nullable = false)
     private UserProfessor professor;
@@ -35,6 +43,12 @@ public class Iniciativa {
     public List<String> getEmailsAlunos() {
         return emailsAlunos;
     }
+
+    @ManyToMany // Ou @OneToMany, dependendo da relação
+    @JoinTable(name = "iniciativa_aluno",
+            joinColumns = @JoinColumn(name = "iniciativa_id"),
+            inverseJoinColumns = @JoinColumn(name = "aluno_id"))
+    private List<UserAluno> alunosAssociados;
 
     public void setEmailsAlunos(List<String> emailsAlunos) {
         this.emailsAlunos = emailsAlunos;
