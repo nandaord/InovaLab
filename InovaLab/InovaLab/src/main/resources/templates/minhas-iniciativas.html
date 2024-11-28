@@ -33,11 +33,6 @@
     <p th:text="${mensagem}"></p>
   </div>
 
-  <!-- Botão para cadastrar nova iniciativa -->
-  <div class="mb-4 text-center">
-    <a href="/home-professor/nova-iniciativa" class="btn btn-primary">Cadastrar Nova Iniciativa</a>
-  </div>
-
   <!-- Lista de iniciativas -->
   <div class="row">
     <div class="col-md-4" th:each="iniciativa : ${iniciativas}">
@@ -47,6 +42,7 @@
           <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
           <p><strong>Professor Responsável:</strong> <span th:text="${iniciativa.professor.nome}">Nome do Professor</span></p>
           <a th:href="@{/home-professor/iniciativa/{id}(id=${iniciativa.id})}" class="btn btn-secondary">Detalhes</a>
+          <a th:href="@{/home-professor/editar-iniciativa/{id}(id=${iniciativa.id})}" class="btn btn-secondary">Editar</a>
         </div>
       </div>
     </div>

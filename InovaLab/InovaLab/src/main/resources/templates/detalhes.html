@@ -12,47 +12,99 @@
 <body>
 
 <!-- Cabeçalho -->
-<div class="header">
-  <a href="/home-professor/minhas-iniciativas">
-    <img src="/assinatura.png" alt="Assinatura InovaLab">
-  </a>
-  <div>
-    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a>
-    <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
-    <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
-  </div>
-</div>
-
-<div class="container my-4">
-  <h2 class="text-center mb-4" th:text="${iniciativa.titulo}">Título da Iniciativa</h2>
-
-  <div class="mb-3">
-    <h5>Descrição</h5>
-    <p th:text="${iniciativa.descricao}">Aqui vai a descrição detalhada da iniciativa.</p>
+  <div class="header">
+    <a href="/home-professor">
+      <img src="/assinatura.png" alt="Assinatura InovaLab">
+    </a>
+    <div>
+      <a href="" class="header-btn">Inscrições abertas</a> <!-- AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
+      <a href="" class="header-btn">Minhas inscrições</a> <!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
+      <a href="/home-aluno/perfil-aluno" class="header-btn">Perfil</a>
+      <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    </div>
   </div>
 
-  <div class="mb-3">
-    <h5>Professor Responsável</h5>
-    <p th:text="${iniciativa.professor.nome}">Nome do Professor</p>
-  </div>
+  <main class="container">
+    <!-- Introdução -->
+    <section class="intro-section">
+      <div class="text-content">
+        <h1>Conheça a <span class="highlight">FORJA</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus turpis nisi, et facilisis purus consequat id.</p>
+        <p>Vestibulum scelerisque tortor at accumsan feugiat.</p>
+        <button class="btn btn-warning">Inscrições Abertas</button>
+      </div>
+      <div class="image-content">
+        <img src="/forja.png" alt="Logo Forja" class="intro-img">
+      </div>
+    </section>
 
-  <div class="mb-3">
-    <h5>Alunos Participantes</h5>
-    <ul>
-      <li th:each="email : ${iniciativa.emailsAlunos}" th:text="${email}">E-mail do Aluno</li>
-    </ul>
-  </div>
+    <!-- Galeria e Depoimentos -->
+    <section class="content-section">
+      <div class="gallery">
+        <h2>Galeria</h2>
+        <div class="gallery-slider">
+          <img src="/gallery1.png" alt="Galeria 1" class="gallery-img">
+          <img src="/gallery2.png" alt="Galeria 2" class="gallery-img">
+          <button class="gallery-next">></button>
+        </div>
+      </div>
+      <div class="testimonials">
+        <h2>Depoimentos</h2>
+        <div class="testimonial">
+          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+          <span>- Nome do Aluno</span>
+        </div>
+        <div class="testimonial">
+          <p>"Nunc faucibus turpis nisi, et facilisis purus consequat id."</p>
+          <span>- Nome do Aluno</span>
+        </div>
+      </div>
+    </section>
 
-  <div class="text-center">
-    <a href="/home-professor/minhas-iniciativas" class="btn btn-primary">Voltar</a>
-  </div>
-</div>
+    <!-- Formulário de Depoimento -->
+    <section class="feedback-section">
+      <h3>Quer deixar um depoimento?</h3>
+      <p>Teste ser breve! Todas as mensagens serão enviadas para os responsáveis e caso sejam aprovadas, aparecerão na seção de depoimentos acima.</p>
+      <form>
+        <textarea placeholder="Escreva aqui seu depoimento..." rows="3"></textarea>
+        <button type="submit" class="btn btn-warning">Enviar</button>
+      </form>
+    </section>
+  </main>
 
-<div class="footer">
-  <form th:action="@{/logout}" method="get">
-    <button type="submit" class="footer-btn"></button>
-  </form>
-</div>
+  <div class="footer">
+    <form th:action="@{/logout}" method="get">
+      <button type="submit" class="footer-btn"></button>
+    </form>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const images = document.querySelectorAll(".gallery-img");
+      const prevButton = document.querySelector(".gallery-prev");
+      const nextButton = document.querySelector(".gallery-next");
+
+      let currentIndex = 0;
+
+      function updateGallery() {
+        images.forEach((img, index) => {
+          img.classList.toggle("active", index === currentIndex);
+        });
+      }
+
+      prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateGallery();
+      });
+
+      nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateGallery();
+      });
+
+      updateGallery();
+    });
+  </script>
+
 
 </body>
 

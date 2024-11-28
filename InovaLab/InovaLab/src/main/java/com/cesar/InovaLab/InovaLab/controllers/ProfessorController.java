@@ -174,4 +174,6 @@ public class ProfessorController {
         model.addAttribute("iniciativa", iniciativa);
         return "detalhes"; // Nome do arquivo HTML
     }
+
+
 }
