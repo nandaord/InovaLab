@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     font-family: Arial, sans-serif;
@@ -55,8 +56,8 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; /* Certifique-se de evitar repetições */
-  width: 100vw; /* Ocupe toda a largura da janela de visualização */
-  margin: 0; /* Remova margens externas */
+  width: 100%; /* Ocupe toda a largura da janela de visualização */
+  margin: 0 auto; /* Remova margens externas */
   border-radius: 0; /* Remove bordas arredondadas */
   color: white;
 }
@@ -90,6 +91,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   margin: 40px 0;
+  width: 100%;
 }
 
 .gallery,
