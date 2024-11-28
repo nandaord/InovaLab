@@ -53,7 +53,9 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 40px 20px;
-  background: linear-gradient(90deg, #343a40, #495057);
+  background-image: url('fundo-detalhes.jpg'); /* Coloque o caminho correto da imagem */
+  background-size: cover;
+  background-position: center;
   color: white;
   border-radius: 10px;
   margin: 20px 0;
