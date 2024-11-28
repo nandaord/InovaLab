@@ -1,3 +1,17 @@
+/* Reset e configurações globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo em uma coluna */
+    font-family: Arial, sans-serif;
+}
+
 /* Header */
 .header {
     display: flex;
@@ -19,13 +33,13 @@
     margin: 0 5px;
     border-radius: 25px;
     background-color: transparent;
-    border: 2px solid gray; /* Borda cinza */
+    border: 2px solid gray;
     color: #333;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 12px; /* Tamanho da fonte */
+    font-size: 12px;
     text-align: center;
-    text-transform: uppercase; /* Para deixar as letras maiúsculas */
+    text-transform: uppercase;
 }
 
 .header-btn:hover {
@@ -38,34 +52,19 @@
     color: #333;
 }
 
-
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-}
-
-
-.btn-group {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-    justify-content: center;
-}
-
+/* Estilo para o conteúdo principal */
 .main-content {
     padding: 20px 40px;
-    flex-grow: 1;
+    flex-grow: 1; /* Faz o conteúdo crescer para ocupar o espaço restante */
 }
 
+/* Estilos do botão */
 .btn {
     flex: 1;
     max-width: 200px;
     padding: 15px 0;
     font-size: 18px;
-    background-color: #bdc3c7 ;
+    background-color: #bdc3c7;
     border: 1px solid #ccc;
     color: #333;
     text-decoration: none;
@@ -88,10 +87,11 @@ html, body {
     border: 1px solid #ccc;
 }
 
+/* Cards de iniciativas */
 .initiative-card {
     background-color: #f9f9f9;
     border-radius: 8px;
-    cursor: pointer; /* Tornar o card clicável */
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -100,7 +100,6 @@ html, body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo do conteúdo dentro do card */
 .initiative-card .card-body {
     padding: 20px 20px 60px;
     text-align: left;
@@ -110,22 +109,22 @@ html, body {
 
 .image-button {
     position: absolute;
-    margin-top: 10px; /* Espaçamento acima da imagem */
+    margin-top: 10px;
     right: 10px;
-    text-align: right; /* Centraliza a imagem no card */
+    text-align: right;
     z-index: 2;
     overflow: hidden;
 }
 
 .image-button img {
-    width: 40px; /* Tamanho da largura da imagem */
-    height: auto; /* Mantém a proporção */
-    cursor: pointer; /* Mostra que a imagem é clicável */
-    transition: transform 0.3s ease; /* Efeito de animação */
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .image-button img:hover {
-    transform: scale(1.1); /* Aumenta um pouco no hover */
+    transform: scale(1.1);
 }
 
 .initiativa-card .card-title {
@@ -139,9 +138,10 @@ html, body {
 }
 
 .stretched-link {
-    z-index: 1; /* Garante que o link de detalhes fique abaixo da imagem */
+    z-index: 1;
 }
 
+/* Estilo do botão de adicionar nova iniciativa */
 .add-new {
     display: flex;
     flex-direction: column;
@@ -160,22 +160,22 @@ html, body {
     background: #d9d9d9;
 }
 
+/* Footer */
 .footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 15px;
     font-size: 18px;
-    background-image: url('footer.png'); /* Caminho para a imagem */
-    background-size: cover; /* A imagem cobre todo o fundo */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-image: url('footer.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 100%;
-    margin-top: 40px;
-    bottom: 0;
-    color: #d34600; /* Cor do texto */
-    box-sizing: border-box; /* Garantir que o padding não afete o layout */
-    z-index: 1; /* Coloca a imagem como fundo */
+    color: #d34600;
+    box-sizing: border-box;
+    z-index: 1;
+    margin-top: auto; /* Faz com que o footer vá para o final da página */
 }
 
 .footer-btn {
@@ -191,6 +191,5 @@ html, body {
     text-align: center;
     text-transform: uppercase;
     font-size: 16px;
-    z-index: 2; /* Garante que o botão fique acima da imagem */
+    z-index: 2;
 }
-

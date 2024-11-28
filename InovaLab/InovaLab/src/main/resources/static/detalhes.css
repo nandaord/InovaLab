@@ -1,4 +1,3 @@
-/* Estilos gerais */
 html, body {
     height: 100%;
     margin: 0;
@@ -47,19 +46,21 @@ html, body {
     color: #333;
 }
 
-/* Seção de Introdução */
 .intro-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 40px 20px;
-  background-image: url('fundo-detalhes.jpg'); /* Coloque o caminho correto da imagem */
+  background-image: url('fundo-detalhes.jpg'); /* Caminho correto para a imagem */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat; /* Certifique-se de evitar repetições */
+  width: 100vw; /* Ocupe toda a largura da janela de visualização */
+  margin: 0; /* Remova margens externas */
+  border-radius: 0; /* Remove bordas arredondadas */
   color: white;
-  border-radius: 10px;
-  margin: 20px 0;
 }
+
 
 .intro-section .text-content {
   max-width: 50%;
@@ -67,10 +68,6 @@ html, body {
 
 .intro-section h1 {
   font-size: 2.5rem;
-}
-
-.highlight {
-  color: #ffc107;
 }
 
 .intro-section .btn {
@@ -81,6 +78,12 @@ html, body {
   max-width: 300px;
   border-radius: 10px;
 }
+
+.highlight {
+  color: #ffc107;
+}
+
+
 
 /* Galeria e Depoimentos */
 .content-section {
@@ -109,7 +112,6 @@ html, body {
 .gallery-img {
   max-width: 100%;
   border-radius: 10px;
-  display: none;
   transition: opacity 0.3s;
 }
 
