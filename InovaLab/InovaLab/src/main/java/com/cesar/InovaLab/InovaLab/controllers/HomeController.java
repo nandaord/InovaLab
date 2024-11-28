@@ -155,7 +155,7 @@ public class HomeController {
                         })
                         .orElseGet(() -> {
                             model.addAttribute("erro", "Senha ou usuário inválidos");
-                            return "login";
+                            return "home";
                         })
                 );
     }
