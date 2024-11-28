@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/home-aluno.css">
 </head>
-
 <body>
 
 <div class="header">
@@ -23,13 +21,21 @@
     </div>
 </div>
 
-<main class="container">
-    <h2 th:text="'Bem-vindo(a), ' + ${nomeUsuario} + '!'"></h2>
-
-    <form th:action="@{/logout}" method="get">
-        <button type="submit" class="btn btn-danger">Logout</button>
-    </form>
+<main class="main-container">
+    <h2 class="bem-vindo">Bem-vindo(a) ao</h2>
+    <h2 class="inovalab">INOVALAB!</h2>
+    <p class="descricao">
+        Descubra os projetos inovadores desenvolvidos dentro da CESAR School!
+        Venha conhecer iniciativas de alunos e professores além de encontrar oportunidades
+        para se envolver e colaborar em projetos que impulsionam a criatividade e a inovação.
+    </p>
 </main>
+
+
+<div class="iniciativas">
+    <h3>Explore as iniciativas da <span class="cesar-school">CESAR School</span>!</h3>
+</div>
+
 
 <div class="footer">
     <form th:action="@{/logout}" method="get">
@@ -38,6 +44,4 @@
 </div>
 
 </body>
-
-
 </html>
