@@ -83,7 +83,105 @@ html, body {
     border: 1px solid #ccc;
 }
 
+.card {
+    width: 100%; /* Para garantir responsividade dentro da coluna */
+    height: 300px; /* Altura fixa para todos os cards */
+    display: flex;
+    flex-direction: column; /* Garante que o conteúdo interno seja alinhado verticalmente */
+    justify-content: space-between; /* Espaça bem os elementos internos */
+    align-items: center; /* Alinha os elementos ao centro */
+    text-align: center; /* Centraliza o texto */
+}
 
+.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Mesma altura dos outros cards */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.initiative-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    cursor: pointer; /* Tornar o card clicável */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.initiative-card:hover,
+ .text-center:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do conteúdo dentro do card */
+.initiative-card .card-body,
+.text-center .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: calc(100% - 40px);
+    padding: 10px;
+}
+
+.initiativa-card .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.iniciativa-card .card-text {
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Mostra até 4 linhas de texto */
+    -webkit-box-orient: vertical;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between; /* Espaça os botões uniformemente */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+.card .btn {
+    flex: 1; /* Faz os botões terem o mesmo tamanho */
+    text-align: center; /* Centraliza o texto no botão */
+    font-size: 14px;
+}
+
+btn btn-outline-primary {
+    height: 30px;
+}
+
+.add-new {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #e6e6e6;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+        border: 2px dashed #aaa;
+        text-decoration: none;
+}
+
+.add-new:hover {
+    background: #d9d9d9;
+}
 
 .footer {
     display: flex;
@@ -119,40 +217,3 @@ html, body {
     z-index: 2; /* Garante que o botão fique acima da imagem */
 }
 
-.iniciativas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.iniciativa-card {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.iniciativa-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.add-new {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #e6e6e6;
-    color: #333;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    border: 2px dashed #aaa;
-    text-decoration: none;
-}
-
-.add-new:hover {
-    background: #d9d9d9;
-}
