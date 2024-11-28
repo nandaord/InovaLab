@@ -61,7 +61,7 @@ html, body {
     bottom: 0;
     color: #d34600; /* Cor do texto */
     box-sizing: border-box; /* Garantir que o padding não afete o layout */
-    z-index: 1; /* Coloca a imagem como fundo */
+    z-index: 1;/* Coloca a imagem como fundo */
 }
 
 .footer-btn {
