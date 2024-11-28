@@ -46,108 +46,68 @@ html, body {
     color: #333;
 }
 
-.footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 15px;
-    font-size: 18px;
-    background-image: url('footer.png'); /* Caminho para a imagem */
-    background-size: cover; /* A imagem cobre todo o fundo */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita repetição da imagem */
-    width: 100%;
-    margin-top: 40px;
-    bottom: 0;
-    color: #d34600; /* Cor do texto */
-    box-sizing: border-box; /* Garantir que o padding não afete o layout */
-    z-index: 1; /* Coloca a imagem como fundo */
-}
-
-.footer-btn {
-    padding: 30px 131px;
-    text-decoration: none;
-    margin-right: 80px;
-    border-radius: 25px;
-    background-color: transparent;
-    border: transparent;
-    color: #d34600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-    z-index: 2; /* Garante que o botão fique acima da imagem */
-}
-
-.exit-btn {
-    padding: 10px 20px;
-    border: 1px solid #EB6324;
-    border-radius: 25px;
-    background-color: transparent;
-    color: #EB6324;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.exit-btn:hover {
-    background-color: #EB6324;
-    color: white;
-}
-
-.buttons {
-    display: flex;
-    gap: 10px;
+/* Botões de Rejeitar e Aceitar */
+.reject-btn, .accept-btn {
+    background-color: #F6EEEE; /* Cor de fundo */
+    color: #d34600; /* Cor da letra (laranja) */
+    border: none; /* Remove a borda */
+    border-radius: 25px; /* Formato oval */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho da fonte */
+    cursor: pointer; /* Mostrar o cursor de mão ao passar por cima */
+    transition: all 0.3s ease; /* Transição suave para efeitos */
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
+    margin-left: 10px; /* Adicionando uma margem à esquerda para empurrar os botões */
 }
 
 .reject-btn, .accept-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
+    background-color: #F6EEEE; /* Cor de fundo */
+    color: #d34600; /* Cor da letra (laranja) */
+    border: none; /* Remove a borda */
+    border-radius: 25px; /* Formato oval */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho da fonte */
+    cursor: pointer; /* Mostrar o cursor de mão ao passar por cima */
+    transition: all 0.3s ease; /* Transição suave para efeitos */
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
 
-.reject-btn {
-    background-color: #FFEDED;
-    color: #EB4D4B;
-}
-
-.reject-btn:hover {
-    background-color: #EB4D4B;
-    color: white;
 }
 
 .accept-btn {
-    background-color: #EDFFF0;
-    color: #28A745;
+    margin-right: 650px; /* Adicionando uma margem à esquerda para empurrar os botões */
 }
 
-.accept-btn:hover {
-    background-color: #28A745;
-    color: white;
+/* Efeito de hover nos botões */
+.reject-btn:hover, .accept-btn:hover {
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+    color: #d34600; /* Cor da letra */
 }
 
-.profile-img {
-    height: 40px;
-    border-radius: 50%;
+/* Efeito de clique nos botões */
+.reject-btn:active, .accept-btn:active {
+    background-color: #d34600; /* Cor de fundo ao clicar */
+    color: #fff; /* Cor da letra ao clicar */
 }
 
 /* Main content */
 .main-content {
     padding: 20px 40px;
+    flex-grow: 1;
 }
 
 h1 {
     font-size: 28px;
     color: #333;
+    margin-left:50px;
 }
+
 
 .requests {
     margin-top: 20px;
+    margin-left: 50px;
 }
+
+
 
 .request {
     display: flex;
@@ -166,4 +126,38 @@ h1 {
 .request span {
     flex: 1;
     font-size: 18px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    font-size: 18px;
+    background-image: url('footer.png'); /* Caminho para a imagem */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    width: 100%;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+    z-index: 1; /* Coloca a imagem como fundo */
+}
+
+/* Botões do footer */
+.footer-btn {
+    padding: 30px 131px;
+    text-decoration: none;
+    margin-right: 80px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: transparent;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2; /* Garante que o botão fique acima da imagem */
 }
