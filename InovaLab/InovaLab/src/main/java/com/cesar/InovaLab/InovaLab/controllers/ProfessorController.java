@@ -146,14 +146,30 @@ public class ProfessorController {
 
 
     @GetMapping("/nova-iniciativa")
-    public String mostrarNovaIniciativa(Model model) {
+    public String mostrarNovaIniciativa(Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+        // Verifica se o professor está logado
+        Long professorId = (Long) session.getAttribute("professorId");
+        if (professorId == null) {
+            redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
+            return "redirect:/"; // Redireciona para a página inicial ou de login
+        }
+
+        // Carrega os cursos do banco de dados
         List<Curso> cursos = cursoRepository.findAll();
-        List<UserAluno> alunos = userAlunoRepository.findAll();  // Assumindo que você tem uma tabela de alunos
+
+        // Carrega os alunos do banco de dados
+        List<UserAluno> alunos = userAlunoRepository.findAll();
+
+        // Debug para verificar os cursos e alunos carregados
         System.out.println("Cursos carregados: " + cursos.size());
+        System.out.println("Alunos carregados: " + alunos.size());
+
+        // Adiciona os atributos ao modelo para exibir no formulário
         model.addAttribute("iniciativa", new Iniciativa());
         model.addAttribute("cursos", cursos);
         model.addAttribute("alunos", alunos);
-        model.addAttribute("iniciativa", new Iniciativa());
+
+        // Retorna a página do formulário (substitua "nova-iniciativa" pelo nome do HTML real)
         return "nova-iniciativa";
     }
 
@@ -181,9 +197,9 @@ public class ProfessorController {
         if (emailsAlunos != null && !emailsAlunos.isEmpty()) {
             List<String> emailsValidos = new ArrayList<>();
 
-            // Verificar se o e-mail existe no banco de dados
+            // Verificar se o e-mail existe no banco de dados de alunos
             for (String email : emailsAlunos) {
-                if (userProfessorRepository.existsByEmail(email.trim())) {
+                if (userAlunoRepository.existsByEmail(email.trim())) {
                     emailsValidos.add(email.trim());
                 }
             }
