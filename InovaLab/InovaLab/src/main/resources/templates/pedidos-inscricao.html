@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos de Participação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/pedidos-inscricao.css">
+</head>
+<body>
+<div class="header">
+    <a href="/home-professor">
+        <img src="/assinatura.png" alt="Assinatura InovaLab">
+    </a>
+    <div>
+        <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a> <!--Ainda nao esta pegando pois precisa fzr a logica-->
+        <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
+        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    </div>
+</div>
+
+<main class="main-content">
+    <h1>Pedidos de Participação</h1>
+    <div class="requests">
+        <div class="request">
+            <img src="user1.png" alt="User 1" class="user-img">
+            <span>Fulana da Silva</span>
+            <div class="buttons">
+                <button class="reject-btn">REJEITAR</button>
+                <button class="accept-btn">ACEITAR</button>
+            </div>
+        </div>
+        <div class="request">
+            <img src="user2.png" alt="User 2" class="user-img">
+            <span>Ana Maria Dantas</span>
+            <div class="buttons">
+                <button class="reject-btn">REJEITAR</button>
+                <button class="accept-btn">ACEITAR</button>
+            </div>
+        </div>
+        <div class="request">
+            <img src="user3.png" alt="User 3" class="user-img">
+            <span>Zezé Pereira</span>
+            <div class="buttons">
+                <button class="reject-btn">REJEITAR</button>
+                <button class="accept-btn">ACEITAR</button>
+            </div>
+        </div>
+        <div class="request">
+            <img src="user4.png" alt="User 4" class="user-img">
+            <span>Roberto Pera</span>
+            <div class="buttons">
+                <button class="reject-btn">REJEITAR</button>
+                <button class="accept-btn">ACEITAR</button>
+            </div>
+        </div>
+        <div class="request">
+            <img src="user5.png" alt="User 5" class="user-img">
+            <span>Velma Farias</span>
+            <div class="buttons">
+                <button class="reject-btn">REJEITAR</button>
+                <button class="accept-btn">ACEITAR</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="footer">
+    <form th:action="@{/logout}" method="get">
+        <button type="submit" class="footer-btn"></button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #F6EEEE;
+}
+
+.header img {
+    height: 50px;
+    margin-left: 30px;
+}
+
+.header-btn {
+    flex: 1;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 0 5px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid gray; /* Borda cinza */
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px; /* Tamanho da fonte */
+    text-align: center;
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
+}
+
+.header-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.header-btn:active {
+    background-color: #95a5a6;
+    color: #333;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    font-size: 18px;
+    background-image: url('footer.png'); /* Caminho para a imagem */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    width: 100%;
+    margin-top: 40px;
+    bottom: 0;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+    z-index: 1; /* Coloca a imagem como fundo */
+}
+
+.footer-btn {
+    padding: 30px 131px;
+    text-decoration: none;
+    margin-right: 80px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: transparent;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2; /* Garante que o botão fique acima da imagem */
+}
+
+.exit-btn {
+    padding: 10px 20px;
+    border: 1px solid #EB6324;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #EB6324;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.exit-btn:hover {
+    background-color: #EB6324;
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.reject-btn, .accept-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.reject-btn {
+    background-color: #FFEDED;
+    color: #EB4D4B;
+}
+
+.reject-btn:hover {
+    background-color: #EB4D4B;
+    color: white;
+}
+
+.accept-btn {
+    background-color: #EDFFF0;
+    color: #28A745;
+}
+
+.accept-btn:hover {
+    background-color: #28A745;
+    color: white;
+}
+
+.profile-img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Main content */
+.main-content {
+    padding: 20px 40px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+.requests {
+    margin-top: 20px;
+}
+
+.request {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.user-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.request span {
+    flex: 1;
+    font-size: 18px;
+}
