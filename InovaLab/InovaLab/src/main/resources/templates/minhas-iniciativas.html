@@ -46,7 +46,7 @@
           <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
           <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
           <p><strong>Professor Responsável:</strong> <span th:text="${iniciativa.professor.nome}">Nome do Professor</span></p>
-          <a href="#" class="btn btn-secondary">Detalhes</a>
+          <a th:href="@{/home-professor/iniciativa/{id}(id=${iniciativa.id})}" class="btn btn-secondary">Detalhes</a>
         </div>
       </div>
     </div>

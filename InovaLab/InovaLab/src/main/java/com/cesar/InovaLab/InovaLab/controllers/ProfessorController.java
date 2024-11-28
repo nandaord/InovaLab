@@ -2,7 +2,7 @@ package com.cesar.InovaLab.InovaLab.controllers;
 
 
 import com.cesar.InovaLab.InovaLab.models.Curso;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 import com.cesar.InovaLab.InovaLab.models.UserProfessor;
 import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
@@ -14,10 +14,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -171,4 +167,11 @@ public class ProfessorController {
         return "redirect:/home-professor/minhas-iniciativas";
     }
 
+    @GetMapping("/iniciativa/{id}")
+    public String getDetalhesIniciativa(@PathVariable Long id, Model model) {
+        Iniciativa iniciativa = iniciativaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Iniciativa não encontrada"));
+        model.addAttribute("iniciativa", iniciativa);
+        return "detalhes"; // Nome do arquivo HTML
+    }
 }
