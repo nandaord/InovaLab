@@ -136,62 +136,41 @@ body {
 }
 
 /* Iniciativas */
-.initiatives {
-  margin-top: 40px;
-}
-
-.initiatives h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.initiatives-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
 .initiative-card {
-  background-color: #f6eeee;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: calc(50% - 10px); /* Metade da largura do container com gap */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.initiative-card img {
-  width: 100%;
-  border-radius: 8px;
+.initiative-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.initiative-info h3 {
-  font-size: 18px;
-  font-weight: 600;
+.initiative-card .card-body {
+    padding: 20px 20px 60px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
 }
 
-.initiative-info p {
-  font-size: 14px;
-  color: #555;
+.row {
+   margin-top: 20px;
 }
 
-.initiative-card.add-new {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f6eeee;
-  border-radius: 12px;
-  height: 200px;
-  width: calc(50% - 10px);
+.initiativa-card .card-title {
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.add-icon {
-  font-size: 48px;
-  color: #aaa;
-  font-weight: bold;
+.iniciativa-card .card-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.stretched-link {
+    z-index: 1;
 }
 
 

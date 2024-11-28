@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,20 +36,20 @@
   </section>
 
   <section class="initiatives">
-    <h2>Iniciativas Responsáveis</h2>
-    <div class="initiatives-container">
-      <div class="initiative-card" th:each="iniciativa : ${iniciativas}">
-        <img th:src="${iniciativa.imagem}" alt="Iniciativa" class="initiative-img">
-        <div class="initiative-info">
-          <h3 th:text="${iniciativa.titulo}"></h3>
-          <p th:text="'Professor Responsável: ' + ${iniciativa.professorResponsavel}"></p>
-          <p th:text="${iniciativa.descricao}"></p>
+    <h2>Iniciativas pelas quais você é responsável:</h2>
+    <div class="row">
+      <div class="col-md-4" th:each="iniciativa : ${iniciativa}">
+        <div class="card mb-4 initiative-card">
+          <div class="card-body">
+            <a th:href="@{/home-professor/perfil-professor/{id}(id=${iniciativa.id})}" class="stretched-link"></a>
+            <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
+            <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
+            <p><strong>Professor Responsável:</strong><span th:text="${iniciativa.professor != null ? iniciativa.professor.nome : 'Professor não atribuído'}">
+              Nome do Professor
+          </span></p>
+          </div>
         </div>
       </div>
-      <div class="initiative-card add-new">
-        <div class="add-icon">+</div>
-      </div>
-    </div>
   </section>
 </div>
 
