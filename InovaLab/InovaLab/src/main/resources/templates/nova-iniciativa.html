@@ -14,59 +14,54 @@
     <img src="/assinatura.png" alt="Assinatura InovaLab">
   </a>
   <div>
-    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a> <!--Ainda nao esta pegando pois precisa fzr a logica-->
+    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a>
     <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
     <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
   </div>
 </div>
 
 <form th:action="@{/home-professor/nova-iniciativa}" th:object="${iniciativa}" method="post">
-  <!-- Campo para Nome da Iniciativa -->
   <div class="divisao">
     <div class="left-column">
       <h1>Criação de iniciativa</h1>
+
+      <!-- Campo para Nome da Iniciativa -->
       <div>
-        <label for="titulo"><strong>Nome da Iniciativa:</strong></label> <br>
+        <label for="titulo"><strong>Nome da Iniciativa:</strong></label><br>
         <input type="text" id="titulo" th:field="*{titulo}" placeholder="Digite o título da iniciativa" required />
         <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="error"></div>
       </div>
 
       <!-- Campo para Descrição -->
       <div>
-        <label for="descricao"><strong>Descrição:</strong></label> <br>
+        <label for="descricao"><strong>Descrição:</strong></label><br>
         <textarea id="descricao" th:field="*{descricao}" placeholder="Digite a descrição" required></textarea>
         <div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="error"></div>
       </div>
 
       <div>
-        <label for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label> <br>
+        <label for="aceitaInscricoes"><strong>Aceita Inscrições?</strong></label><br>
         <input type="checkbox" id="aceitaInscricoes" th:field="*{aceitaInscricoes}" />
       </div>
 
       <div>
-        <label for="dataLimiteInscricoes"><strong>Até quando aceita inscrições?</strong></label> <br>
+        <label for="dataLimiteInscricoes"><strong>Até quando aceita inscrições?</strong></label><br>
         <input type="date" id="dataLimiteInscricoes" th:field="*{dataLimiteInscricoes}" required />
       </div>
 
+      <!-- Campo para Adicionar Alunos -->
       <div>
-        <label for="alunosEmails"><strong>Adicionar Alunos (E-mails):</strong></label> <br>
-        <input type="text" id="alunoEmail" placeholder="Digite o e-mail do aluno" />
-        <button type="button" id="adicionarAluno" class="btn adicionar">Adicionar</button>
+        <label for="alunosEmails"><strong>Adicionar Alunos:</strong></label><br>
+        <select id="alunosEmails" name="alunosEmails" th:field="*{emailsAlunos}" multiple>
+          <option th:each="aluno : ${alunos}" th:value="${aluno.email}" th:text="${aluno.nome}"></option>
+        </select>
+        <div th:if="${#fields.hasErrors('emailsAlunos')}" th:errors="*{emailsAlunos}" class="error"></div>
       </div>
-
-      <div>
-        <ul id="listaAlunos">
-          <!-- Lista dinâmica de e-mails adicionados -->
-        </ul>
-      </div>
-      <input type="hidden" id="emailsAlunos" name="emailsAlunos" th:field="*{emailsAlunos}" />
-
 
       <div class="submit-button">
         <button type="submit" class="btn-atualizar">Criar</button>
         <a href="#" th:href="@{/home-professor/minhas-iniciativas}" class="btn-voltar">Voltar</a>
       </div>
-
     </div>
   </div>
 </form>
@@ -78,27 +73,4 @@
 </div>
 
 </body>
-
-<script>
-  document.getElementById('adicionarAluno').addEventListener('click', () => {
-    const emailInput = document.getElementById('alunoEmail');
-    const listaAlunos = document.getElementById('listaAlunos');
-    const hiddenInput = document.getElementById('emailsAlunos');
-
-    if (emailInput.value.trim()) {
-      // Adicionar o e-mail à lista visual
-      const li = document.createElement('li');
-      li.textContent = emailInput.value;
-      listaAlunos.appendChild(li);
-
-      // Atualizar o campo oculto com os e-mails concatenados
-      const emails = hiddenInput.value ? hiddenInput.value.split(',') : [];
-      emails.push(emailInput.value.trim());
-      hiddenInput.value = emails.join(',');
-
-      // Limpar o campo de entrada
-      emailInput.value = '';
-    }
-  });
-</script>
 </html>

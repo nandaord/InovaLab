@@ -2,6 +2,8 @@ package com.cesar.InovaLab.InovaLab.controllers;
 
 
 import com.cesar.InovaLab.InovaLab.models.Curso;
+import com.cesar.InovaLab.InovaLab.models.UserAluno;
+import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
 import org.springframework.web.bind.annotation.*;
 import com.cesar.InovaLab.InovaLab.models.UserProfessor;
 import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
@@ -30,6 +32,9 @@ public class ProfessorController {
 
     @Autowired
     private IniciativaRepository iniciativaRepository;
+
+    @Autowired
+    private UserAlunoRepository userAlunoRepository;
 
     @GetMapping("/home-professor")
     public String mostrarHomeProfessor(HttpSession session, Model model) {
@@ -143,17 +148,19 @@ public class ProfessorController {
     @GetMapping("/nova-iniciativa")
     public String mostrarNovaIniciativa(Model model) {
         List<Curso> cursos = cursoRepository.findAll();
+        List<UserAluno> alunos = userAlunoRepository.findAll();  // Assumindo que você tem uma tabela de alunos
         System.out.println("Cursos carregados: " + cursos.size());
         model.addAttribute("iniciativa", new Iniciativa());
         model.addAttribute("cursos", cursos);
+        model.addAttribute("alunos", alunos);
+        model.addAttribute("iniciativa", new Iniciativa());
         return "nova-iniciativa";
     }
-
 
     @PostMapping("/nova-iniciativa")
     public String salvarNovaIniciativa(
             @ModelAttribute Iniciativa iniciativa,
-            @RequestParam("emailsAlunos") String emailsAlunos,
+            @RequestParam("emailsAlunos") List<String> emailsAlunos,  // Recebe uma lista de e-mails agora
             HttpSession session,
             RedirectAttributes redirectAttributes) {
 
@@ -163,30 +170,36 @@ public class ProfessorController {
             return "redirect:/";
         }
 
+        // Encontrar o professor pelo ID da sessão
         UserProfessor professor = userProfessorRepository.findById(professorId)
                 .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado."));
 
-        // Associar professor
+        // Associar professor à iniciativa
         iniciativa.setProfessor(professor);
 
         // Validar e-mails dos alunos
-        if (!emailsAlunos.isBlank()) {
-            List<String> emails = List.of(emailsAlunos.split(","));
+        if (emailsAlunos != null && !emailsAlunos.isEmpty()) {
             List<String> emailsValidos = new ArrayList<>();
 
-            for (String email : emails) {
+            // Verificar se o e-mail existe no banco de dados
+            for (String email : emailsAlunos) {
                 if (userProfessorRepository.existsByEmail(email.trim())) {
                     emailsValidos.add(email.trim());
                 }
             }
 
+            // Atribuir a lista de e-mails válidos à iniciativa
             iniciativa.setEmailsAlunos(emailsValidos);
         }
 
+        // Salvar a iniciativa no banco de dados
         iniciativaRepository.save(iniciativa);
+
+        // Adicionar mensagem de sucesso e redirecionar para a página de iniciativas do professor
         redirectAttributes.addFlashAttribute("mensagem", "Iniciativa criada com sucesso!");
         return "redirect:/home-professor/minhas-iniciativas";
     }
+
 
     @GetMapping("/iniciativa/{id}")
     public String getDetalhesIniciativa(@PathVariable Long id, Model model) {
