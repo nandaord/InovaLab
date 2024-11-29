@@ -4,6 +4,9 @@
 
 O InovaLab surge com o objetivo de fortalecer a conexão e engajamento entre alunos e professores na Comunidade da CESAR School, a proposta é a criação de uma aplicação integrada à plataforma online que centralize informações e traga formas práticas de inscrição para os alunos poderem participar de iniciativas e projetos. Essa solução tem como principal finalidade, através de uma extensão colocada na comunidade, o compartilhamento de informações base das iniciativas dentro da CESAR SCHOOL, mantendo os alunos e professores cientes dos projetos existentes e suas novidades, fomentando através deste tema interesse e engajamento entre os membros da comunidade, deixando-a assim mais unida e dinâmica.
 
+# Caso queira ver melhor nosso projeto:
+Você pode ver um screencast do funcionamento das principais funcionalidades [aqui](https://youtu.be/nnp3lqUalrA). Ou pode executar nosso projeto no seu computador, seguindo os passos descritos abaixo.
+
 # Instruções antes de executar:
 ## 1° passo:
 Instale o Java versão 17.0. Os arquivos para download do Java podem ser encontrados [neste link](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). 
