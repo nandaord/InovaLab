@@ -221,10 +221,13 @@ public class ProfessorController {
 
 
     @GetMapping("/iniciativa/{id}")
-    public String getDetalhesIniciativa(@PathVariable Long id, Model model) {
+    public String getDetalhesIniciativa(@PathVariable Long id, Model model, HttpSession session) {
         Iniciativa iniciativa = iniciativaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Iniciativa não encontrada"));
+        String userType = (String) session.getAttribute("userType");
+
         model.addAttribute("iniciativa", iniciativa);
+        model.addAttribute("userType", userType);  // Passando o userType para o HTML
         return "detalhes"; // Nome do arquivo HTML
     }
 
