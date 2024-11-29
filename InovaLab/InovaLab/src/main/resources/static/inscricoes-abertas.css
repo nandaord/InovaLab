@@ -172,6 +172,27 @@ main p {
     color: #333;
 }
 
+.insc {
+    background-color: transparent;
+    color: #ff7f50;
+    border: 2px solid #ff7f50;
+    border-radius: 13px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 150px;
+    text-align: center;
+    align-self: center; /* Garante que o botão fique centralizado */
+}
+
+.insc:hover {
+     background-color: #ff7f50;
+     color: #fff;
+}
+
 .footer {
     display: flex;
     justify-content: flex-end;

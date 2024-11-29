@@ -42,7 +42,7 @@
                     <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
                     <p><strong>Data limite:</strong> <span th:text="${iniciativa.dataLimiteInscricoes}">DD/MM/AAAA</span></p>
                     <form th:action="@{/home-aluno/iniciativa/{id}/inscrever(id=${iniciativa.id})}" method="post">
-                        <button type="submit" class="btn btn-primary">Inscrever-se</button>
+                        <button type="submit" class="insc">Inscrever-se</button>
                     </form>
                 </div>
             </div>
