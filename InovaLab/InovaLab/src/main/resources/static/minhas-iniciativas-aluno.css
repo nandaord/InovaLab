@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+* {
+    font-family: 'Inter';
+}/* Estilos gerais */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #F6EEEE;
+}
+
+.header img {
+    height: 50px;
+    margin-left: 30px;
+}
+
+.header-btn {
+    flex: 1;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 0 5px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid gray; /* Borda cinza */
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px; /* Tamanho da fonte */
+    text-align: center;
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
+}
+
+.header-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.header-btn:active {
+    background-color: #95a5a6;
+    color: #333;
+}
+
+.main-container {
+    text-align: left;
+    padding: 80px 20px;
+    background-image: url('bem-vindo.png'); /* Coloque o caminho correto da imagem */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    background-repeat: no-repeat; /* Impede repetição da imagem */
+    width: 100%; /* Garante que a imagem ocupe toda a largura */
+}
+
+.main-container h2, .main-container p {
+    padding-left: 50px; /* Adiciona preenchimento à esquerda nos textos */
+}
+
+main h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+main p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 20px;
+    max-width: 600px;
+}
+
+.bem-vindo {
+    font-size: 36px;
+    font-weight: bold;
+    color: white; /* Cor branca */
+    padding-left: 50px; /* Mantém o espaçamento */
+}
+
+.inovalab {
+    font-size: 36px;
+    font-weight: bold;
+    color: #c5202e;
+    padding-left: 50px; /* Mantém o espaçamento */
+}
+
+/* Estilo para o texto descritivo */
+.descricao {
+    font-size: 18px;
+    color: white; /* Cor branca */
+    padding-left: 50px; /* Mantém o espaçamento */
+    margin-top: 20px; /* Distância do título */
+    max-width: 600px; /* Limita a largura do texto */
+}
+
+.nome-iniciativas{
+    padding-left: 50px;
+    margin-top: 20px;
+}
+
+.cesar-school {
+    color: #eb6324; /* Cor laranja */
+    font-weight: bold; /* Opcional, para destacar mais */
+}
+
+/* Card de iniciativas */
+.initiative-card {
+    background-color: #F6EEEE;
+    border-radius: 8px;
+    cursor: pointer; /* Tornar o card clicável */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.initiative-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do conteúdo dentro do card */
+.initiative-card .card-body {
+    padding: 20px;
+}
+
+.initiativa-card .card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.iniciativa-card .card-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.add-new {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #e6e6e6;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px dashed #aaa;
+    text-decoration: none;
+}
+
+.add-new:hover {
+    background: #d9d9d9;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    font-size: 18px;
+    background-image: url('footer.png'); /* Caminho para a imagem */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    width: 100%;
+    margin-top: 40px;
+    bottom: 0;
+    color: #d34600; /* Cor do texto */
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+    z-index: 1; /* Coloca a imagem como fundo */
+}
+
+.footer-btn {
+    padding: 30px 131px;
+    text-decoration: none;
+    margin-right: 80px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: transparent;
+    color: #d34600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2; /* Garante que o botão fique acima da imagem */
+}
