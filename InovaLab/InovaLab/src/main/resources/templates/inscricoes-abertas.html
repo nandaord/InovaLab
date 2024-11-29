@@ -38,11 +38,10 @@
         <div class="col-md-6" th:each="iniciativa : ${iniciativas}">
             <div class="card mb-4 initiative-card">
                 <div class="card-body">
-                    <a th:href="@{/iniciativa/{id}(id=${iniciativa.id})}" class="stretched-link"></a>
                     <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
                     <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
                     <p><strong>Data limite:</strong> <span th:text="${iniciativa.dataLimiteInscricoes}">DD/MM/AAAA</span></p>
-                    <form th:action="@{/iniciativa/{id}/inscrever(id=${iniciativa.id})}" method="post">
+                    <form th:action="@{/home-aluno/iniciativa/{id}/inscrever(id=${iniciativa.id})}" method="post">
                         <button type="submit" class="btn btn-primary">Inscrever-se</button>
                     </form>
                 </div>

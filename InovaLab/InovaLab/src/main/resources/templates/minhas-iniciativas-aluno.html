@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Minhas Iniciativas</title>
+</head>
+<body>
+<h1>Minhas Iniciativas</h1>
+
+<ul>
+  <!-- Exibe todas as iniciativas nas quais o aluno se inscreveu -->
+  <th:block th:each="iniciativa : ${minhasIniciativas}">
+    <li>
+      <span th:text="${iniciativa.titulo}">Nome da Iniciativa</span>
+      <span th:text="${iniciativa.descricao}">Descrição da Iniciativa</span>
+    </li>
+  </th:block>
+</ul>
+
+<a href="/home-aluno">Voltar para a página inicial</a>
+</body>
+</html>

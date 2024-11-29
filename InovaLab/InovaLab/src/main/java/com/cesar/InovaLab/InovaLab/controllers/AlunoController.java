@@ -10,6 +10,7 @@ import com.cesar.InovaLab.InovaLab.models.Curso;
 import com.cesar.InovaLab.InovaLab.models.Solicitacao;
 import com.cesar.InovaLab.InovaLab.models.StatusSolicitacao;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -130,14 +131,10 @@ public class AlunoController {
     }
 
     @GetMapping("/inscricoes-abertas")
-    public String mostrarIniciativasAbertas(Model model) {
-        // Buscar as iniciativas com inscrições abertas
-        List<Iniciativa> iniciativasAbertas = iniciativaRepository.findByAceitaInscricoesTrue();
-
-        // Adicionar as iniciativas ao modelo
-        model.addAttribute("iniciativas", iniciativasAbertas);
-
-        return "inscricoes-abertas";  // Nome do template Thymeleaf
+    public String listarIniciativasAbertas(Model model) {
+        List<Iniciativa> iniciativas = iniciativaRepository.findAll(); // Busca todas as iniciativas
+        model.addAttribute("iniciativas", iniciativas); // Passa as iniciativas para a página
+        return "inscricoes-abertas"; // Retorna para a página de inscrições abertas
     }
 
     @GetMapping("/iniciativa/{id}")
@@ -183,4 +180,33 @@ public class AlunoController {
         return "redirect:/home-aluno/inscricoes-abertas";
     }
 
+    @GetMapping("/minhas-iniciativas-aluno")
+    public String minhasIniciativas(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        // Verifica se o usuário está logado
+        Long alunoId = (Long) session.getAttribute("alunoId");
+
+        if (alunoId == null) {
+            redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
+            return "redirect:/login";
+        }
+
+        // Recupera o aluno
+        UserAluno aluno = userAlunoRepository.findById(alunoId)
+                .orElseThrow(() -> new IllegalArgumentException("Aluno não encontrado"));
+
+        // Recupera as solicitações associadas ao aluno
+        List<Solicitacao> solicitacoes = solicitacaoRepository.findByAluno(aluno);
+
+        // Cria uma lista de iniciativas a partir das solicitações
+        List<Iniciativa> minhasIniciativas = new ArrayList<>();
+        for (Solicitacao solicitacao : solicitacoes) {
+            minhasIniciativas.add(solicitacao.getIniciativa());
+        }
+
+        // Passa as listas para o template
+        model.addAttribute("minhasIniciativas", minhasIniciativas);
+        model.addAttribute("solicitacoes", solicitacoes);  // Passando o status das solicitações
+
+        return "minhas-iniciativas-aluno";  // Nome do template
+    }
 }
