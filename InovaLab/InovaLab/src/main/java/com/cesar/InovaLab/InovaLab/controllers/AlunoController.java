@@ -41,27 +41,33 @@ public class AlunoController {
     @GetMapping("/perfil-aluno")
     public String perfil(RedirectAttributes redirectAttributes, Model model, HttpSession session) {
 
-        //recebe o id do aluno lá do login em HomeController
+        // Recebe o id do aluno lá do login em HomeController
         Long alunoId = (Long) session.getAttribute("alunoId");
 
-        //se o aluno não tiver logado
+        // Se o aluno não tiver logado
         if (alunoId == null) {
             redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
             return "redirect:/";
         }
 
-        //verifica se o id do aluno da cadastrado no banco de dados
+        // Verifica se o id do aluno está cadastrado no banco de dados
         UserAluno userAluno = userAlunoRepository.findById(alunoId)
                 .orElseThrow(() -> new IllegalArgumentException("Aluno não encontrado"));
 
+        // Busca as iniciativas associadas ao aluno
+        List<Iniciativa> iniciativas = iniciativaRepository.findByEmailsAlunos(userAluno.getEmail());
+
+        // Adiciona os atributos necessários ao modelo
         model.addAttribute("nomeUsuario", userAluno.getNome());
         model.addAttribute("userType", "Aluno");
         model.addAttribute("curso", userAluno.getCurso().getNome());
         model.addAttribute("descricao", userAluno.getMensagemSobreVoce());
         model.addAttribute("linkPortifolio", userAluno.getLinkPortifolio());
+        model.addAttribute("iniciativas", iniciativas); // Passa a lista de iniciativas associadas ao aluno
 
         return "perfil-aluno";
     }
+
 
     @PostMapping("/excluir")
     public String excluirPerfil(HttpSession session, RedirectAttributes redirectAttributes) {

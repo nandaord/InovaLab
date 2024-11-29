@@ -15,7 +15,7 @@
     </a>
     <div>
         <a href="/home-aluno/inscricoes-abertas" class="header-btn">Inscrições abertas</a>
-        <a href="/home-aluno/minhas-iniciativas-aluno" class="header-btn">Minhas inscrições</a><!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
+        <a href="/home-aluno/minhas-iniciativas-aluno" class="header-btn">Minhas inscrições</a>
         <a href="/home-aluno/perfil-aluno" class="header-btn">Perfil</a>
         <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
     </div>
@@ -41,11 +41,11 @@
 
     <section class="initiatives">
         <h2>Iniciativas que participa</h2>
+        <!-- Lista de iniciativas associadas ao aluno -->
         <div class="initiative-card" th:each="iniciativa : ${iniciativas}">
-            <img th:src="${iniciativa.imagem}" alt="Iniciativa" class="initiative-img">
             <div class="initiative-info">
                 <h3 th:text="${iniciativa.titulo}"></h3>
-                <p th:text="'Professor Responsável: ' + ${iniciativa.professorResponsavel}"></p>
+                <p th:text="${iniciativa.professor.nome}"></p>
                 <p th:text="${iniciativa.descricao}"></p>
             </div>
         </div>
