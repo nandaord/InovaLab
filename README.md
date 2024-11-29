@@ -58,7 +58,7 @@ Assim você instalará todas as dependências necessárias para executar nosso p
 
 ## O que fazer após realizar todos os passos de instalação?
 
-Aproveitar a integração e interação que somente o InovaLab pode proporcionar para todos os alunos da CESAR School. 😄
+Aproveitar a integração e interação que somente o InovaLab pode proporcionar para todos os membros da CESAR School. 😄
 
 
 ## 👩‍💻 Membros
