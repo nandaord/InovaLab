@@ -23,17 +23,24 @@
 </div>
 
 <body>
-<h1>Minhas Iniciativas</h1>
+<h2>Minhas Inscrições</h2>
 
-<ul>
-  <!-- Exibe todas as iniciativas nas quais o aluno se inscreveu -->
-  <th:block th:each="iniciativa : ${minhasIniciativas}">
-    <li>
-      <span th:text="${iniciativa.titulo}">Nome da Iniciativa</span>
-      <span th:text="${iniciativa.descricao}">Descrição da Iniciativa</span>
-    </li>
-  </th:block>
-</ul>
+
+<div class="row">
+  <div class="col-md-4" th:each="iniciativa : ${minhasIniciativas}">
+    <!-- Link para detalhes da iniciativa, usando o ID da iniciativa -->
+    <div class="card mb-4 initiative-card">
+      <div class="card-body">
+        <a th:href="@{/home-aluno/iniciativa/{id}(id=${iniciativa.id})}" class="stretched-link"></a>
+        <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
+        <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
+        <p><strong>Professor Responsável:</strong> <span th:text="${iniciativa.professor != null ? iniciativa.professor.nome : 'Professor não atribuído'}">
+                        Nome do Professor
+                    </span></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <div class="footer">
