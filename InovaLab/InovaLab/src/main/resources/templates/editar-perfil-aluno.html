@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/editar-perfil-aluno.css">
   </head>
 
@@ -36,45 +35,44 @@
       </div>
 
       <div class="right-panel">
-        <form>
+        <form th:action="@{/home-aluno/editar-perfil-aluno}" method="post">
+          <input type="hidden" name="id" th:value="${alunoId}">
+
           <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" class="input" placeholder="Seu nome completo" />
+            <input type="text" id="nome" name="nome" class="input" th:value="${nomeUsuario}" placeholder="Seu nome completo" />
           </div>
 
           <div class="form-group">
             <p><strong>E-mail:</strong> <span th:text="${email}"></span></p>
           </div>
 
-
           <div class="form-group">
             <label for="curso">Curso</label>
             <select name="cursoId" id="curso" class="select">
               <option value="">Selecione um curso</option>
               <th:block th:each="curso : ${cursos}">
-                <option th:value="${curso.id}" th:text="${curso.nome}"></option>
+                <option th:value="${curso.id}" th:text="${curso.nome}" th:selected="${cursoId == curso.id}"></option>
               </th:block>
             </select>
           </div>
 
-
           <div class="form-group">
             <label for="portfolio">Portfólio</label>
-            <input type="url" id="portfolio" name="portfolio" class="input" placeholder="https://www.seuportfolio.com" />
+            <input type="url" id="portfolio" name="linkPortfolio" class="input" th:value="${linkPortifolio}" placeholder="https://www.seuportfolio.com" />
           </div>
 
           <div class="form-group">
             <label for="descricao">Escreva um pouco sobre você!</label>
-            <textarea id="descricao" name="descricao" class="textarea" placeholder="Fale um pouco sobre você"></textarea>
+            <textarea id="descricao" name="descricao" class="textarea" th:text="${descricao}" placeholder="Fale um pouco sobre você"></textarea>
           </div>
 
           <div class="btn-group">
             <a href="/home-aluno/perfil-aluno" class="btn btn-secondary">Voltar ao perfil</a>
-            <button type="button" class="btn btn-danger">Excluir conta</button>
             <button type="submit" class="btn btn-primary">Atualizar</button>
           </div>
-
         </form>
+
       </div>
 
       <div class="footer">

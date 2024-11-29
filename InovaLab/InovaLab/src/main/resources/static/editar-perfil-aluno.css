@@ -57,7 +57,7 @@ body {
 /* Main Content */
 .main-content {
   display: flex;
-  padding: 40px;
+  padding-top: 40px;
   gap: 40px;
 }
 
@@ -92,7 +92,7 @@ body {
 
 /* Right Panel */
 .right-panel {
-  width: 70%;
+  width: 50%;
 }
 
 .form-group {
@@ -153,6 +153,7 @@ body {
   padding: 10px 20px;
   color: white;
   border: 1px solid #ff7f50;
+  margin-left: 80px;
 }
 
 .btn-primary:hover {

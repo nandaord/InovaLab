@@ -5,6 +5,7 @@ html, body {
     display: flex;
     flex-direction: column;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -49,25 +50,23 @@ html, body {
 
 .intro-section {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 20px;
+ /* Centraliza o conteúdo horizontalmente */
+  align-items: flex-start; /* Centraliza o conteúdo verticalmente */
+  padding: 40px 0; /* Ajuste de padding, se necessário */
   background-image: url('fundo-detalhes.jpg'); /* Caminho correto para a imagem */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; /* Certifique-se de evitar repetições */
-  width: 100%; /* Ocupe toda a largura da janela de visualização */
-  margin: 0 auto; /* Remova margens externas */
-  border-radius: 0; /* Remove bordas arredondadas */
-  color: white;
+  background-size: cover; /* Faz a imagem ocupar toda a seção */
+  background-position: center; /* Centraliza a imagem */
+  width: 100%; /* 100% da largura da viewport */
+  margin: 0; /* Remove margens externas */
+  color: white; /* Cor do texto */
 }
-
 
 .intro-section .text-content {
   max-width: 50%;
+  padding-left: 30px;
 }
 
-.intro-section h1 {
+.intro-section h2 {
   font-size: 2.5rem;
 }
 

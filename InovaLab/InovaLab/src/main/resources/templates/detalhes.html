@@ -27,13 +27,12 @@
     <!-- Introdução -->
     <section class="intro-section">
       <div class="text-content">
-        <h1>Conheça a <span class="highlight">FORJA</span></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus turpis nisi, et facilisis purus consequat id.</p>
-        <p>Vestibulum scelerisque tortor at accumsan feugiat.</p>
+
+        <h2 class="card-title" th:text="'Conheça a ' + ${iniciativa.titulo}"></h2>
+        <p class="card-text" th:text="${iniciativa.descricao}"></p>
         <button class="btn btn-warning">Inscrições Abertas</button>
       </div>
       <div class="image-content">
-        <img src="/forja.png" alt="Logo Forja" class="intro-img">
       </div>
     </section>
 
