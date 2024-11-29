@@ -2,17 +2,17 @@ package com.cesar.InovaLab.InovaLab.controllers;
 
 
 import com.cesar.InovaLab.InovaLab.models.Curso;
+import com.cesar.InovaLab.InovaLab.models.Solicitacao;
+import com.cesar.InovaLab.InovaLab.models.StatusSolicitacao;
 import com.cesar.InovaLab.InovaLab.models.UserAluno;
-import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
+import com.cesar.InovaLab.InovaLab.repository.*;
 import org.springframework.web.bind.annotation.*;
 import com.cesar.InovaLab.InovaLab.models.UserProfessor;
-import com.cesar.InovaLab.InovaLab.repository.UserProfessorRepository;
-import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
 import com.cesar.InovaLab.InovaLab.models.Iniciativa;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,9 @@ public class ProfessorController {
 
     @Autowired
     private UserAlunoRepository userAlunoRepository;
+
+    @Autowired
+    private SolicitacaoRepository solicitacaoRepository;
 
     @GetMapping("/home-professor")
     public String mostrarHomeProfessor(HttpSession session, Model model) {
@@ -225,8 +228,34 @@ public class ProfessorController {
         return "detalhes"; // Nome do arquivo HTML
     }
 
-    @GetMapping("/pedidos-inscricao")
-    public String MostrarPedidosInscricao () {
+    @GetMapping("/home-professor/pedidos-inscricao")
+    public String visualizarPedidosInscricao(Model model) {
+        List<Solicitacao> solicitacoes = solicitacaoRepository.findByStatus(StatusSolicitacao.PENDENTE);  // Filtrando por status pendente
+        model.addAttribute("solicitacoes", solicitacoes);
         return "pedidos-inscricao";
+    }
+
+    @PostMapping("/pedidos-inscricao/aceitar/{id}")
+    public String aceitarSolicitacao(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        Solicitacao solicitacao = solicitacaoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Solicitação não encontrada"));
+
+        solicitacao.setStatus(StatusSolicitacao.ACEITA);
+        solicitacaoRepository.save(solicitacao);
+
+        redirectAttributes.addFlashAttribute("mensagem", "Solicitação aceita com sucesso.");
+        return "redirect:/home-professor/pedidos-inscricao";
+    }
+
+    @PostMapping("/pedidos-inscricao/rejeitar/{id}")
+    public String rejeitarSolicitacao(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        Solicitacao solicitacao = solicitacaoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Solicitação não encontrada"));
+
+        solicitacao.setStatus(StatusSolicitacao.REJEITADA);
+        solicitacaoRepository.save(solicitacao);
+
+        redirectAttributes.addFlashAttribute("erro", "Solicitação rejeitada.");
+        return "redirect:/home-professor/pedidos-inscricao";
     }
 }

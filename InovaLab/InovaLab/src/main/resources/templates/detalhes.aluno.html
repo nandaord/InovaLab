@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Iniciativa - InovaLab</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/detalhes.css">
+</head>
+
+<body>
+
+<div class="header">
+    <a href="/home-aluno">
+        <img src="/assinatura.png" alt="Assinatura InovaLab">
+    </a>
+    <div>
+        <a href="/home-aluno/inscricoes-abertas" class="header-btn">Inscrições abertas</a>
+        <a href="" class="header-btn">Minhas inscrições</a> <!--AINDA ESTA "VAZIO", quando fizer a logica, adicionar-->
+        <a href="/home-aluno/perfil-aluno" class="header-btn">Perfil</a>
+        <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
+    </div>
+</div>
+
+<main class="container">
+    <!-- Introdução -->
+    <section class="intro-section">
+        <div class="text-content">
+
+            <h2 class="card-title" th:text="'Conheça a ' + ${iniciativa.titulo}"></h2>
+            <p class="card-text" th:text="${iniciativa.descricao}"></p>
+            <button class="btn btn-warning">Inscrições Abertas</button>
+        </div>
+        <div class="image-content">
+        </div>
+    </section>
+
+    <!-- Galeria e Depoimentos -->
+    <section class="content-section">
+        <div class="gallery">
+            <h2>Galeria</h2>
+            <div class="gallery-slider">
+                <img src="/imagem-galeria.png" alt="Galeria 1" class="gallery-img">
+            </div>
+        </div>
+        <div class="testimonials">
+            <h2>Depoimentos</h2>
+            <div class="testimonial">
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+                <span>- Nome do Aluno</span>
+            </div>
+            <div class="testimonial">
+                <p>"Nunc faucibus turpis nisi, et facilisis purus consequat id."</p>
+                <span>- Nome do Aluno</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Depoimento -->
+    <section class="feedback-section">
+        <h3>Quer deixar um depoimento?</h3>
+        <p>Teste ser breve! Todas as mensagens serão enviadas para os responsáveis e caso sejam aprovadas, aparecerão na seção de depoimentos acima.</p>
+        <form>
+            <textarea placeholder="Escreva aqui seu depoimento..." rows="3"></textarea>
+            <button type="submit" class="btn btn-warning">Enviar</button>
+        </form>
+    </section>
+</main>
+
+<div class="footer">
+    <form th:action="@{/logout}" method="get">
+        <button type="submit" class="footer-btn"></button>
+    </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const images = document.querySelectorAll(".gallery-img");
+      const prevButton = document.querySelector(".gallery-prev");
+      const nextButton = document.querySelector(".gallery-next");
+
+      let currentIndex = 0;
+
+      function updateGallery() {
+        images.forEach((img, index) => {
+          img.classList.toggle("active", index === currentIndex);
+        });
+      }
+
+      prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateGallery();
+      });
+
+      nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateGallery();
+      });
+
+      updateGallery();
+    });
+</script>
+
+
+</body>
+
+</html>

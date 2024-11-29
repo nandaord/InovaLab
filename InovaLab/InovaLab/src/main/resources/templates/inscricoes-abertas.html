@@ -22,7 +22,6 @@
     </div>
 </div>
 
-
 <main class="main-container">
     <h2 class="bem-vindo">Iniciativas com</h2>
     <h2 class="inovalab">inscrições abertas!</h2>
@@ -43,6 +42,9 @@
                     <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
                     <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
                     <p><strong>Data limite:</strong> <span th:text="${iniciativa.dataLimiteInscricoes}">DD/MM/AAAA</span></p>
+                    <form th:action="@{/iniciativa/{id}/inscrever(id=${iniciativa.id})}" method="post">
+                        <button type="submit" class="btn btn-primary">Inscrever-se</button>
+                    </form>
                 </div>
             </div>
         </div>

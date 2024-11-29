@@ -5,8 +5,14 @@ import com.cesar.InovaLab.InovaLab.models.UserAluno;
 import com.cesar.InovaLab.InovaLab.repository.UserAlunoRepository;
 import com.cesar.InovaLab.InovaLab.repository.CursoRepository;
 import com.cesar.InovaLab.InovaLab.repository.IniciativaRepository;
+import com.cesar.InovaLab.InovaLab.repository.SolicitacaoRepository;
 import com.cesar.InovaLab.InovaLab.models.Curso;
+import com.cesar.InovaLab.InovaLab.models.Solicitacao;
+import com.cesar.InovaLab.InovaLab.models.StatusSolicitacao;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +33,9 @@ public class AlunoController {
 
     @Autowired
     private CursoRepository cursoRepository;
+
+    @Autowired
+    private SolicitacaoRepository solicitacaoRepository;
 
     @GetMapping("/perfil-aluno")
     public String perfil(RedirectAttributes redirectAttributes, Model model, HttpSession session) {
@@ -132,10 +141,58 @@ public class AlunoController {
     }
 
     @GetMapping("/iniciativa/{id}")
-    public String getDetalhesIniciativa(@PathVariable Long id, Model model) {
+    public String getDetalhesIniciativa(@PathVariable Long id,
+                                        @RequestParam String userType, // Recebe tipo do usuário como parâmetro
+                                        Model model) {
+        // Busca a iniciativa no banco de dados
         Iniciativa iniciativa = iniciativaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Iniciativa não encontrada"));
         model.addAttribute("iniciativa", iniciativa);
-        return "detalhes"; // Nome do arquivo HTML
+
+        // Verifica o tipo de usuário e redireciona para a página correta
+        if ("professor".equalsIgnoreCase(userType)) {
+            return "detalhes"; // Página de detalhes para professor
+        } else if ("aluno".equalsIgnoreCase(userType)) {
+            return "detalhes-aluno"; // Página de detalhes para aluno
+        }
+
+        // Caso o tipo não seja reconhecido, lança exceção
+        throw new IllegalArgumentException("Tipo de usuário inválido");
     }
+
+
+    @PostMapping("/iniciativa/{id}/inscrever")
+    public String inscreverNaIniciativa(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
+        Long alunoId = (Long) session.getAttribute("alunoId");
+
+        if (alunoId == null) {
+            redirectAttributes.addFlashAttribute("erro", "Usuário não está logado.");
+            return "redirect:/login";  // redirecionar para login, se não estiver logado
+        }
+
+        UserAluno aluno = userAlunoRepository.findById(alunoId)
+                .orElseThrow(() -> new IllegalArgumentException("Aluno não encontrado"));
+
+        Iniciativa iniciativa = iniciativaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Iniciativa não encontrada"));
+
+        // Verifica se já existe uma solicitação pendente para essa iniciativa
+        Optional<Solicitacao> solicitacaoExistente = solicitacaoRepository.findByAlunoAndIniciativa(aluno, iniciativa);
+        if (solicitacaoExistente.isPresent()) {
+            redirectAttributes.addFlashAttribute("erro", "Você já enviou uma solicitação para esta iniciativa.");
+            return "redirect:/home-aluno/inscricoes-abertas";
+        }
+
+        // Cria uma nova solicitação
+        Solicitacao solicitacao = new Solicitacao();
+        solicitacao.setAluno(aluno);
+        solicitacao.setIniciativa(iniciativa);
+        solicitacao.setStatus(StatusSolicitacao.PENDENTE);
+        solicitacao.setDataSolicitacao(LocalDateTime.now());
+        solicitacaoRepository.save(solicitacao);
+
+        redirectAttributes.addFlashAttribute("mensagem", "Solicitação enviada com sucesso!");
+        return "redirect:/home-aluno/inscricoes-abertas";
+    }
+
 }
