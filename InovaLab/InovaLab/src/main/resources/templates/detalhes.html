@@ -11,17 +11,21 @@
 
 <body>
 
-<!-- Cabeçalho -->
 <div class="header">
-  <a href="/home-professor">
+  <a href="#" th:href="@{${userType == 'professor' ? '/home-professor' : '/home-aluno'}}">
     <img src="/assinatura.png" alt="Assinatura InovaLab">
   </a>
   <div>
-    <a href="/home-professor/minhas-iniciativas" class="header-btn">Minhas Iniciativas</a>
-    <a href="/home-professor/perfil-professor" class="header-btn">Perfil</a>
+    <!-- Botão Voltar com lógica condicional -->
+    <a href="#" th:href="@{${userType == 'professor' ? '/home-professor' : '/home-aluno'}}" class="header-btn">Voltar</a>
+
+    <!-- Botão Perfil com lógica condicional -->
+    <a href="#" class="header-btn" th:href="@{${userType == 'professor' ? '/home-professor/perfil-professor' : '/home-aluno/perfil-aluno'}}">Perfil</a>
+
     <img src="/fotoPerfil.png" alt="Foto de perfil InovaLab">
   </div>
 </div>
+
 
   <main class="container">
     <!-- Introdução -->
