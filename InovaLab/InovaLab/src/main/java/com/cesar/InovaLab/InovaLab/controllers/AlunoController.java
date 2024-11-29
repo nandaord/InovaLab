@@ -141,23 +141,11 @@ public class AlunoController {
     }
 
     @GetMapping("/iniciativa/{id}")
-    public String getDetalhesIniciativa(@PathVariable Long id,
-                                        @RequestParam String userType, // Recebe tipo do usuário como parâmetro
-                                        Model model) {
-        // Busca a iniciativa no banco de dados
+    public String getDetalhesIniciativa(@PathVariable Long id, Model model) {
         Iniciativa iniciativa = iniciativaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Iniciativa não encontrada"));
         model.addAttribute("iniciativa", iniciativa);
-
-        // Verifica o tipo de usuário e redireciona para a página correta
-        if ("professor".equalsIgnoreCase(userType)) {
-            return "detalhes"; // Página de detalhes para professor
-        } else if ("aluno".equalsIgnoreCase(userType)) {
-            return "detalhes-aluno"; // Página de detalhes para aluno
-        }
-
-        // Caso o tipo não seja reconhecido, lança exceção
-        throw new IllegalArgumentException("Tipo de usuário inválido");
+        return "detalhes"; // Nome do arquivo HTML
     }
 
 

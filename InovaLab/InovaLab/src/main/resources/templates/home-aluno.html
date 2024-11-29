@@ -46,20 +46,15 @@
     <!-- Lista de iniciativas -->
     <div class="row">
         <div class="col-md-4" th:each="iniciativa : ${iniciativas}">
-            <!-- Link para detalhes da iniciativa, agora corrigido -->
+            <!-- Link para detalhes da iniciativa, usando o ID da iniciativa -->
             <div class="card mb-4 initiative-card">
                 <div class="card-body">
-                    <a th:href="@{/home-aluno/iniciativa/{id}(id=${iniciativa.id})}"
-                       th:attrappend="href=|?userType=aluno|"
-                       class="stretched-link"></a>
+                    <a th:href="@{/home-aluno/iniciativa/{id}(id=${iniciativa.id})}" class="stretched-link"></a>
                     <h5 class="card-title" th:text="${iniciativa.titulo}">Título da Iniciativa</h5>
                     <p class="card-text" th:text="${iniciativa.descricao}">Descrição da Iniciativa</p>
-                    <p>
-                        <strong>Professor Responsável:</strong>
-                        <span th:text="${iniciativa.professor != null ? iniciativa.professor.nome : 'Professor não atribuído'}">
+                    <p><strong>Professor Responsável:</strong> <span th:text="${iniciativa.professor != null ? iniciativa.professor.nome : 'Professor não atribuído'}">
                         Nome do Professor
-                    </span>
-                    </p>
+                    </span></p>
                 </div>
             </div>
         </div>
