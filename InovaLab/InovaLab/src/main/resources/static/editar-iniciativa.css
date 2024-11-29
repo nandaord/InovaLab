@@ -227,3 +227,36 @@ input[type="date"] {
     color: #333;
     border-color: #333;
 }
+.select-alunos {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 600px;
+  border: 1px solid #F6EEEE;
+  border-radius: 5px;
+  background-color: #F6EEEE;
+  font-size: 14px;
+}
+.custom-error {
+  font-size: 14px; /* Altere o tamanho da fonte */
+  font-weight: bold; /* Torne a mensagem de erro mais destacada */
+  color: #ff0000; /* Altere a cor para vermelho personalizado */
+  margin-top: 5px; /* Ajuste o espaçamento */
+  border: 1px solid #ff0000; /* Adicione uma borda (opcional) */
+  padding: 5px; /* Espaçamento interno para a borda */
+  border-radius: 5px; /* Cantos arredondados */
+  background-color: #ffe6e6; /* Fundo vermelho claro */
+}
+
+/* Estilo para o campo de busca interno do Select2 */
+.select2-search__field {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%; /* Ajuste conforme necessário */
+  border: 1px solid #F6EEEE;
+  border-radius: 5px;
+  background-color: #F6EEEE;
+  font-size: 14px;
+  color: #333;
+}

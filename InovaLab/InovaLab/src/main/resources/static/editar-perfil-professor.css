@@ -178,7 +178,7 @@ body {
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Evita repetição da imagem */
     width: 100%;
-    position: fixed;
+    margin-top: 40px;
     bottom: 0;
     color: #d34600; /* Cor do texto */
     box-sizing: border-box; /* Garantir que o padding não afete o layout */
