@@ -43,7 +43,6 @@
 
     <div class="row">
         <div class="col-md-4" th:each="iniciativa : ${iniciativas}">
-            <!-- Link para detalhes da iniciativa, usando o ID da iniciativa -->
             <div class="card mb-4 initiative-card">
                 <div class="card-body">
                     <a th:href="@{/home-aluno/iniciativa/{id}(id=${iniciativa.id})}" class="stretched-link"></a>

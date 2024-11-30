@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Inter';
+    overflow-y: hidden;
 }
 
 html, body {
@@ -12,6 +13,7 @@ html, body {
     display: flex;
     flex-direction: column; /* Organiza o conteúdo em uma coluna */
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -227,3 +229,11 @@ add-new-card .add-text {
     font-size: 16px;
     z-index: 2;
 }
+
+h2{
+    padding: 30px;
+}
+
+.row{
+    padding: 30px;
+ }

@@ -35,25 +35,19 @@ html, body {
     margin: 0 5px;
     border-radius: 25px;
     background-color: transparent;
-    border: 2px solid gray;
+    border: 2px solid gray; /* Borda cinza */
     color: #333;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 12px;
+    font-size: 12px; /* Tamanho da fonte */
     text-align: center;
-    text-transform: uppercase;
-}
-
-.header-btn:hover {
-    background-color: #f0f0f0;
-    color: #333;
+    text-transform: uppercase; /* Para deixar as letras maiúsculas */
 }
 
 .header-btn:active {
     background-color: #95a5a6;
     color: #333;
 }
-
 /* Estilo para o conteúdo principal */
 .main-content {
     padding: 20px 40px;
@@ -74,12 +68,9 @@ html, body {
     transition: background-color 0.2s ease;
 }
 
-.btn:hover, .header-btn:hover {
-    background-color: #aeb6bf;
+.header-btn:hover {
+    background-color: #f0f0f0;
     color: #333;
-    cursor: pointer;
-    text-decoration: none;
-    border: 1px solid #ccc;
 }
 
 .btn:active, .header-btn:active {

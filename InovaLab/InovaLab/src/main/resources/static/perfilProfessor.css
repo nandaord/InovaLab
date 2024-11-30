@@ -177,7 +177,6 @@ body {
 /* Footer */
 .footer {
     display: flex;
-    margin-top: 40px;
     justify-content: flex-end;
     align-items: center;
     padding: 15px;
@@ -188,6 +187,7 @@ body {
     background-repeat: no-repeat; /* Evita repetição da imagem */
     width: 100%;
     bottom: 0;
+    position: fixed;
     color: #d34600; /* Cor do texto */
     box-sizing: border-box; /* Garantir que o padding não afete o layout */
     z-index: 1; /* Coloca a imagem como fundo */
